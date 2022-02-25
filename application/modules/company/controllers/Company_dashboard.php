@@ -146,40 +146,41 @@ return redirect(base_url() . 'logout');}
 
             $user_id = $this->company_dash->submit_user($data);
             if ($user_id) {
-
-if (base_url() == 'http://localhost/agp/') {
-	        $this->load->library('email');
-	        $this->email->from('abc@gmail.com', 'alphaexposofts');
-	        $this->email->to('xyz@gmail.com');
-	        $this->email->subject('Login details');
-	        $msg = $this->load->view('company/mail/login_details',$data,true);
-	        $this->email->message($msg);
-			if($this->email->send()){ redirect('Yes'); } else{ redirect('No');}
-			$this->session->set_flashdata('msg', 'Successfully Register');
-	        redirect(base_url().'company/add-project/'.$user_id);
-
-}else{
-            $from = $this->session->userdata('logged_in')->company_email;
-            $from_name = $this->session->userdata('logged_in')->company_name;
-			$data['mail'] = $this->input->post('company_email');
-			$data['password'] = $password;
-	        $this->load->library('email');
-	        //$this->email->from('thecorebuilder@gmail.com', 'alphaexposofts');
-	        $this->email->from($from, $from_name);
-	        $this->email->to($this->input->post('company_email'));
-	        $this->email->subject('Login details');
-	         $msg = $this->load->view('company/mail/login_details',$data,true);
-	        $this->email->message($msg);
-	  //       //Send mail 
-			if($this->email->send()){
-	            $this->session->set_flashdata('msg', 'Successfully Register and mail sent');
+				$this->session->set_flashdata('msg', 'Successfully Register and mail sent');
 	            redirect(base_url().'company/add-project/'.$user_id);
-			}else{
-	// 			echo $this->email->print_debugger();
-	            $this->session->set_flashdata('msg', 'Successfully Register and mail sending problem!');
-	            redirect(base_url().'company/add-project/'.$user_id);
-			}
-}
+// if (base_url() == 'http://localhost/agp/') {
+// 	        $this->load->library('email');
+// 	        $this->email->from('abc@gmail.com', 'alphaexposofts');
+// 	        $this->email->to('xyz@gmail.com');
+// 	        $this->email->subject('Login details');
+// 	        $msg = $this->load->view('company/mail/login_details',$data,true);
+// 	        $this->email->message($msg);
+// 			if($this->email->send()){ redirect('Yes'); } else{ redirect('No');}
+// 			$this->session->set_flashdata('msg', 'Successfully Register');
+// 	        redirect(base_url().'company/add-project/'.$user_id);
+
+// }else{
+//             $from = $this->session->userdata('logged_in')->company_email;
+//             $from_name = $this->session->userdata('logged_in')->company_name;
+// 			$data['mail'] = $this->input->post('company_email');
+// 			$data['password'] = $password;
+// 	        $this->load->library('email');
+// 	        //$this->email->from('thecorebuilder@gmail.com', 'alphaexposofts');
+// 	        $this->email->from($from, $from_name);
+// 	        $this->email->to($this->input->post('company_email'));
+// 	        $this->email->subject('Login details');
+// 	         $msg = $this->load->view('company/mail/login_details',$data,true);
+// 	        $this->email->message($msg);
+// 	  //       //Send mail 
+// 			if($this->email->send()){
+// 	            $this->session->set_flashdata('msg', 'Successfully Register and mail sent');
+// 	            redirect(base_url().'company/add-project/'.$user_id);
+// 			}else{
+// 	// 			echo $this->email->print_debugger();
+// 	            $this->session->set_flashdata('msg', 'Successfully Register and mail sending problem!');
+// 	            redirect(base_url().'company/add-project/'.$user_id);
+// 			}
+// }
             }
 
 
@@ -777,27 +778,28 @@ public function mail_of_project_details($project_id,$u_id)
 
 		// dd('ok');
 		if ($withdrawal_status == 1) {
-			$get_withdraw_report = $this->company_dash->get_withdraw_report($withdrawal_id);
-			$data['get_withdraw_report']=$get_withdraw_report;
+			redirect(base_url('company/withdrawal'));
+			// $get_withdraw_report = $this->company_dash->get_withdraw_report($withdrawal_id);
+			// $data['get_withdraw_report']=$get_withdraw_report;
 
-			$from_mail = $this->session->userdata('logged_in')->company_email;
-			$company_name = $this->session->userdata('logged_in')->company_name;
-	        $this->load->library('email');
-	        $this->email->from($from_mail, $company_name);
-	        $this->email->to($get_withdraw_report->to_mail);
-	        $this->email->subject('Login details');
-	         $msg = $this->load->view('company/mail/withdrawal_invoice',$data,true);
-	        $this->email->message($msg);
-	  //       //Send mail 
-			if($this->email->send()){// dd($submit_withdraw_request);
-				unset($_SESSION['Withdrawal_errors']);
-				$this->session->set_flashdata('Withdrawal_msg', 'Withdrawal Status Updated and Mail Sent Successfully!');
-				redirect(base_url('company/withdrawal'));
-			}else{
-				unset($_SESSION['Withdrawal_errors']);
-				$this->session->set_flashdata('Withdrawal_msg', 'Withdrawal Status Updated but Mail Not Sending Error!');
-				redirect(base_url('company/withdrawal'));
-			}
+			// $from_mail = $this->session->userdata('logged_in')->company_email;
+			// $company_name = $this->session->userdata('logged_in')->company_name;
+	  //       $this->load->library('email');
+	  //       $this->email->from($from_mail, $company_name);
+	  //       $this->email->to($get_withdraw_report->to_mail);
+	  //       $this->email->subject('Login details');
+	  //        $msg = $this->load->view('company/mail/withdrawal_invoice',$data,true);
+	  //       $this->email->message($msg);
+	  // //       //Send mail 
+			// if($this->email->send()){// dd($submit_withdraw_request);
+			// 	unset($_SESSION['Withdrawal_errors']);
+			// 	$this->session->set_flashdata('Withdrawal_msg', 'Withdrawal Status Updated and Mail Sent Successfully!');
+			// 	redirect(base_url('company/withdrawal'));
+			// }else{
+			// 	unset($_SESSION['Withdrawal_errors']);
+			// 	$this->session->set_flashdata('Withdrawal_msg', 'Withdrawal Status Updated but Mail Not Sending Error!');
+			// 	redirect(base_url('company/withdrawal'));
+			// }
 		}else{
 			// dd($submit_Withdrawal_request);
 			unset($_SESSION['Withdrawal_msg']);

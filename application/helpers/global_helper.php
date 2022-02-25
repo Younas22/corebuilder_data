@@ -10,6 +10,31 @@ if (!function_exists('dd')){
 }
 
 
+/*////////////check_already_exist//////////*/
+if (!function_exists('check_already_exist')){
+      function check_already_exist($email,$phone){
+         $CI =& get_instance();
+        $data = $CI->db->select()
+        ->from('autotyper_users')
+        ->where('phone', $phone)
+        ->get()->row();
+        if (!empty($data)) {
+            return 1;
+        }else{
+        $data = $CI->db->select()
+        ->from('autotyper_users')
+        ->where('email', $email)
+        ->get()->row();
+                    if (!empty($data)) {
+                        return 1;
+                    }else{
+                        return 0;
+                    }
+        }
+
+       }
+}
+
 /*////////////profile//////////*/
 if (!function_exists('profile')){
       function profile(){

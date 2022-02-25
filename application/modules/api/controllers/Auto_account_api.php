@@ -79,7 +79,16 @@ public function doLogin() {
             $check_user = $this->login_->check_user($email,$phone);
             // dd($check_user);
             if (!empty($check_user)) {
-
+            	if (check_already_exist($email,$phone)==1) {
+	            	header('Access-Control-Allow-Origin: *');
+					header('Content-Type: application/json');
+	                echo json_encode(array(
+	                	'msg'=>201,
+	                	'res'=>'Already exist!',
+	                	'status'=>false,
+	                ));
+	                exit;
+            	}
 	           $data = [
 	                'core_user_id' => $check_user->id,
 	                'name' => $name,
