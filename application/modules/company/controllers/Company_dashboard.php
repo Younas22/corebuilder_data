@@ -1,4 +1,4 @@
-<?php
+<?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Company_dashboard extends MY_Controller {
@@ -549,12 +549,36 @@ $data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$
 		$data['url_title'] = 'User View';
 		$data['title'] = 'User View';
 		$data['contant_view'] = 'company/user_profile';
+		$data['action_type'] = base_url().'company/update/user_profile';
 		$data['profile'] = $this->company_dash->profile($user_id);
 		$data['user_earning'] = $this->company_dash->user_earning($user_id);
 		$data['user_projects'] = $this->company_dash->user_projects($user_id);
 		$this->template->template($data);
 	}
 /*end user view*/
+
+
+//update user_profile
+	public function update_user_profile()
+	{
+		$user_id = $this->input->post('user_id');
+		$current_url = $this->input->post('current_url');
+    	$profile_data =  [
+			'password'=>sha1($this->input->post('password')),
+			'decript_password'=>$this->input->post('password'),
+			'first_name'=>$this->input->post('first_name'),
+			'last_name'=>$this->input->post('last_name'),
+			'company_email'=>$this->input->post('company_email'),
+			'user_phone'=>$this->input->post('user_phone')
+		];
+
+        $this->db->where('id',$user_id);
+        $updated = $this->db->update('users',$profile_data);
+        if ($updated) {
+			$this->session->set_flashdata('uprofile', 'changes saved');
+        	redirect($current_url);
+        }
+	}
 
 /*user delete*/
 		public function user_delete($user_id)

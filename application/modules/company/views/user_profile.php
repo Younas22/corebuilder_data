@@ -75,7 +75,7 @@
 						<p><b>Projects</b><br /><?=$user_projects?></p>
 					</div>
 				</div>
-			</div>
+			</div> 
 		</div>
 	</div>
 </div>
@@ -87,12 +87,25 @@
 		<div id="myTabContent" class="tab-content custom-product-edit st-prf-pro">
 			<div class="product-tab-list" id="INFORMATION">
 				<div class="row">
+						<?php if (!empty($this->session->flashdata('uprofile'))) { ?>
+<div class="alert alert-success alert-success-style2 alert-st-bg1" style="margin:20px;">
+<button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
+<span class="icon-sc-cl" aria-hidden="true">×</span>
+</button>
+<i class="fa fa-check edu-checked-pro admin-check-pro admin-check-pro-clr" aria-hidden="true"></i>
+<p><strong>Alert!</strong> <?= $this->session->flashdata('uprofile'); ?></p>
+</div>
+<?php }?>
+
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="review-content-section">
 							<form action="<?= $action_type?>" method="POST" enctype="multipart/form-data">
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
+											<input name="user_id" type="hidden" class="form-control" placeholder="First Name" value="<?=$this->uri->segment(3)?>">
+											<input name="current_url" type="hidden" class="form-control" placeholder="First Name" value="<?=current_url()?>">
+
 											<label>First Name</label>
 											<input name="first_name" type="text" class="form-control" placeholder="First Name" value="<?=$profile->first_name?>">
 										</div>
@@ -102,7 +115,7 @@
 										</div>
 										<div class="form-group">
 											<label>Email</label>
-											<input type="text" name="company_email" class="form-control" placeholder="Email" value="<?=$profile->company_email?>" disabled>
+											<input type="text" name="company_email" class="form-control" placeholder="Email" value="<?=$profile->company_email?>">
 										</div>
 									</div>
 									<div class="col-lg-6">
@@ -115,7 +128,9 @@
 											<input type="text" name="password" class="form-control" placeholder="Password" value="<?=$profile->decript_password?>">
 										</div>
 										<div class="form-group">
-											<div class="payment-adress mg-t-15">
+										<div class="payment-adress mg-t-15">
+											<button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">update user profile</button>
+
 											<a href="<?= base_url('company/user-projects/').$profile->id; ?>" class="btn btn-primary waves-effect waves-light mg-b-15">User-Projects</a>
 										</div>
 										</div>

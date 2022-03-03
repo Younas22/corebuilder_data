@@ -199,7 +199,7 @@ width: auto;
                                                 <input type="hidden" name="u_id" value="<?=$this->uri->segment(3)?>">
                                                 <label>Project title <span style="color:red">*</span></label>
                                                 <select name="p_id" class="form-control" id="p_id" required="">
-                                                    <option value="none" selected="" disabled="">Select Project</option>
+                                                    <option value="" selected="" disabled="">Select Project</option>
                                                     <?php foreach ($projects as $key) { ?>
                                                     <option value="<?=$key->id?>"><?=$key->projects_title?></option>
                                                     <?php } ?>
@@ -208,7 +208,7 @@ width: auto;
                                             <div class="form-group">
                                                 <label>Project Type <span style="color:red">*</span></label>
                                                 <select name="p_type" class="form-control" id="p_type" required="">
-                                                    <option value="none" selected="" disabled="">Select Project Type</option>
+                                                    <option value="" selected="" disabled="">Select Project Type</option>
                                                     <option value="Target">Target</option>
                                                     <option value="Non Target" id="non_tr">Non Target</option>
                                                 </select>
@@ -218,8 +218,8 @@ width: auto;
                                                 <input name="quantity" type="text" class="form-control" placeholder="Quantity">
                                             </div>
                                             <div class="form-group" id="price">
-                                                <label>Project Price</label>
-                                                <input name="price" type="text" class="form-control" placeholder="price">
+                                                <label>Project Price <span style="color:red">*</span></label>
+                                                <input name="price" type="text" class="form-control" placeholder="price" required="">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

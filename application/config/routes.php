@@ -69,6 +69,7 @@ $route['company/submit_project_img'] = 'company/Company_dashboard/submit_project
 	$route['company/get_project_terms'] = 'company/Company_dashboard/get_project_terms';
 $route['company/all-users'] = 'company/Company_dashboard/all_users';
 $route['company/user-view/(:num)'] = 'company/Company_dashboard/user_view/$1';
+$route['company/update/user_profile'] = 'company/Company_dashboard/update_user_profile';
 $route['company/user-delete/(:num)'] = 'company/Company_dashboard/user_delete/$1';
 
 $route['company/user-projects/(:num)']='company/Company_dashboard/user_projects/$1';
