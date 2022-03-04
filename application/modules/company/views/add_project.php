@@ -282,15 +282,38 @@ width: auto;
                                             <option value="6.ttf">Legend</option>
                                                 </select>
                                             </div>
+
+                                    <div class="form-group" id="invoice_type">
+                                        <style>.hide{display: none;}</style>
+                                        <label>Invoice Type</label>
+                                        <select name="invoice_type" class="form-control" >
+                                            <option value="none" selected="" disabled="">Select Invoice Type</option>
+                                            <option value="easy">Easy</option>
+                                            <option value="difficult">Difficult</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group" id="numbers_tape">
+                                        <style>.hide{display: none;}</style>
+                                        <label>Numbers Type</label>
+                                        <select name="numbers_tape" class="form-control" >
+                                            <option value="none" selected="" disabled="">Select Difficulty Type</option>
+                                            <option value="1">Rookie</option>
+                                            <option value="2">Expert</option>
+                                            <option value="3">Professional</option>
+                                        </select>
+                                    </div>
+<!-- 
                                             <div class="form-group" id="invoice_type">
                                                 <style>.hide{display: none;}</style>
                                                 <label>Invoice Type</label>
                                                 <select name="invoice_type" class="form-control" >
-                                                    <option value="none" selected="" disabled="">Select Invoice Type</option>
+                                                    <option value="none" selected="" disabled="">Select difficulty Type</option>
                                                     <option value="easy">Easy</option>
                                                     <option value="difficult">Difficult</option>
                                                 </select>
-                                            </div>
+                                            </div> -->
+
                                         </div>
                                     </div>
                                     <!-- <hr> -->

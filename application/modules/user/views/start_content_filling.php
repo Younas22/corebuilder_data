@@ -177,19 +177,19 @@ You must work for fixed time period set by the company you are working with.
             <div class="row">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <label class="" style="color:gray;">box 1<input style="text-align:center;"  class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="10" value="<?=$filling_projects->num_box_one?>" disabled></label>
+                    <label class="" style="color:gray;">box 1<input style="text-align:center;"  class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_one?>' disabled></label>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <label class="" style="color:gray;">box 2<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="10" value="<?=$filling_projects->num_box_two?>" disabled></label>
+                    <label class="" style="color:gray;">box 2<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_two?>' disabled></label>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <label class="" style="color:gray;">box 3<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="10" value="<?=$filling_projects->num_box_three?>" disabled></label>
+                    <label class="" style="color:gray;">box 3<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_three?>' disabled></label>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <label class="" style="color:gray;">box 4<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="10" value="<?=$filling_projects->num_box_char?>" disabled></label>
+                    <label class="" style="color:gray;">box 4<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_char?>' disabled></label>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                    <label class="" style="color:gray;">box 5<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="10" value="<?=$filling_projects->num_box_panch?>" disabled></label>
+                    <label class="" style="color:gray;">box 5<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_panch?>' disabled></label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
             </div>
@@ -197,19 +197,19 @@ You must work for fixed time period set by the company you are working with.
             <div class="row">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <label class="" style="color:gray;">box 6<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="10" value="<?=$filling_projects->num_box_chay?>" disabled></label>
+                    <label class="" style="color:gray;">box 6<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_chay?>' disabled></label>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <label class="" style="color:gray;">box 7<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="10" value="<?=$filling_projects->num_box_sat?>" disabled></label>
+                    <label class="" style="color:gray;">box 7<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_sat?>' disabled></label>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <label class="" style="color:gray;">box 8<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="10" value="<?=$filling_projects->num_box_ath?>" disabled></label>
+                    <label class="" style="color:gray;">box 8<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_ath?>' disabled></label>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <label class="" style="color:gray;">box 9<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="10" value="<?=$filling_projects->num_box_no?>" disabled></label>
+                    <label class="" style="color:gray;">box 9<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_no?>' disabled></label>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <label class="" style="color:gray;">box 10<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="10" value="<?=$filling_projects->num_box_ten?>" disabled></label>
+                    <label class="" style="color:gray;">box 10<input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_ten?>' disabled></label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
             </div><hr>

@@ -701,6 +701,7 @@ $config["total_rows"] = $this->company_dash->user_projects($user_id);
 		$data = array(
 			'p_id'=>$this->input->post('p_id'),
 			'p_type'=>$this->input->post('p_type'),
+			'difficulty'=>$this->input->post('numbers_tape'),
 			'font'=>$this->input->post('font'),
 			'invoice_type'=>$this->input->post('invoice_type'),
 			'quantity'=>$this->input->post('quantity'),

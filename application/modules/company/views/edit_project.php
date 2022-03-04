@@ -414,6 +414,37 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     </select>
 </div>
 <?php } ?>
+
+
+<?php if ($project_edit->projects_title == 'Number Filling') {?>
+
+<div class="form-group" id="numbers_tape">
+    <style>.hide{display: none;}</style>
+    <label>Difficulty</label>
+    <select name="numbers_tape" class="form-control">
+    <?php if ($project_edit->difficulty == 1) {?>
+        <option value="1" selected>Rookie</option>
+        <option value="2">Expert</option>
+        <option value="3">Professional</option>
+    <?php }
+    if ($project_edit->difficulty == 2) {?>
+        <option value="1">Rookie</option>
+        <option value="2" selected>Expert</option>
+        <option value="3">Professional</option>
+    <?php }else{?>
+        <option value="1">Rookie</option>
+        <option value="2">Expert</option>
+        <option value="3" selected>Professional</option>
+    <?php } ?>
+    </select>
+</div>
+<?php } ?>
+
+
+
+
+
+
                                 </div>
 
 

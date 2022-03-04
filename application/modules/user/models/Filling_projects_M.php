@@ -53,6 +53,7 @@ class Filling_projects_M extends CI_Model {
                     select('*')
                     ->from('project_imgs')
                     ->where('project_imgs.p_id',$get_random_contant_img->p_id)
+                    ->where('project_imgs.difficulty',$get_random_contant_img->difficulty)
                     ->get()->result();
                     $one_img = array_rand($random_contant_img,1);
                     return $random_contant_img[$one_img];
@@ -74,6 +75,7 @@ class Filling_projects_M extends CI_Model {
                 select('*')
                 ->from('project_imgs')
                 ->where('project_imgs.p_id',$get_random_contant_img->p_id)
+                ->where('project_imgs.difficulty',$get_random_contant_img->difficulty)
                 ->get()->result();
                 $one_img = array_rand($random_contant_img,1);
                 return $random_contant_img[$one_img];

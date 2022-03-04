@@ -40,7 +40,7 @@ $this->load->library('../modules/user/controllers/User_dashboard');
 	if ($this->uri->segment(3) != 'captcha') {
 	$data['filling_projects'] = $this->filling_projects->get_random_filling_val($project_id);
 	$data['project_type'] = active_font($project_id)[1];
-	// dd($project_id);
+	// dd($data['filling_projects']);
 		}else{
 			// dd(active_font($project_id)[0]);
 		$this->load->helper('captcha');
@@ -110,7 +110,8 @@ $this->load->library('../modules/user/controllers/User_dashboard');
             'num_box_sat'=>$this->input->post('num_box_sat'),
             'num_box_ath'=>$this->input->post('num_box_ath'),
             'num_box_no'=>$this->input->post('num_box_no'),
-            'num_box_ten'=>$this->input->post('num_box_ten')
+            'num_box_ten'=>$this->input->post('num_box_ten'),
+            'difficulty'=>$this->input->post('numbers_tape')
         );
 
 		$res = $this->filling_projects->submit_filling($project_id,$p_id,$data,$user_id);

@@ -227,7 +227,7 @@ $(".modal-wide").on("show.bs.modal", function() {
 // $('#project_id').on('change', function(){ 
 //         alert($('#project_id').val());
 // });
-
+ 
 $("#project_id").on('change', function(){
         let project_id = $('#project_id').val();
 if (project_id == 5 || project_id == 6 || project_id == 7) {
@@ -273,6 +273,15 @@ if (project_id != 6) {
         $('#invoice_type').addClass('hide');
 }else{
         $('#invoice_type').removeClass('hide');
+}
+});
+
+$("#p_id").on('change', function(){
+        let project_id = $('#p_id').val();
+if (project_id != 7) {
+        $('#numbers_tape').addClass('hide');
+}else{
+        $('#numbers_tape').removeClass('hide');
 }
 });
 
