@@ -350,6 +350,7 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 	{
 		$redirect_url = $this->input->post('redirect_url');
 		$project_id = $this->input->post('project_id');
+		// echo "string"; exit();
 		// dd($redirect_url); 
 		$return =  $this->db->where('id',$project_id)->get('u_working')->row();
 		// add skip after 24 hours

@@ -270,16 +270,16 @@ width: auto;
                                                 <label>Project Font</label>
                                                 <select name="font" class="form-control" >
                                                     <option value="none" selected="" disabled="">Select Project Font</option>
-                                    <option value="TOMOPRG_.TTF">Easy</option>
-                            <option value="STARTER Bold.ttf">Moderate</option>
-                            <option value="Space_Galaxy.ttf">Difficult</option>
-                        <option value="radiospace.ttf">Very Difficult</option>
-                                            <option value="1.ttf">F1</option>
-                                            <option value="2.ttf">F2</option>
-                                            <option value="3.ttf">F3</option>
-                                            <option value="4.otf">F4</option>
-                                            <option value="5.otf">F5</option>
-                                            <option value="6.ttf">F6</option>
+                                    <option value="TOMOPRG_.TTF">Beginner</option>
+                            <option value="STARTER Bold.ttf">Basic</option>
+                            <option value="Space_Galaxy.ttf">Rookie</option>
+                        <option value="radiospace.ttf">Intermediate</option>
+                                            <option value="1.ttf">Advanced</option>
+                                            <option value="2.ttf">Semi-Pro</option>
+                                            <option value="3.ttf">Professional</option>
+                                            <option value="4.otf">Master</option>
+                                            <option value="5.otf">Expert</option>
+                                            <option value="6.ttf">Legend</option>
                                                 </select>
                                             </div>
                                             <div class="form-group" id="invoice_type">

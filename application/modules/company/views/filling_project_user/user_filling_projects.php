@@ -249,9 +249,14 @@ Project List</h4>
                     $current = (int)$key->_right+(int)$key->wrong;
                     $current_right = (int)$key->_right;
                     $accuracy_rep = $current_right/$current*100;
+                    $accuracy_report = number_format((float)$accuracy_rep, 2, '.', '').'%';
+
+                    if ($accuracy_report == 'nan') {
+                            $accuracy_report = '--';
+                    }
             ?>
                             <div>
-                                <strong>Accuracy</strong> <?= number_format((float)$accuracy_rep, 2, '.', '').'%' ?>
+                                <strong>Accuracy</strong> <?= $accuracy_report ?>
                             </div>
 
                             <div>

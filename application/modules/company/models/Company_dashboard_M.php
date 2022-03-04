@@ -10,7 +10,7 @@ class Company_dashboard_M extends CI_Model {
 
     public function get_projects()
     {
-        return $this->db->select('*')->get('projects')->result();
+        return $this->db->select('*')->order_by('order','asc')->get('projects')->result();
     }
 
     public function get_project_terms($project_id)

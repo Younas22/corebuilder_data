@@ -270,7 +270,7 @@ You must work for fixed time period set by the company you are working with.
 
 <input type="hidden" name="project_id" value="<?=$get_content_writing->project_id?>">
 <input type="hidden" name="redirect_url" value="<?=current_url();?>">
-<button type="submit" class="btn btn-danger" id="skips_btn" style="color:white !important;">Skip</button>
+<a class="btn btn-danger" id="skips_btn" style="color:white !important;">Skip</a>
 
 
 
@@ -592,7 +592,7 @@ You have to work for fixed time period set by the company you are working with.
 
 <input type="hidden" name="project_id" value="<?=$get_content_writing->project_id?>">
 <input type="hidden" name="redirect_url" value="<?=current_url();?>">
-<button type="submit" class="btn btn-danger" id="skips_btn" style="color:white !important;">Skip</button>
+<a class="btn btn-danger" id="skips_btn" style="color:white !important;">Skip</a>
 
             </div>
         </div>
@@ -749,7 +749,7 @@ You have to work for fixed time period set by the company you are working with.
 
 <input type="hidden" name="project_id" value="<?=$get_content_writing->project_id?>">
 <input type="hidden" name="redirect_url" value="<?=current_url();?>">
-<button type="submit" class="btn btn-danger" id="skips_btn" style="color:white !important;">Skip</button>
+<a class="btn btn-danger" id="skips_btn" style="color:white !important;">Skip</a>
 
             </div>
         </div>
@@ -1036,7 +1036,7 @@ You have to work for fixed time period set by the company you are working with.
 
 <input type="hidden" name="project_id" value="<?=$get_content_writing->project_id?>">
 <input type="hidden" name="redirect_url" value="<?=current_url();?>">
-<button type="submit" class="btn btn-danger" id="skips_btn" style="color:white !important;">Skip</button>
+<a class="btn btn-danger" id="skips_btn" style="color:white !important;">Skip</a>
 
             </div>
         </div>

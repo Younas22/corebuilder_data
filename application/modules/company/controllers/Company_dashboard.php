@@ -32,6 +32,7 @@ return redirect(base_url() . 'logout');}
 		$data['letest_users'] = $this->company_dash->letest_users(6);
 		// dd($data['letest_users']);
 		$data['get_projects'] = $this->company_dash->get_projects();
+		// dd($data['get_projects']);
 		$this->template->template($data);
 	}
 
@@ -651,6 +652,7 @@ $config["total_rows"] = $this->company_dash->user_projects($user_id);
 		$data['contant_view'] = 'company/project_view';
 		$data['profile'] = $this->company_dash->profile($company_id);
 		$data['project_view'] = $this->company_dash->project_view($project_id);
+		
 		$this->template->template($data);
 	}
 /*end project_view*/

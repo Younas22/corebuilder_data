@@ -125,7 +125,12 @@ if(!empty($this->session->flashdata('accep_terms_error'))){?>
 			</div>
 			<?php 
 			//Accuracy report
-			 		$current = (int)$project_view->_right+(int)$project_view->wrong;
+			if (!empty((int)$project_view->wrong)) {
+				$wrong = (int)$project_view->wrong;
+			}else{
+				$wrong = 1;
+			}
+			 		$current = (int)$project_view->_right+$wrong;
 			 		$current_right = (int)$project_view->_right;
 			 		$accuracy_rep = $current_right/$current*100;
 			?>
@@ -133,7 +138,7 @@ if(!empty($this->session->flashdata('accep_terms_error'))){?>
 			<div class="row">
 				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
 					<div class="address-hr">
-						<p style="color: #fff !important;"><b>Skip option</b><br /><?=$project_view->refrash_limit?></p>
+						<p style="color: #fff !important;"><b>Skips Remaining</b><br /><?=$project_view->refrash_limit?></p>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">

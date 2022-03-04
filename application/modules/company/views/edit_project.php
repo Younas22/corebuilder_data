@@ -261,137 +261,138 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     <select name="font" class="form-control" >
 
 <?php if ($project_edit->font == 'TOMOPRG_.TTF') {?>
-<option value="TOMOPRG_.TTF" selected="">Easy</option>
-<option value="STARTER Bold.ttf">Moderate</option>
-<option value="Space_Galaxy.ttf">Difficult</option>
-<option value="radiospace.ttf">Very Difficult</option>
-<option value="1.ttf">F1</option>
-<option value="2.ttf">F2</option>
-<option value="3.ttf">F3</option>
-<option value="4.otf">F4</option>
-<option value="5.otf">F5</option>
-<option value="6.ttf">F6</option>
+<option value="TOMOPRG_.TTF" selected>Beginner</option>
+<option value="STARTER Bold.ttf">Basic</option>
+<option value="Space_Galaxy.ttf">Rookie</option>
+<option value="radiospace.ttf">Intermediate</option>
+<option value="1.ttf">Advanced</option>
+<option value="2.ttf">Semi-Pro</option>
+<option value="3.ttf">Professional</option>
+<option value="4.otf">Master</option>
+<option value="5.otf">Expert</option>
+<option value="6.ttf">Legend</option>
+
 <?php } ?>
 
 <?php if ($project_edit->font == 'STARTER Bold.ttf') {?>
-<option value="TOMOPRG_.TTF">Easy</option>
-<option value="STARTER Bold.ttf" selected="">Moderate</option>
-<option value="Space_Galaxy.ttf">Difficult</option>
-<option value="radiospace.ttf">Very Difficult</option>
-<option value="1.ttf">F1</option>
-<option value="2.ttf">F2</option>
-<option value="3.ttf">F3</option>
-<option value="4.otf">F4</option>
-<option value="5.otf">F5</option>
-<option value="6.ttf">F6</option>
+<option value="TOMOPRG_.TTF">Beginner</option>
+<option value="STARTER Bold.ttf" selected>Basic</option>
+<option value="Space_Galaxy.ttf">Rookie</option>
+<option value="radiospace.ttf">Intermediate</option>
+<option value="1.ttf">Advanced</option>
+<option value="2.ttf">Semi-Pro</option>
+<option value="3.ttf">Professional</option>
+<option value="4.otf">Master</option>
+<option value="5.otf">Expert</option>
+<option value="6.ttf">Legend</option>
 <?php } ?>
 
 <?php if ($project_edit->font == 'Space_Galaxy.ttf') {?>
-<option value="TOMOPRG_.TTF">Easy</option>
-<option value="STARTER Bold.ttf">Moderate</option>
-<option value="Space_Galaxy.ttf" selected="">Difficult</option>
-<option value="radiospace.ttf">Very Difficult</option>
-<option value="1.ttf">F1</option>
-<option value="2.ttf">F2</option>
-<option value="3.ttf">F3</option>
-<option value="4.otf">F4</option>
-<option value="5.otf">F5</option>
-<option value="6.ttf">F6</option>
+<option value="TOMOPRG_.TTF">Beginner</option>
+<option value="STARTER Bold.ttf">Basic</option>
+<option value="Space_Galaxy.ttf" selected>Rookie</option>
+<option value="radiospace.ttf">Intermediate</option>
+<option value="1.ttf">Advanced</option>
+<option value="2.ttf">Semi-Pro</option>
+<option value="3.ttf">Professional</option>
+<option value="4.otf">Master</option>
+<option value="5.otf">Expert</option>
+<option value="6.ttf">Legend</option>
 <?php } ?>
 
 <?php if ($project_edit->font == 'radiospace.ttf') {?>
-<option value="TOMOPRG_.TTF">Easy</option>
-<option value="STARTER Bold.ttf">Moderate</option>
-<option value="Space_Galaxy.ttf">Difficult</option>
-<option value="radiospace.ttf" selected="">Very Difficult</option>
-<option value="1.ttf">F1</option>
-<option value="2.ttf">F2</option>
-<option value="3.ttf">F3</option>
-<option value="4.otf">F4</option>
-<option value="5.otf">F5</option>
-<option value="6.ttf">F6</option>
+<option value="TOMOPRG_.TTF">Beginner</option>
+<option value="STARTER Bold.ttf">Basic</option>
+<option value="Space_Galaxy.ttf">Rookie</option>
+<option value="radiospace.ttf" selected>Intermediate</option>
+<option value="1.ttf">Advanced</option>
+<option value="2.ttf">Semi-Pro</option>
+<option value="3.ttf">Professional</option>
+<option value="4.otf">Master</option>
+<option value="5.otf">Expert</option>
+<option value="6.ttf">Legend</option>
 <?php } ?>
 
 <?php if ($project_edit->font == '1.ttf') {?>
-<option value="TOMOPRG_.TTF">Easy</option>
-<option value="STARTER Bold.ttf">Moderate</option>
-<option value="Space_Galaxy.ttf">Difficult</option>
-<option value="radiospace.ttf">Very Difficult</option>
-<option value="1.ttf" selected="">F1</option>
-<option value="2.ttf">F2</option>
-<option value="3.ttf">F3</option>
-<option value="4.otf">F4</option>
-<option value="5.otf">F5</option>
-<option value="6.ttf">F6</option>
+<option value="TOMOPRG_.TTF">Beginner</option>
+<option value="STARTER Bold.ttf">Basic</option>
+<option value="Space_Galaxy.ttf">Rookie</option>
+<option value="radiospace.ttf">Intermediate</option>
+<option value="1.ttf" selected>Advanced</option>
+<option value="2.ttf">Semi-Pro</option>
+<option value="3.ttf">Professional</option>
+<option value="4.otf">Master</option>
+<option value="5.otf">Expert</option>
+<option value="6.ttf">Legend</option>
 <?php } ?>
 
         <?php if ($project_edit->font == '2.ttf') {?>
-<option value="TOMOPRG_.TTF">Easy</option>
-<option value="STARTER Bold.ttf">Moderate</option>
-<option value="Space_Galaxy.ttf">Difficult</option>
-<option value="radiospace.ttf">Very Difficult</option>
-<option value="1.ttf">F1</option>
-<option value="1.ttf" selected="">F2</option>
-<option value="3.ttf">F3</option>
-<option value="4.otf">F4</option>
-<option value="5.otf">F5</option>
-<option value="6.ttf">F6</option>
+<option value="TOMOPRG_.TTF">Beginner</option>
+<option value="STARTER Bold.ttf">Basic</option>
+<option value="Space_Galaxy.ttf">Rookie</option>
+<option value="radiospace.ttf">Intermediate</option>
+<option value="1.ttf">Advanced</option>
+<option value="2.ttf" selected>Semi-Pro</option>
+<option value="3.ttf">Professional</option>
+<option value="4.otf">Master</option>
+<option value="5.otf">Expert</option>
+<option value="6.ttf">Legend</option>
 
         <?php } ?>
 
         <?php if ($project_edit->font == '3.ttf') {?>
-<option value="TOMOPRG_.TTF">Easy</option>
-<option value="STARTER Bold.ttf">Moderate</option>
-<option value="Space_Galaxy.ttf">Difficult</option>
-<option value="radiospace.ttf">Very Difficult</option>
-<option value="1.ttf">F1</option>
-<option value="2.ttf">F2</option>
-<option value="3.ttf" selected>F3</option>
-<option value="4.otf">F4</option>
-<option value="5.otf">F5</option>
-<option value="6.ttf">F6</option>
+<option value="TOMOPRG_.TTF">Beginner</option>
+<option value="STARTER Bold.ttf">Basic</option>
+<option value="Space_Galaxy.ttf">Rookie</option>
+<option value="radiospace.ttf">Intermediate</option>
+<option value="1.ttf">Advanced</option>
+<option value="2.ttf">Semi-Pro</option>
+<option value="3.ttf" selected>Professional</option>
+<option value="4.otf">Master</option>
+<option value="5.otf">Expert</option>
+<option value="6.ttf">Legend</option>
 
         <?php } ?>
 
         <?php if ($project_edit->font == '4.otf') {?>
-<option value="TOMOPRG_.TTF">Easy</option>
-<option value="STARTER Bold.ttf">Moderate</option>
-<option value="Space_Galaxy.ttf">Difficult</option>
-<option value="radiospace.ttf">Very Difficult</option>
-<option value="1.ttf">F1</option>
-<option value="2.ttf">F2</option>
-<option value="3.ttf">F3</option>
-<option value="4.otf" selected>F4</option>
-<option value="5.otf">F5</option>
-<option value="6.ttf">F6</option>
+<option value="TOMOPRG_.TTF">Beginner</option>
+<option value="STARTER Bold.ttf">Basic</option>
+<option value="Space_Galaxy.ttf">Rookie</option>
+<option value="radiospace.ttf">Intermediate</option>
+<option value="1.ttf">Advanced</option>
+<option value="2.ttf">Semi-Pro</option>
+<option value="3.ttf">Professional</option>
+<option value="4.otf" selected>Master</option>
+<option value="5.otf">Expert</option>
+<option value="6.ttf">Legend</option>
 
 
         <?php } ?>
 
 <?php if ($project_edit->font == '5.otf') {?>
-<option value="TOMOPRG_.TTF">Easy</option>
-<option value="STARTER Bold.ttf">Moderate</option>
-<option value="Space_Galaxy.ttf">Difficult</option>
-<option value="radiospace.ttf">Very Difficult</option>
-<option value="1.ttf">F1</option>
-<option value="2.ttf">F2</option>
-<option value="3.ttf">F3</option>
-<option value="4.otf">F4</option>
-<option value="5.otf" selected="">F5</option>
-<option value="6.ttf">F6</option>
+<option value="TOMOPRG_.TTF">Beginner</option>
+<option value="STARTER Bold.ttf">Basic</option>
+<option value="Space_Galaxy.ttf">Rookie</option>
+<option value="radiospace.ttf">Intermediate</option>
+<option value="1.ttf">Advanced</option>
+<option value="2.ttf">Semi-Pro</option>
+<option value="3.ttf">Professional</option>
+<option value="4.otf">Master</option>
+<option value="5.otf" selected>Expert</option>
+<option value="6.ttf">Legend</option>
 <?php } ?>
 
 <?php if ($project_edit->font == '6.ttf') {?>
-<option value="TOMOPRG_.TTF">Easy</option>
-<option value="STARTER Bold.ttf">Moderate</option>
-<option value="Space_Galaxy.ttf">Difficult</option>
-<option value="radiospace.ttf">Very Difficult</option>
-<option value="1.ttf">F1</option>
-<option value="2.ttf">F2</option>
-<option value="3.ttf">F3</option>
-<option value="4.otf">F4</option>
-<option value="5.otf">F5</option>
-<option value="6.ttf" selected="">F6</option>
+<option value="TOMOPRG_.TTF">Beginner</option>
+<option value="STARTER Bold.ttf">Basic</option>
+<option value="Space_Galaxy.ttf">Rookie</option>
+<option value="radiospace.ttf">Intermediate</option>
+<option value="1.ttf">Advanced</option>
+<option value="2.ttf">Semi-Pro</option>
+<option value="3.ttf">Professional</option>
+<option value="4.otf">Master</option>
+<option value="5.otf">Expert</option>
+<option value="6.ttf" selected>Legend</option>
 <?php } ?>
     </select>
 </div>
