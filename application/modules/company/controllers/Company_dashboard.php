@@ -226,7 +226,7 @@ return redirect(base_url() . 'logout');}
 		'start_date'=>$this->input->post('start_date').'T'.$this->input->post('start_time'),
 		'end_date'=>$this->input->post('end_date').'T'.$this->input->post('end_time'),
 			'font'=>$this->input->post('font'),
-			'invoice_type'=>$this->input->post('invoice_type'),
+			'difficulty'=>$this->input->post('numbers_tape'),
 			'custom_terms_conditions'=>$this->input->post('custom_terms_conditions'),
 
 		);
@@ -703,7 +703,6 @@ $config["total_rows"] = $this->company_dash->user_projects($user_id);
 			'p_type'=>$this->input->post('p_type'),
 			'difficulty'=>$this->input->post('numbers_tape'),
 			'font'=>$this->input->post('font'),
-			'invoice_type'=>$this->input->post('invoice_type'),
 			'quantity'=>$this->input->post('quantity'),
 			'price'=>$this->input->post('price'),
 			'start_date'=>$this->input->post('start_date'),

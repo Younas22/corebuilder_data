@@ -403,13 +403,19 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 <div class="form-group" id="invoice_type">
     <style>.hide{display: none;}</style>
     <label>Invoice Type</label>
-    <select name="invoice_type" class="form-control" >
-    <?php if ($project_edit->invoice_type == 'Easy') {?>
-        <option value="easy" selected="">Easy</option>
-        <option value="difficult">Difficult</option>
+    <select name="numbers_tape" class="form-control" >
+    <?php if ($project_edit->difficulty == 1) {?>
+        <option value="1" selected="">Routine Products</option>
+        <option value="2">Pharmaceuticals</option>
+        <option value="3">Automobiles</option>
+    <?php } if ($project_edit->difficulty == 1) {?>
+        <option value="1">Routine Products</option>
+        <option value="2" selected>Pharmaceuticals</option>
+        <option value="3">Automobiles</option>
     <?php }else{?>
-        <option value="easy">Easy</option>
-        <option value="difficult" selected>Difficult</option>
+        <option value="1">Routine Products</option>
+        <option value="2">Pharmaceuticals</option>
+        <option value="3" selected>Automobiles</option>
     <?php } ?>
     </select>
 </div>

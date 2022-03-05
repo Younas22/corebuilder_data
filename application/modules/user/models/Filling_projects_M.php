@@ -45,16 +45,17 @@ class Filling_projects_M extends CI_Model {
 
         $today_time = strtotime($today);
         $expire_time = strtotime($end_date);
-
+        // dd($get_random_contant_img->difficulty);
         if ($project_type == 'Target') {
             if ($expire_time > $today_time) {
                 if ($complete_quantity < $actual_quantity) {
-                    $random_contant_img = $this->db->
-                    select('*')
-                    ->from('project_imgs')
-                    ->where('project_imgs.p_id',$get_random_contant_img->p_id)
-                    ->where('project_imgs.difficulty',$get_random_contant_img->difficulty)
-                    ->get()->result();
+                    $this->db->select('*');
+                    $this->db->from('project_imgs');
+                    $this->db->where('project_imgs.p_id',$get_random_contant_img->p_id);
+                    if($get_random_contant_img->p_id == 7 || $get_random_contant_img->p_id == 6){
+                    $this->db->where('project_imgs.difficulty',$get_random_contant_img->difficulty);
+                    }
+                    $random_contant_img = $this->db->get()->result();
                     $one_img = array_rand($random_contant_img,1);
                     return $random_contant_img[$one_img];
                 }else{
@@ -71,12 +72,14 @@ class Filling_projects_M extends CI_Model {
 
         else{
             if ($expire_time > $today_time) {
-                $random_contant_img = $this->db->
-                select('*')
-                ->from('project_imgs')
-                ->where('project_imgs.p_id',$get_random_contant_img->p_id)
-                ->where('project_imgs.difficulty',$get_random_contant_img->difficulty)
-                ->get()->result();
+                    $this->db->select('*');
+                    $this->db->from('project_imgs');
+                    $this->db->where('project_imgs.p_id',$get_random_contant_img->p_id);
+                    if($get_random_contant_img->p_id == 7 || $get_random_contant_img->p_id == 6){
+                    $this->db->where('project_imgs.difficulty',$get_random_contant_img->difficulty);
+                    }
+                    $random_contant_img = $this->db->get()->result();
+                    
                 $one_img = array_rand($random_contant_img,1);
                 return $random_contant_img[$one_img];
             }else{
@@ -208,19 +211,19 @@ if ($project_end == 0) {
 
 
 
-            if ($this->input->post('invoice_type') == 'easy') {
-                $actual_total = 
-                 intval($get_form_filling->invoice_one)
-                +intval($get_form_filling->invoice_two)
-                +intval($get_form_filling->invoice_three)
-                +intval($get_form_filling->invoice_char)
-                +intval($get_form_filling->invoice_panch)
-                +intval($get_form_filling->invoice_chay)
-                +intval($get_form_filling->invoice_sat)
-                +intval($get_form_filling->invoice_ath)
-                +intval($get_form_filling->invoice_no)
-                +intval($get_form_filling->invoice_ten);
-            }else{
+            // if ($this->input->post('invoice_type') == 'easy') {
+            //     $actual_total = 
+            //      intval($get_form_filling->invoice_one)
+            //     +intval($get_form_filling->invoice_two)
+            //     +intval($get_form_filling->invoice_three)
+            //     +intval($get_form_filling->invoice_char)
+            //     +intval($get_form_filling->invoice_panch)
+            //     +intval($get_form_filling->invoice_chay)
+            //     +intval($get_form_filling->invoice_sat)
+            //     +intval($get_form_filling->invoice_ath)
+            //     +intval($get_form_filling->invoice_no)
+            //     +intval($get_form_filling->invoice_ten);
+            // }else{
                 $actual_total = 
                 $get_form_filling->invoice_one
                 +$get_form_filling->invoice_two
@@ -232,7 +235,7 @@ if ($project_end == 0) {
                 +$get_form_filling->invoice_ath
                 +$get_form_filling->invoice_no
                 +$get_form_filling->invoice_ten;
-            }
+            
             // return $actual_total;
             if ($data==$actual_total) {
             $this->db->set('complete_work','complete_work+'.(int)1, FALSE);

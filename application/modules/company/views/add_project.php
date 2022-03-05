@@ -286,10 +286,11 @@ width: auto;
                                     <div class="form-group" id="invoice_type">
                                         <style>.hide{display: none;}</style>
                                         <label>Invoice Type</label>
-                                        <select name="invoice_type" class="form-control" >
+                                        <select name="numbers_tape" class="form-control" >
                                             <option value="none" selected="" disabled="">Select Invoice Type</option>
-                                            <option value="easy">Easy</option>
-                                            <option value="difficult">Difficult</option>
+                                            <option value="1">Routine Products</option>
+                                            <option value="2">Pharmaceuticals</option>
+                                            <option value="3">Automobiles</option>
                                         </select>
                                     </div>
 
