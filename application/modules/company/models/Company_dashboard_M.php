@@ -111,8 +111,9 @@ class Company_dashboard_M extends CI_Model {
         return $this->db
         ->select('*')
         ->where('company_id',$company_id)
-        ->where('login_status !=',0)
-        ->order_by('id','asc')->limit($limit)
+        // ->where('login_status !=',0)
+        ->order_by('login_status','desc')
+        // ->limit($limit)
         ->get('users')
         ->result();
     }

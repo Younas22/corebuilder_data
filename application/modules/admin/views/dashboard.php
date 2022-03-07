@@ -315,8 +315,26 @@ padding: 0!important;
       </div>
       <?php endif; ?>
 
+<style>
+  /* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #6d6d6d;
+}
+</style>
 <?php if ($user_type != 'admin' && $user_type != 'user'): ?>
-      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 user_mb" style="padding-right: 5px;">
+      <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 user_mb" style="overflow: scroll; height: 1000px; padding-right: 5px;">
         <div class="single-review-st-item res-mg-t-30 table-mg-t-pro-n">
           <div class="single-review-st-hd">
             <h2>Online User</h2>
@@ -329,7 +347,7 @@ padding: 0!important;
             <img src="<?=base_url('assets/')?>img/profile/1634211873icon-5359553_1920.png?>" alt="" />
             <?php } ?>
             <div class="review-ctn-hf">
-              <h3 style="font-size:12px;"><?=$key->first_name.' '.$key->last_name?></h3>
+              <h3 style="font-size:12px;"><?=$key->first_name.' | '.letest_projects_title($key->id)->projects_title;?></h3>
               <p style="font-size:11px;"><?=$key->company_email?></p>
             </div>
             <div class="review-item-rating">
