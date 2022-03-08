@@ -232,7 +232,7 @@
 
 <div class="form-group">
 <label>Website</label>
-<input type="text" name="company_website" class="form-control" placeholder="Website" value="<?=$profile->company_website?>">
+<input type="url" name="company_website" class="form-control" placeholder="Website" value="<?=$profile->company_website?>">
 </div>
 
 <div class="form-group">

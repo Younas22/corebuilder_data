@@ -160,11 +160,11 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 	public function accep_terms()
 	{
 
-	$this->session->unset_userdata('accep_terms');
+		$this->session->unset_userdata('accep_terms');
     	$project_title = $this->input->post('project_name');
     	$pid = $this->input->post('project_id');
 
-	if ($this->input->post('terms_conditions_status')) {
+		if ($this->input->post('terms_conditions_status')) {
         $config['upload_path'] = './assets/img/term_conditions';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size'] = 51200;
@@ -172,33 +172,33 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
         $this->load->library('upload', $config);
         $data['terms_conditions_status'] = 1;
 
-	if($_FILES['img_one']['size']>51200)
-	{
-	$this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
-	$url = 'user/user-project-details/'.$project_title.'/'.$pid;
-	redirect($url);
-	}
+	// if($_FILES['img_one']['size']>51200)
+	// {
+	// $this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
+	// $url = 'user/user-project-details/'.$project_title.'/'.$pid;
+	// redirect($url);
+	// }
 
-	if($_FILES['img_two']['size']>51200)
-	{
-	$this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
-	$url = 'user/user-project-details/'.$project_title.'/'.$pid;
-	redirect($url);
-	}
+	// if($_FILES['img_two']['size']>51200)
+	// {
+	// $this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
+	// $url = 'user/user-project-details/'.$project_title.'/'.$pid;
+	// redirect($url);
+	// }
 
-	if($_FILES['img_three']['size']>51200)
-	{
-	$this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
-	$url = 'user/user-project-details/'.$project_title.'/'.$pid;
-	redirect($url);
-	}
+	// if($_FILES['img_three']['size']>51200)
+	// {
+	// $this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
+	// $url = 'user/user-project-details/'.$project_title.'/'.$pid;
+	// redirect($url);
+	// }
 
-	if($_FILES['img_four']['size']>51200)
-	{
-	$this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
-	$url = 'user/user-project-details/'.$project_title.'/'.$pid;
-	redirect($url);
-	}
+	// if($_FILES['img_four']['size']>51200)
+	// {
+	// $this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
+	// $url = 'user/user-project-details/'.$project_title.'/'.$pid;
+	// redirect($url);
+	// }
 
 	if (!$this->upload->do_upload('img_one')) {
 		$this->session->set_flashdata('accep_terms_error', 'Please add img1');
@@ -207,6 +207,7 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 	} else {
 		$fileData = $this->upload->data();
 		$data['img_one'] = $fileData['file_name'];
+		$this->resize($fileData['file_name']);
 	}
 
 	if (!$this->upload->do_upload('img_two')) {
@@ -216,16 +217,19 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 	} else {
 		$fileData = $this->upload->data();
 		$data['img_two'] = $fileData['file_name'];
+		$this->resize($fileData['file_name']);
 	}
 
 	if ($this->upload->do_upload('img_three')) {
 		$fileData = $this->upload->data();
 		$data['img_three'] = $fileData['file_name'];
+		$this->resize($fileData['file_name']);
 	}
 
 	if ($this->upload->do_upload('img_four')) {
 		$fileData = $this->upload->data();
 		$data['img_four'] = $fileData['file_name'];
+		$this->resize($fileData['file_name']);
 	}
 
 
@@ -250,7 +254,30 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 	}
 
 
+    public function resize($filename)
+    {
+    	// dd( $_SERVER['DOCUMENT_ROOT']);
+		$sourcePath = './assets/img/term_conditions/'.$filename;
+		$targetPath = './assets/img/term_conditions/';
+		$configVar = array(
+			'image_library' => 'gd2',
+			'source_image' => $sourcePath,
+			'new_image' => $targetPath,
+			'maintain_ratio' => TRUE,
+			'width'         =>  300,
+			'height'        =>  300,
+			'quality'       =>  "50%"
+		);
 
+		$this->load->library('image_lib');
+		$this->image_lib->initialize($configVar);
+		if (!$this->image_lib->resize()) {
+			echo $this->image_lib->display_errors();
+		}
+
+		$this->image_lib->clear();
+		return 1;
+    }
 
 	public function withdraw_request($p_id,$up_id)
 	{
