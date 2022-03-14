@@ -1,5 +1,10 @@
-<?php  $user_type = $this->session->userdata('logged_in')->user_type; ?>
-<?php  $user_id = $this->session->userdata('logged_in')->id; ?>
+<?php
+$user_type = $this->session->userdata('logged_in')->user_type; 
+$user_id = $this->session->userdata('logged_in')->id;
+
+// dd($all_filling_project);
+?>
+
 <div class="breadcome-area" style="display:none;"> 
     <div class="container-fluid">
         <div class="row">
@@ -187,7 +192,33 @@ Project List</h4>
     <div class="row">
 
             <?php if (!empty($all_filling_project)) { ?>
-                <?php $count=1; foreach ($all_filling_project as $key):?>
+                <?php $count=1; foreach ($all_filling_project as $key):
+                $overall_accuracy_report = '--';
+                $accuracy_report = '--';
+                    //overall Accuracy report
+                if ($key->p_type != 'Non Target') {
+                    $quantity = (int)$key->quantity;
+                    $current_right = (int)$key->_right;
+                    $overall_accuracy_rep = $current_right/$quantity*100;
+                    $overall_accuracy_report = number_format((float)$overall_accuracy_rep, 2, '.', '').'%';
+                    if ($overall_accuracy_report == 'nan') {
+                        $overall_accuracy_report = '--';
+                    }
+
+
+                    //Accuracy report
+                    $current = (int)$key->_right+(int)$key->wrong;
+                    $current_right = (int)$key->_right;
+                    $accuracy_rep = $current_right/$current*100;
+                    $accuracy_report = number_format((float)$accuracy_rep, 2, '.', '').'%';
+                    if ($accuracy_report == 'nan') {
+                            $accuracy_report = '--';
+                    }
+                }
+
+
+
+                ?>
                 <div class="col-md-4 col-lg-4 col-xl-4">
                 <div class="tile">
                     <div class="wrapper">
@@ -217,8 +248,8 @@ Project List</h4>
                                 <strong>Name</strong> <?=$key->first_name?>
                             </div>
 
-                            <div style="font-size:12px; color:#f7f8fa">
-                                <strong>.</strong>
+                            <div>
+                                <strong>Earning</strong> <?=$key->earning?>
                             </div>
 
                             <div style="font-size:12px">
@@ -244,23 +275,12 @@ Project List</h4>
                         </div>
 
                         <div class="stats">
-            <?php 
-            //Accuracy report
-                    $current = (int)$key->_right+(int)$key->wrong;
-                    $current_right = (int)$key->_right;
-                    $accuracy_rep = $current_right/$current*100;
-                    $accuracy_report = number_format((float)$accuracy_rep, 2, '.', '').'%';
 
-                    if ($accuracy_report == 'nan') {
-                            $accuracy_report = '--';
-                    }
-            ?>
                             <div>
                                 <strong>Accuracy</strong> <?= $accuracy_report ?>
                             </div>
-
                             <div>
-                                <strong>Earning</strong> <?=$key->earning?>
+                                <strong>Overall Accuracy</strong> <?=$overall_accuracy_report?>
                             </div>
 
                             <div>

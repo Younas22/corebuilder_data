@@ -91,9 +91,21 @@
 <!-- <script src="<?=base_url('assets/')?>js/tawk-chat.js"></script> -->
 <script>
 jQuery(document).ready(function() {
-            // $.datetimepicker.setLocale('pt-BR');
-            // $('#start_date').datetimepicker();
-            // $('#end_date').datetimepicker();
+
+let current_page_ = $(location).attr('href');
+var current_page_split = current_page_.split('/');
+let project_view_ = current_page_split[current_page_split.length-2];
+if (project_view_ == 'add-project') {
+    $('#font').addClass('hide');
+    $('#invoice_type').addClass('hide');
+    $('#numbers_tape').addClass('hide');
+}
+
+
+// $.datetimepicker.setLocale('pt-BR');
+// $('#start_date').datetimepicker();
+// $('#end_date').datetimepicker();
+// alert();
 
 $('select[name="font"]').click(function() {
 let fonts = $(this).val();

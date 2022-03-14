@@ -77,7 +77,21 @@ return redirect(base_url() . 'logout');}
     		'password'=>sha1($this->input->post('decript_password')),
     		'decript_password'=>$this->input->post('decript_password'),
     		'company_website'=>$this->input->post('company_website'),
+    		'configure_mail'=>$this->input->post('configure_mail'),
+    		'configure_mail_pass'=>$this->input->post('configure_mail_pass'),
     		'theme'=>$this->input->post('theme'),
+    		'street'=>$this->input->post('street'),
+    		'official_address'=>$this->input->post('official_address'),
+    		'locality'=>$this->input->post('locality'),
+    		'landmark'=>$this->input->post('landmark'),
+    		'city'=>$this->input->post('city'),
+    		'referred_by'=>$this->input->post('referred_by'),
+    		'referral_code'=>$this->input->post('referral_code'),
+    		'state'=>$this->input->post('state'),
+    		'pincode'=>$this->input->post('pincode'),
+    		'country'=>$this->input->post('country'),
+    		'whatsapp_no'=>$this->input->post('whatsapp_no'),
+    		'source_get_to_know'=>$this->input->post('source_get_to_know'),
     		'company_logo'=>$company_logo,
     		// 'terms_status'=>$terms_status
     	];
@@ -290,7 +304,7 @@ public function projects_detiles($value)
 		$data['p_id_for_users'] = 6;
 		$this->session->set_userdata('p_users',$p_val);
 	}
-	if ($value == 'number-filling') {
+	if ($value == 'alpha-numeric-validation') {
 		$p_val = 7;
 		$data['p_id_for_users'] = 7;
 		$this->session->set_userdata('p_users',$p_val);
@@ -310,7 +324,7 @@ public function projects_detiles($value)
 	$data['project_qty'] = $this->company_dash->project_qty($p_users_id);
 	$data['p_target_qty'] = $this->company_dash->p_target_qty($p_users_id);
 	$data['p_nontarget_qty'] = $this->company_dash->p_nontarget_qty($p_users_id);
-	// dd($data['p_nontarget_qty']);
+	// dd($data['p_target_qty']);
 
 
 	$data['folder_1'] = $this->company_dash->folder_1($p_val,1);
@@ -929,16 +943,31 @@ public function mail_of_project_details($project_id,$u_id)
 		$this->template->template($data);
 	}
 
-	public function develop_projects()
+	public function email_configuration()
 	{
 		$company_id = $this->session->userdata('logged_in')->id;
 		$data['url'] = current_url();
-		$data['url_title'] = 'Develop Projects';
-		$data['title'] = 'Develop Projects';
-		$data['contant_view'] = 'company/quick_support';
+		$data['url_title'] = 'Email Configuration';
+		$data['title'] = 'Email Configuration';
+		$data['contant_view'] = 'company/email_configuration';
 		$data['action_type'] = base_url('company/update/profile');
 		$data['profile'] = $this->company_dash->profile($company_id);
 		$this->template->template($data);
+	}
+
+
+	public function submit_email_configuration()
+	{
+		$company_id = $this->session->userdata('logged_in')->id;
+		$data = $this->input->post();
+
+		$this->db->where('id',$company_id);
+		$this->db->update('users',$data);
+
+		// unset($_SESSION['email_configuration_msg']);
+        $this->session->set_flashdata('email_configuration_msg','You have added successfully mail for configuration!');
+		redirect(base_url('company/email-configuration'));
+
 	}
 
 

@@ -55,6 +55,10 @@ class Filling_projects_M extends CI_Model {
                     if($get_random_contant_img->p_id == 7 || $get_random_contant_img->p_id == 6){
                     $this->db->where('project_imgs.difficulty',$get_random_contant_img->difficulty);
                     }
+
+                    if($get_random_contant_img->p_id == 5){
+                    $this->db->where('project_imgs.difficulty',$get_random_contant_img->difficulty);
+                    }
                     $random_contant_img = $this->db->get()->result();
                     $one_img = array_rand($random_contant_img,1);
                     return $random_contant_img[$one_img];
@@ -149,6 +153,7 @@ if ($project_end == 0) {
     /************submit_content_writing********/
     public function submit_filling($project_id,$p_id,$data,$user_id)
     {
+        // dd($data);
         // return 1;
         // dd($p_id);
         $get_price = $this->db->select()
@@ -180,18 +185,58 @@ if ($project_end == 0) {
         }
 
         if ($get_form_filling->p_id == 5) {
-            $get_form_filling_arr = array(
-                'form_val_one'=>$get_form_filling->form_val_one,
-                'form_val_two'=>$get_form_filling->form_val_two,
-                'form_val_three'=>$get_form_filling->form_val_three,
-                'form_val_four'=>$get_form_filling->form_val_four,
-                'form_val_panch'=>$get_form_filling->form_val_panch,
-                'form_val_chay'=>$get_form_filling->form_val_chay,
-                'form_val_sat'=>$get_form_filling->form_val_sat,
-                'form_val_ath'=>$get_form_filling->form_val_ath,
-                'form_val_no'=>$get_form_filling->form_val_no,
-                'form_val_ten'=>$get_form_filling->form_val_ten
-            );
+                if ($this->input->post('difficulty') == 1) {
+                    $get_form_filling_arr = array(
+                    'form_val_one'=>$get_form_filling->form_val_one,
+                    'form_val_two'=>$get_form_filling->form_val_two,
+                    'form_val_three'=>$get_form_filling->form_val_three,
+                    'form_val_four'=>$get_form_filling->form_val_four,
+                    'form_val_panch'=>$get_form_filling->form_val_panch,
+                    'form_val_chay'=>$get_form_filling->form_val_chay,
+                    'form_val_sat'=>$get_form_filling->form_val_sat,
+                    'form_val_ath'=>$get_form_filling->form_val_ath,
+                    'form_val_no'=>$get_form_filling->form_val_no,
+                    'form_val_ten'=>$get_form_filling->form_val_ten
+                );
+            }
+
+                if ($this->input->post('difficulty') == 2) {
+                    $get_form_filling_arr = array(
+                    'form_val_one'=>$get_form_filling->form_val_one,
+                    'form_val_two'=>$get_form_filling->form_val_two,
+                    'form_val_three'=>$get_form_filling->form_val_three,
+                    'form_val_four'=>$get_form_filling->form_val_four,
+                    'form_val_panch'=>$get_form_filling->form_val_panch,
+                    'form_val_chay'=>$get_form_filling->form_val_chay,
+                    'form_val_sat'=>$get_form_filling->form_val_sat,
+                    'form_val_ath'=>$get_form_filling->form_val_ath,
+                    'form_val_no'=>$get_form_filling->form_val_no,
+                    'form_val_ten'=>$get_form_filling->form_val_ten,
+                    'form_val_eleven'=>$get_form_filling->form_val_eleven,
+                    'form_val_twelve'=>$get_form_filling->form_val_twelve
+                );
+            }
+
+                if ($this->input->post('difficulty') == 3) {
+                    $get_form_filling_arr = array(
+                    'form_val_one'=>$get_form_filling->form_val_one,
+                    'form_val_two'=>$get_form_filling->form_val_two,
+                    'form_val_three'=>$get_form_filling->form_val_three,
+                    'form_val_four'=>$get_form_filling->form_val_four,
+                    'form_val_panch'=>$get_form_filling->form_val_panch,
+                    'form_val_chay'=>$get_form_filling->form_val_chay,
+                    'form_val_sat'=>$get_form_filling->form_val_sat,
+                    'form_val_ath'=>$get_form_filling->form_val_ath,
+                    'form_val_no'=>$get_form_filling->form_val_no,
+                    'form_val_ten'=>$get_form_filling->form_val_ten,
+                    'form_val_eleven'=>$get_form_filling->form_val_eleven,
+                    'form_val_twelve'=>$get_form_filling->form_val_twelve,
+                    'form_val_thirteen'=>$get_form_filling->form_val_thirteen,
+                    'form_val_fourteen'=>$get_form_filling->form_val_fourteen,
+                    'form_val_fifteen'=>$get_form_filling->form_val_fifteen
+                );
+            }
+
         }
 
         if ($project_id == 4) {
@@ -255,6 +300,15 @@ if ($project_end == 0) {
 
 // dd($p_id);
 // dd($get_form_filling_arr);
+
+        // echo "<pre>";
+        // print_r($data);
+
+        // echo "<br>";
+        // echo "<pre>";
+        // print_r($get_form_filling_arr);
+
+        // exit();
 
 
         if (array_diff($data,$get_form_filling_arr) == array_diff($get_form_filling_arr,$data)) {

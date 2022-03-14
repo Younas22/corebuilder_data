@@ -124,6 +124,20 @@ if(!empty($this->session->flashdata('accep_terms_error'))){?>
 				</div>
 			</div>
 			<?php 
+
+
+                $overall_accuracy_report = '--';
+                    //overall Accuracy report
+                if ($project_view->p_type != 'Non Target') {
+                    $quantity = (int)$project_view->quantity;
+                    $current_right = (int)$project_view->_right;
+                    $overall_accuracy_rep = $current_right/$quantity*100;
+                    $overall_accuracy_report = number_format((float)$overall_accuracy_rep, 2, '.', '').'%';
+                    if ($overall_accuracy_report == 'nan') {
+                        $overall_accuracy_report = '--';
+                    }
+                }
+
 			//Accuracy report
 			if (!empty((int)$project_view->wrong)) {
 				$wrong = (int)$project_view->wrong;
@@ -204,6 +218,13 @@ if(!empty($this->session->flashdata('accep_terms_error'))){?>
 										<div class="form-group">
 											<label>End Date</label>
 											<p><?=$project_view->end_date?></p>
+											<input type="hidden" name="e" id="end_date_for_counting" value="<?=$project_view->end_date?>">
+											<input type="hidden" name="we" id="start_date_for_counting" value="<?=$project_view->start_date?>">
+										</div>
+
+										<div class="form-group">
+											<label>Overall Accuracy</label>
+											<p><?=$overall_accuracy_report?></p>
 											<input type="hidden" name="e" id="end_date_for_counting" value="<?=$project_view->end_date?>">
 											<input type="hidden" name="we" id="start_date_for_counting" value="<?=$project_view->start_date?>">
 										</div>
@@ -302,7 +323,7 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
     <p><?php  echo $project_view->custom_terms_conditions?></p>
       </div>
       <br><br><br>
-      <div style="margin: 20px;">
+<!--       <div style="margin: 20px;">
       	<hr>
       	<b style="color:red">If your file is bigger than 50 KB.Follow the steps to compress your photo.</b>
 				<p>Step 1: Go to <a href="https://redketchup.io/bulk-image-resizer" target="_blank">https://redketchup.io/bulk-image-resizer</a></p>
@@ -314,7 +335,7 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
    			<p> Step 7: Once Processing is complete, click "Download All" and the file will be downloaded.</p>
    			<b style="color:red;">*Repeat this process to compress the file size of other files also. Select only one Image at a time*</b>
       	<hr>
-			</div>
+			</div> -->
       <!-- img start -->
 
       <style>

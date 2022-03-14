@@ -199,11 +199,35 @@ if (!function_exists('get_user_project_QTY')){
 }
 // end get_user_project_QTY
 
+/*overall_accuracy_report*/
+if (!function_exists('accuracy_report')){
+      function overall_accuracy_report($p_id_accuracy_report){
+         $CI =& get_instance();
+         $get_qty = $CI->db->select()
+        ->from('u_projects')
+        ->where('u_projects.id',$p_id_accuracy_report)
+        ->get()->row();
+
+        $get_u_working = $CI->db->select()
+        ->from('u_working')
+        ->where('u_working.p_id',$p_id_accuracy_report)
+        ->get()->row();
+
+        if ($get_qty->p_type == 'Non Target') {
+            return '--';
+        }
+        $true_work_qty = $get_u_working->_right;
+        $total_work_qty = $get_qty->quantity;
+        $percentage =  $true_work_qty/$total_work_qty*100;
+        return number_format((float)$percentage, 2, '.', '').'%';
+    }
+}
+
 /*accuracy_report*/
 if (!function_exists('accuracy_report')){
       function accuracy_report($p_id_accuracy_report){
          $CI =& get_instance();
-         $get_qty = $CI->db->select('quantity')
+         $get_qty = $CI->db->select()
         ->from('u_projects')
         ->where('u_projects.id',$p_id_accuracy_report)
         // ->where('u_projects.u_id',$user_id)
@@ -214,16 +238,20 @@ if (!function_exists('accuracy_report')){
         ->where('u_working.p_id',$p_id_accuracy_report)
         ->get()->row();
 
+        // if ($get_qty->p_type == 'Non Target') {
+        //     return '--';
+        // }
+
         $true_work_qty = $get_u_working->_right;
-        $total_work_qty = $get_qty->quantity;
+        $total_work_qty = $get_u_working->_right+$get_u_working->wrong;
         $percentage =  $true_work_qty/$total_work_qty*100;
-        return number_format((float)$percentage, 2, '.', '');
+        return number_format((float)$percentage, 2, '.', '').'%';
     }
 }
 
 
 
-/*accuracy_report*/
+/*project_check_dedline*/
 if (!function_exists('project_check_dedline')){
      function project_check_dedline($project_id)
     {

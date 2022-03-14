@@ -57,8 +57,10 @@
                     <th>Type</th>
                     <th>Start</th>
                     <th>End</th>
-            <?php if ($user_type == 'company') { echo "<th>Accuracy</th>";} ?>
+            <?php //if ($user_type == 'company') { echo "<th>Accuracy</th>";} ?>
             <?php //if ($user_type == 'company') { echo "<th>Font</th>";} ?>
+                    <th>Overall Accuracy</th>
+                    <th>Accuracy</th>
                     <th>Action</th>
                     <!-- <th>Action</th> -->
                 </tr>
@@ -69,20 +71,19 @@
                     <td><?=$key->p_type?></td>
                     <td><?=$key->start_date?></td>
                     <td><?=$key->end_date?></td>
-                    <?php if ($user_type == 'company') { 
+                    <td><?=overall_accuracy_report($key->project_id)?></td>
+                    <td><?=accuracy_report($key->project_id)?></td>
+<!--                     <?php if ($user_type == 'company') { 
                     if ($key->projects_title == 'Content Writing' || $key->projects_title == 'Novel Typing' || $key->projects_title == 'Dialogue Typing') {
                     if (project_check_dedline($key->project_id) == 0) {?>
                     <td>
-
-
-                       <!--  <span class="badge" style="cursor: pointer;" data-toggle="tooltip" title="Project End! Now You can send report to user." onclick="return confirm('Are you sure , you want to Sent Report to user?')"><?=accuracy_report($key->project_id)?>%</span> -->
 
 <a href="<?= base_url('company/send-report-to-user/').$key->users_id.'/'.$key->project_id?>" class="badge" style="cursor: pointer;" data-toggle="tooltip" title="Project End! Now You can send report to user." onclick="return confirm('Are you sure , you want to Sent Report to user?')"><?=accuracy_report($key->project_id)?>%</a>
 
                     </td>
                     <?php }else { ?>
                     <td><span class="badge" style="cursor: pointer; background: #315ca5;" data-toggle="tooltip" title="Project in Progress"><?=accuracy_report($key->project_id)?>%</span></td>
-                    <?php } }else{echo "<td>No Found</td>";} }?>
+                    <?php } }else{echo "<td>No Found</td>";} }?> -->
 
 <!-- <?php if ($user_type == 'company') { ?>
 <td>

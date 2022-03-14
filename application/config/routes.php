@@ -98,6 +98,8 @@ $route['company/unlock-projects'] ='company/Company_dashboard/unlock_projects';
 $route['company/develop-projects'] ='company/Company_dashboard/develop_projects';
 $route['company/add_custom_project'] ='company/Company_dashboard/add_custom_project';
 $route['company/set_results_per_page'] ='company/Company_dashboard/set_results_per_page';
+$route['company/email-configuration'] ='company/Company_dashboard/email_configuration';
+$route['company/submit_email_configuration'] ='company/Company_dashboard/submit_email_configuration';
 
 $route['company-page/(:any)/(:any)/(:num)/(:num)'] ='company/Company_dashboard/company_filling_project/$1/$2/$3/$4';
 

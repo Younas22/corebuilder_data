@@ -207,8 +207,19 @@
 
 <div class="form-group">
 <label>Company Email</label><br>
-<span style="color:red;">All the projects will be sent to users from this email</span>
+<!-- <span style="color:red;">All the projects will be sent to users from this email</span> -->
 <input type="text" name="company_email" class="form-control" placeholder="Company Email" value="<?=$profile->company_email?>" disabled>
+</div>
+
+<div class="form-group">
+<label>Configure mail</label><br>
+<span style="color:red;">All the projects will be sent to users from this email</span>
+<input type="text" name="configure_mail" class="form-control" placeholder="Configure Email" value="<?=$profile->configure_mail?>">
+</div>
+
+<div class="form-group">
+<label>Configure mail password</label><br>
+<input type="text" name="configure_mail_pass" class="form-control" placeholder="Configure Email Password" value="<?=$profile->configure_mail_pass?>">
 </div>
 
 
@@ -217,9 +228,49 @@
 <input type="file" name="company_logo" class="form-control" placeholder="Logo">
 <input type="hidden" name="old_company_logo" value="<?=$profile->company_logo?>">
 </div>
+
+<!-- new options -->
+<div class="form-group">
+<label>Street</label>
+<input type="text" name="street" class="form-control" placeholder="Street" value="<?=$profile->street?>">
+</div>
+
+<div class="form-group">
+<label>Locality</label>
+<input type="text" name="locality" class="form-control" placeholder="Locality" value="<?=$profile->locality?>">
+</div>
+
+<div class="form-group">
+<label>Landmark</label>
+<input type="text" name="landmark" class="form-control" placeholder="Landmark" value="<?=$profile->landmark?>">
+</div>
+
+<div class="form-group">
+<label>City</label>
+<input type="text" name="city" class="form-control" placeholder="City" value="<?=$profile->city?>">
+</div>
+
+<div class="form-group">
+<label>Referred by</label>
+<input type="text" name="referred_by" class="form-control" placeholder="Referred by" value="<?=$profile->referred_by?>">
+</div>
+
+<div class="form-group">
+<label>Referral code</label>
+<input type="text" name="referral_code" class="form-control" placeholder="Referral code" value="<?=$profile->referral_code?>">
+</div>
+<!-- end -->
+
 </div>
 
 <div class="col-lg-6">
+
+
+<div class="form-group">
+<label>Official Address</label>
+<input type="text" name="official_address" class="form-control" placeholder="House No./Apartment" value="<?=$profile->official_address?>">
+</div>
+	
 <div class="form-group">
 <label>Phone</label>
 <input type="text" name="user_phone" class="form-control" placeholder="Phone" value="<?=$profile->user_phone?>" disabled>
@@ -250,6 +301,46 @@
 <a data-toggle="modal" href="#tallModal" class="btn btn-primary">Terms and Conditions</a>
 <input type="checkbox" name="terms_status" id="gridRadios1" <?php if ($profile->terms_status == 1) {echo "checked"; }?>>
 </div> -->
+
+
+
+
+<!-- new options -->
+<div class="form-group">
+<label>State</label>
+<input type="text" name="state" class="form-control" placeholder="Sstate" value="<?=$profile->state?>">
+</div>
+
+<div class="form-group">
+<label>Pincode</label>
+<input type="number" name="pincode" min="6" class="form-control" placeholder="Pincode" value="<?=$profile->pincode?>">
+</div>
+
+<div class="form-group">
+<label>Country</label>
+<input type="text" name="country" class="form-control" placeholder="Country" value="<?=$profile->country?>">
+</div>
+
+<div class="form-group">
+<label>Whatsapp No</label>
+<input type="number" name="whatsapp_no" class="form-control" placeholder="Whatsapp No" value="<?=$profile->whatsapp_no?>">
+</div>
+
+
+<div class="form-group">
+<label>Source of get to know</label>
+<select name="source_get_to_know" class="form-control">
+	<option value="<?=$profile->source_get_to_know?>" selected><?=$profile->source_get_to_know?></option>
+	<option value="Advertisement">Advertisement</option>
+	<option value="Referral">Referral</option>
+	<option value="WhatsApp">WhatsApp</option>
+	<option value="Facebook">Facebook</option>
+	<option value="Instagram">Instagram</option>
+	<option value="Google">Google</option>
+	<option value="Website">Website</option>
+</select>
+</div>
+<!-- end -->
 
 </div>
 

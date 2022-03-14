@@ -521,7 +521,7 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
             $data_type = 'Non Target';
         }
 
-        $this->db->select('users.id as users_id,first_name,company_email,profile_img,user_phone,decript_password,projects_title,u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,invoice_type,u_working._right,wrong,earning,refrash_limit');
+        $this->db->select('users.id as users_id,first_name,company_email,profile_img,user_phone,decript_password,projects_title,u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,invoice_type,quantity,u_working._right,wrong,earning,refrash_limit');
         $this->db->from('users');
         $this->db->where('u_projects.p_id',$project_id);
         $this->db->where('users.company_id',$company_id);

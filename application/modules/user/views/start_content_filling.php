@@ -1,4 +1,9 @@
-<?php  $user_type = $this->session->userdata('logged_in')->user_type; ?>
+<?php  $user_type = $this->session->userdata('logged_in')->user_type; 
+
+
+// dd($filling_projects);
+
+?>
 <style type="text/css">
 input[type=text] { text-align:left } .form-control{ padding: 6px,4px !important;}
 .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -124,15 +129,15 @@ input[type=text] { text-align:left } .form-control{ padding: 6px,4px !important;
         <div id="myTabContent" class="tab-content custom-product-edit">
             <div class="product-tab-list tab-pane fade active in" id="description">
                 <div class="row">
-<?php if ($this->uri->segment(3) == 'number-filling') {?>
+<?php if ($this->uri->segment(3) == 'alpha-numeric-validation') {?>
 <div style="margin:20px">
     <?php if ($project_type == 'Non Target') { ?>             
-<label class=""><?=$project_type?> Number Filling Instructions</label>
+<label class=""><?=$project_type?> Alpha-Numeric Validation Instructions</label>
 <div style="overflow: scroll; height: 130px;">This Project is not provided by Core Builder. The company name you are working for is displayed on your dashboard.  
 <br><br>
 
 <ol>
-<li>In Non-Target Number Filling you are provided with unlimited sequences of Numbers.</li>
+<li>In Non-Target Alpha-Numeric Validation you are provided with unlimited sequences of Numbers.</li>
 <li>
 You must work for fixed time period set by the company you are working with.
 </li>
@@ -145,13 +150,13 @@ You must work for fixed time period set by the company you are working with.
 </div>
 
 <?php }else{?>
-<label class=""><?=$project_type?> Number Filling Instructions</label>
+<label class=""><?=$project_type?> Alpha-Numeric Validation Instructions</label>
 <div style="overflow: scroll; height: 130px;">This Project is not provided by Core Builder. The company name you are working for is displayed on your dashboard. 
 <br><br>
 
 <ol>
-    <li>In Target Number filling you are provided with fixed quantity of Number sequences.</li>
-    <li>You must complete the Number fillings in given time period.</li>
+    <li>In Target Alpha-Numeric Validation you are provided with fixed quantity of Number sequences.</li>
+    <li>You must complete the Alpha-Numeric Validations in given time period.</li>
     <li>In upper half of screen 10 numbers are displayed each number containing 10 character.</li>
     <li>Type displayed Numbers in boxes on lower half section of screen and click submit. System will automatically recognise if numbers filled are right or wrong. And earnings will be added accordingly.</li>
     <li>Skips provided to you depends on the company that you are working for.
@@ -170,27 +175,27 @@ You must work for fixed time period set by the company you are working with.
 
 <form action="<?=base_url('user/submit_number_filling')?>" class="needsclick add-professors" id="demo1-upload" method="POST">
 
-<?php if ($this->uri->segment(3) == 'number-filling') {?>
-<!-- number filling form-->
+<?php if ($this->uri->segment(3) == 'alpha-numeric-validation') {?>
+<!-- Alpha-Numeric Validation form-->
     <div class="all-form-element-inner">
         <div class="form-group-inner">
             <div class="row">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <label class="" style="color:gray;">box 1</label><input style="text-align:center;"  class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_one?>' disabled>
+                    <label class="" style="color:gray;">box 1</label><input style="text-align:center;"  class="form-control" type="text"  onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_one?>' disabled>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <label class="" style="color:gray;">box 2</label><input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_two?>' disabled>
+                    <label class="" style="color:gray;">box 2</label><input style="text-align:center;" class="form-control" type="text"  onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_two?>' disabled>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <label class="" style="color:gray;">box 3</label><input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_three?>' disabled>
+                    <label class="" style="color:gray;">box 3</label><input style="text-align:center;" class="form-control" type="text"  onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_three?>' disabled>
                 </div>
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-                    <label class="" style="color:gray;">box 4</label><input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_char?>' disabled>
+                    <label class="" style="color:gray;">box 4</label><input style="text-align:center;" class="form-control" type="text"  onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_char?>' disabled>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                    <label class="" style="color:gray;">box 5</label><input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_panch?>' disabled>
+                    <label class="" style="color:gray;">box 5</label><input style="text-align:center;" class="form-control" type="text"  onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_panch?>' disabled>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
             </div>
@@ -198,19 +203,19 @@ You must work for fixed time period set by the company you are working with.
             <div class="row">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <label class="" style="color:gray;">box 6</label><input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_chay?>' disabled>
+                    <label class="" style="color:gray;">box 6</label><input style="text-align:center;" class="form-control" type="text"  onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_chay?>' disabled>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <label class="" style="color:gray;">box 7</label><input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_sat?>' disabled>
+                    <label class="" style="color:gray;">box 7</label><input style="text-align:center;" class="form-control" type="text"  onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_sat?>' disabled>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <label class="" style="color:gray;">box 8</label><input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_ath?>' disabled>
+                    <label class="" style="color:gray;">box 8</label><input style="text-align:center;" class="form-control" type="text"  onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_ath?>' disabled>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-                    <label class="" style="color:gray;">box 9</label><input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_no?>' disabled>
+                    <label class="" style="color:gray;">box 9</label><input style="text-align:center;" class="form-control" type="text"  onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_no?>' disabled>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                    <label class="" style="color:gray;">box 10</label><input style="text-align:center;" class="form-control" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_ten?>' disabled>
+                    <label class="" style="color:gray;">box 10</label><input style="text-align:center;" class="form-control" type="text"  onDrag="return false" onDrop="return false" autocomplete="off" size="30" value='<?=$filling_projects->num_box_ten?>' disabled>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
             </div><hr>
@@ -222,38 +227,38 @@ You must work for fixed time period set by the company you are working with.
                     <input type="hidden" class="form-control" notab="notab" name="id" value="<?=$filling_projects->id?>" />
                     <input type="hidden" class="form-control" notab="notab" name="p_id" value="<?=$this->uri->segment(4)?>" />
                     <input type="hidden" notab="notab" name="current_url" value="<?=current_url()?>">
-                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_one" placeholder="box 1" />
+                    <input type="text" onDrag="return false" onpaste="return false;" onCopy="return false" onCut="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_one" placeholder="box 1" />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_two" placeholder="box 2" />
+                    <input type="text" onDrag="return false" onpaste="return false;" onCopy="return false" onCut="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_two" placeholder="box 2" />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_three" placeholder="box 3" />
+                    <input type="text" onDrag="return false" onpaste="return false;" onCopy="return false" onCut="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_three" placeholder="box 3" />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_char" placeholder="box 4" />
+                    <input type="text" onDrag="return false" onpaste="return false;" onCopy="return false" onCut="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_char" placeholder="box 4" />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_panch" placeholder="box 5" />
+                    <input type="text" onDrag="return false" onpaste="return false;" onCopy="return false" onCut="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_panch" placeholder="box 5" />
                 </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_chay" placeholder="box 6" />
+                    <input type="text" onDrag="return false" onpaste="return false;" onCopy="return false" onCut="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_chay" placeholder="box 6" />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_sat" placeholder="box 7" />
+                    <input type="text" onDrag="return false" onpaste="return false;" onCopy="return false" onCut="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_sat" placeholder="box 7" />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_ath" placeholder="box 8" />
+                    <input type="text" onDrag="return false" onpaste="return false;" onCopy="return false" onCut="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_ath" placeholder="box 8" />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_no" placeholder="box 9" />
+                    <input type="text" onDrag="return false" onpaste="return false;" onCopy="return false" onCut="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_no" placeholder="box 9" />
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_ten" placeholder="box 10" />
+                    <input type="text" onDrag="return false" onpaste="return false;" onCopy="return false" onCut="return false" autocomplete="off" class="form-control" notab="notab" name="num_box_ten" placeholder="box 10" />
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"></div>
             </div>
@@ -295,7 +300,7 @@ You must work for fixed time period set by the company you are working with.
     </div> <!-- cd-popup-container -->
 </div> <!-- cd-popup -->
     <?php } ?>
-<!-- end number filling form-->
+<!-- end Alpha-Numeric Validation form-->
 </form>
 
 <!-- invoice-calculation form-->
@@ -693,7 +698,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                         
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label class=""><input style="border:1px solid;" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" notab="notab" name="captcha_val" class="form-control" notab="notab" name=""></label>
+                            <label class=""><input style="border:1px solid;" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrop="return false" autocomplete="off" notab="notab" name="captcha_val" class="form-control" notab="notab" name=""></label>
             <input type="hidden" notab="notab" name="captcha_word" value="<?=$captcha_word?>">
             <input type="hidden" class="form-control" notab="notab" name="id" value="4" />
             <input type="hidden" class="form-control" notab="notab" name="p_id" value="<?=$this->uri->segment(4)?>" />
@@ -827,6 +832,10 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div><hr>
 
+
+
+<!-- difficulty 1 -->
+<?php if ($filling_projects->difficulty == 1) { ?>
                     <div class="row"><style>.t_boxs{border: 1px solid red;}</style>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
@@ -946,6 +955,342 @@ You have to work for fixed time period set by the company you are working with.
                             </div>
                         </div>
                     </div>
+<?php } ?>
+
+<!-- difficulty 2 -->
+<?php if ($filling_projects->difficulty == 2) { ?>
+                    <div class="row"><style>.t_boxs{border: 1px solid red;}</style>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Token No</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_one?></label>
+                                </div>    
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Line No</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_two?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row"><style>.t_boxs{border: 1px solid red;}</style>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Company Name</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_three?></label>
+                                </div>    
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Email ID</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_four?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Referal Code</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_panch?></label>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Address</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_chay?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">City</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_sat?></label>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Zip Code</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_ath?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Phone Number</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_no?></label>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Sic Code</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_ten?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Sic Description</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_eleven?></label>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Affiliate Token</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_twelve?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+<?php } ?>
+
+
+<!-- difficulty 3 -->
+<?php if ($filling_projects->difficulty == 3) { ?>
+                    <div class="row"><style>.t_boxs{border: 1px solid red;}</style>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Token No</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_one?></label>
+                                </div>    
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Line No</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_two?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row"><style>.t_boxs{border: 1px solid red;}</style>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Pass Sticks</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_three?></label>
+                                </div>    
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Company Name</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_four?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Email</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_panch?></label>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Referal Code</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_chay?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Address</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_sat?></label>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">City</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_ath?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">ZipCode</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_no?></label>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Phone Number</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_ten?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Friendly Local</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_eleven?></label>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Sic Code</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_twelve?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Sic Description</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_thirteen?></label>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Label Tag</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_fourteen?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row t_box">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label style="color: red;">Affiliate Token</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <label class=""><?=$filling_projects->form_val_fifteen?></label>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+<?php } ?>
+
+
 
                 </div>
                 <!-- <div class="vl"></div> -->
@@ -969,7 +1314,9 @@ You have to work for fixed time period set by the company you are working with.
         </ul>
         </div>
             <br><br><br><center><h5>Form Filling Section</h5></center>
-                    
+<!-- difficulty -->
+<?php if ($filling_projects->difficulty == 1) { ?>
+    <input type="hidden" name="difficulty" value="<?=$filling_projects->difficulty?>">
             <div class="row" style="margin-top:15px;">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_one" placeholder="Token No" />
@@ -1016,6 +1363,146 @@ You have to work for fixed time period set by the company you are working with.
                             <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_ten" placeholder="Web Address" />
                         </div>
                     </div>
+<?php } ?>
+
+<!-- difficulty 2 -->
+<?php if ($filling_projects->difficulty == 2) { ?>
+    <input type="hidden" name="difficulty" value="<?=$filling_projects->difficulty?>">
+            <div class="row" style="margin-top:15px;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_one" placeholder="Token No" />
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_two" placeholder="Line No" />
+                </div>
+            </div>
+                <div class="row" style="margin-top:15px;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <input type="hidden" class="form-control" notab="notab" name="id" value="<?=$filling_projects->id?>" />
+            <input type="hidden" class="form-control" notab="notab" name="p_id" value="<?=$this->uri->segment(4)?>" />
+            <input type="hidden" name="current_url" value="<?=current_url()?>">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_three" placeholder="Company Name" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_four" placeholder="Email" />
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_panch" placeholder="Referal Code" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_chay" placeholder="Address" />
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_sat" placeholder="City" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_ath" placeholder="Zip Code" />
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_no" placeholder="Phone Number" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_ten" placeholder="Sic Code" />
+                        </div>
+                    </div>
+
+
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_eleven" placeholder="Sic Description" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_twelve" placeholder="Affiliate Token" />
+                        </div>
+                    </div>
+<?php } ?>
+
+
+<!-- difficulty 3 -->
+<?php if ($filling_projects->difficulty == 3) { ?>
+    <input type="hidden" name="difficulty" value="<?=$filling_projects->difficulty?>">
+            <div class="row" style="margin-top:15px;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_one" placeholder="Token No" />
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_two" placeholder="Line No" />
+                </div>
+            </div>
+                <div class="row" style="margin-top:15px;">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <input type="hidden" class="form-control" notab="notab" name="id" value="<?=$filling_projects->id?>" />
+            <input type="hidden" class="form-control" notab="notab" name="p_id" value="<?=$this->uri->segment(4)?>" />
+            <input type="hidden" name="current_url" value="<?=current_url()?>">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_three" placeholder="Pass Sticks" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_four" placeholder="Company Name" />
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_panch" placeholder="Email" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_chay" placeholder="Referal Code" />
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_sat" placeholder="Address" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_ath" placeholder="City" />
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_no" placeholder="Zipcode" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_ten" placeholder="Phone Number" />
+                        </div>
+                    </div>
+
+
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_eleven" placeholder="Friendly Local" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_twelve" placeholder="Sic Code" />
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_thirteen" placeholder="Sic Description" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_fourteen" placeholder="label Tag" />
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <input type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete="off" class="form-control" notab="notab" name="form_val_fifteen" placeholder="Affiliate Token" />
+                        </div>
+                    </div>
+<?php } ?>
+
 
 
                 </div>

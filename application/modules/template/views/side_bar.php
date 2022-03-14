@@ -191,6 +191,13 @@
 </li>
 
 <li class="active">
+  <a class="<?php if($this->uri->segment(2) == 'email-configuration') echo "active_"; ?>" title="Email Configuration" href="<?=base_url('company/email-configuration')?>" aria-expanded="false">
+    <i class="fa fa-mail-reply-all" aria-hidden="true"></i>
+    <span class="mini-click-non">Email Configuration</span>
+  </a>
+</li>
+
+<li class="active">
   <a class="<?php if($this->uri->segment(2) == 'whatsApp-server') echo "active_"; ?>" title="WhatsApp Server" href="<?=base_url('company/whatsApp-server')?>" aria-expanded="false">
     <i class="fa fa-at" aria-hidden="true"></i>
     <span class="mini-click-non">WhatsApp Server</span>

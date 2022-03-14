@@ -110,8 +110,7 @@ $this->load->library('../modules/user/controllers/User_dashboard');
             'num_box_sat'=>$this->input->post('num_box_sat'),
             'num_box_ath'=>$this->input->post('num_box_ath'),
             'num_box_no'=>$this->input->post('num_box_no'),
-            'num_box_ten'=>$this->input->post('num_box_ten'),
-            'difficulty'=>$this->input->post('numbers_tape')
+            'num_box_ten'=>$this->input->post('num_box_ten')
         );
 
 		$res = $this->filling_projects->submit_filling($project_id,$p_id,$data,$user_id);
@@ -130,19 +129,63 @@ $this->load->library('../modules/user/controllers/User_dashboard');
 		$user_id = $this->session->userdata('logged_in')->id;
 		$current_url = $this->input->post('current_url');
 		$project_id = $this->input->post('id');
-        $data = array(
-            'form_val_one'=>$this->input->post('form_val_one'),
-            'form_val_two'=>$this->input->post('form_val_two'),
-            'form_val_three'=>$this->input->post('form_val_three'),
-            'form_val_four'=>$this->input->post('form_val_four'),
-            'form_val_panch'=>$this->input->post('form_val_panch'),
-            'form_val_chay'=>$this->input->post('form_val_chay'),
-            'form_val_sat'=>$this->input->post('form_val_sat'),
-            'form_val_ath'=>$this->input->post('form_val_ath'),
-            'form_val_no'=>$this->input->post('form_val_no'),
-            'form_val_ten'=>$this->input->post('form_val_ten')
-        );
-		// dd($this->input->post());
+		$difficulty = $this->input->post('difficulty');
+
+			if ($difficulty == 1) {
+	        	$data = array(
+	            'form_val_one'=>$this->input->post('form_val_one'),
+	            'form_val_two'=>$this->input->post('form_val_two'),
+	            'form_val_three'=>$this->input->post('form_val_three'),
+	            'form_val_four'=>$this->input->post('form_val_four'),
+	            'form_val_panch'=>$this->input->post('form_val_panch'),
+	            'form_val_chay'=>$this->input->post('form_val_chay'),
+	            'form_val_sat'=>$this->input->post('form_val_sat'),
+	            'form_val_ath'=>$this->input->post('form_val_ath'),
+	            'form_val_no'=>$this->input->post('form_val_no'),
+	            'form_val_ten'=>$this->input->post('form_val_ten')
+	        	);
+			}
+
+			if ($difficulty == 2) {
+	        	$data = array(
+	            'form_val_one'=>$this->input->post('form_val_one'),
+	            'form_val_two'=>$this->input->post('form_val_two'),
+	            'form_val_three'=>$this->input->post('form_val_three'),
+	            'form_val_four'=>$this->input->post('form_val_four'),
+	            'form_val_panch'=>$this->input->post('form_val_panch'),
+	            'form_val_chay'=>$this->input->post('form_val_chay'),
+	            'form_val_sat'=>$this->input->post('form_val_sat'),
+	            'form_val_ath'=>$this->input->post('form_val_ath'),
+	            'form_val_no'=>$this->input->post('form_val_no'),
+	            'form_val_ten'=>$this->input->post('form_val_ten'),
+	            'form_val_eleven'=>$this->input->post('form_val_eleven'),
+	            'form_val_twelve'=>$this->input->post('form_val_twelve')
+	        	);
+			}
+
+			if ($difficulty == 3) {
+	        	$data = array(
+	            'form_val_one'=>$this->input->post('form_val_one'),
+	            'form_val_two'=>$this->input->post('form_val_two'),
+	            'form_val_three'=>$this->input->post('form_val_three'),
+	            'form_val_four'=>$this->input->post('form_val_four'),
+	            'form_val_panch'=>$this->input->post('form_val_panch'),
+	            'form_val_chay'=>$this->input->post('form_val_chay'),
+	            'form_val_sat'=>$this->input->post('form_val_sat'),
+	            'form_val_ath'=>$this->input->post('form_val_ath'),
+	            'form_val_no'=>$this->input->post('form_val_no'),
+	            'form_val_ten'=>$this->input->post('form_val_ten'),
+	            'form_val_eleven'=>$this->input->post('form_val_eleven'),
+	            'form_val_twelve'=>$this->input->post('form_val_twelve'),
+	            'form_val_thirteen'=>$this->input->post('form_val_thirteen'),
+	            'form_val_fourteen'=>$this->input->post('form_val_fourteen'),
+	            'form_val_fifteen'=>$this->input->post('form_val_fifteen')
+	        	);
+
+	        	// dd($data);
+			}
+
+		
 		$res = $this->filling_projects->submit_filling($project_id,$p_id,$data,$user_id);
 		// dd($res);
 		if ($res) {
