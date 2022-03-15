@@ -241,9 +241,10 @@ if (!function_exists('accuracy_report')){
         // if ($get_qty->p_type == 'Non Target') {
         //     return '--';
         // }
-
+        $qty = $get_u_working->_right+$get_u_working->wrong;
+        if(!empty($qty)){$qty = $qty;}else{$qty = 1;}
         $true_work_qty = $get_u_working->_right;
-        $total_work_qty = $get_u_working->_right+$get_u_working->wrong;
+        $total_work_qty = $qty;
         $percentage =  $true_work_qty/$total_work_qty*100;
         return number_format((float)$percentage, 2, '.', '').'%';
     }

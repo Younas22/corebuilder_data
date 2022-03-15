@@ -165,7 +165,7 @@ width: auto;
         </div>
     </div>
 </div>
-</div>
+</div> 
 </div>
 <div style="margin-top:20px;"></div>
 </div>
@@ -219,7 +219,7 @@ width: auto;
                                             </div>
                                             <div class="form-group" id="price">
                                                 <label>Project Price <span style="color:red">*</span></label>
-                                                <input name="price" type="text" class="form-control" placeholder="price" required="">
+                                                <input name="price" type="text" class="form-control" placeholder="price">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

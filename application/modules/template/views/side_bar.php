@@ -115,23 +115,23 @@
     <span class="mini-click-non">Create Project</span>
   </a>
 
-<!-- <ul class="submenu-angle" aria-expanded="false">
+<ul class="submenu-angle" aria-expanded="false">
 <li><a title="Content Writing" href="<?=base_url('company/projects-detiles/content-writing')?>"><span class="mini-sub-pro">Content Writing</span></a></li>
 
 <li><a title="Novel Typing" href="<?=base_url('company/projects-detiles/novel-typing')?>"><span class="mini-sub-pro">Novel Typing</span></a></li>
 
 <li><a title="Dialogue Typing" href="<?=base_url('company/projects-detiles/dialogue-typing')?>"><span class="mini-sub-pro">Dialogue Typing</span></a></li>
-</ul> -->
+</ul>
 
 
-<ul class="submenu-angle" aria-expanded="false">
+<!-- <ul class="submenu-angle" aria-expanded="false">
 
 <li><a title="Content Writing" data-toggle="modal" href="#tallModal_"><i class="fa fa-lock" aria-hidden="true"></i> <span class="mini-sub-pro">Content Writing</span></a></li>
 
 <li><a title="Novel Typing" data-toggle="modal" href="#tallModal_"><i class="fa fa-lock" aria-hidden="true"></i> <span class="mini-sub-pro">Novel Typing</span></a></li>
 
 <li><a title="Dialogue Typing" data-toggle="modal" href="#tallModal_"><i class="fa fa-lock" aria-hidden="true"></i> <span class="mini-sub-pro">Dialogue Typing</span></a></li>
-</ul>
+</ul> -->
 
 </li>
 
