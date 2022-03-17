@@ -103,8 +103,9 @@
           <td colspan="2">
             <table>
               <tr>
-                <td class="title">
-                  <img src="<?=base_url('assets/img/logo/mail_logo.png')?>" alt="Company logo" style="width: 100%; max-width: 300px" />
+                <td class="title" style="">
+                    <img src="<?=base_url('assets/img/logo/mail_logo.png')?>" alt="Company logo" style="width: 100%; max-width: 300px" />
+                    <h2 style="float: right; margin-top: 50px"><?=$this->session->userdata('logged_in')->company_name?></h2>
                 </td>
               </tr>
             </table>
@@ -127,6 +128,12 @@
       }
       </style>
 
+      <div style="text-align: justify;">
+        <p>Dear <b><?=$get_withdraw_report->first_name?></b><br>Greetings from <b><?=$this->session->userdata('logged_in')->company_name?>,</b> your job partner.<br><br>We are glad that you have decided to work with us. We hope our Relationship will bring change for the good.</p><br>
+
+        <p>We had approved your request for your <b>Rs.<?=$get_withdraw_report->total_withdraw?>/</b>- against your project of <b><?=$get_withdraw_report->projects_title?></b>. Kindly find below the payment details for your reference.</p>
+
+      </div>
   <h2 style="margin-top:50px;">Withdrawal Invoice #<?=$get_withdraw_report->withdraw_id?></h2>
       <table class="table">
         <tr class="tr">
@@ -150,7 +157,8 @@
         </tr>
       </table>
       <br>
-      <br>
+      <br><hr>
+        <div style="text-align: justify;"><p>Copyright © 2022 All rights reserved. Data Entry Software by CORE BUILDER.</p><a href="https://www.thecorebuilder.com/">www.thecorebuilder.com <a href="https://www.thecorebuilder.com/t-c-privacy-policy" style="font-size: 10px;">Read T&C</a></a></div>
       <br>
     </div>
   </body>

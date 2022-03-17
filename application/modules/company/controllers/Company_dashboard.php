@@ -821,28 +821,28 @@ public function mail_of_project_details($project_id,$u_id)
 
 		// dd('ok');
 		if ($withdrawal_status == 1) {
-			redirect(base_url('company/withdrawal'));
-			// $get_withdraw_report = $this->company_dash->get_withdraw_report($withdrawal_id);
-			// $data['get_withdraw_report']=$get_withdraw_report;
+			// redirect(base_url('company/withdrawal'));
+			$get_withdraw_report = $this->company_dash->get_withdraw_report($withdrawal_id);
+			$data['get_withdraw_report']=$get_withdraw_report;
 
-			// $from_mail = $this->session->userdata('logged_in')->company_email;
-			// $company_name = $this->session->userdata('logged_in')->company_name;
-	  //       $this->load->library('email');
-	  //       $this->email->from($from_mail, $company_name);
-	  //       $this->email->to($get_withdraw_report->to_mail);
-	  //       $this->email->subject('Login details');
-	  //        $msg = $this->load->view('company/mail/withdrawal_invoice',$data,true);
-	  //       $this->email->message($msg);
-	  // //       //Send mail 
-			// if($this->email->send()){// dd($submit_withdraw_request);
-			// 	unset($_SESSION['Withdrawal_errors']);
-			// 	$this->session->set_flashdata('Withdrawal_msg', 'Withdrawal Status Updated and Mail Sent Successfully!');
-			// 	redirect(base_url('company/withdrawal'));
-			// }else{
-			// 	unset($_SESSION['Withdrawal_errors']);
-			// 	$this->session->set_flashdata('Withdrawal_msg', 'Withdrawal Status Updated but Mail Not Sending Error!');
-			// 	redirect(base_url('company/withdrawal'));
-			// }
+			$from_mail = $this->session->userdata('logged_in')->company_email;
+			$company_name = $this->session->userdata('logged_in')->company_name;
+	        $this->load->library('email');
+	        $this->email->from($from_mail, $company_name);
+	        $this->email->to($get_withdraw_report->to_mail);
+	        $this->email->subject('Login details');
+	         $msg = $this->load->view('company/mail/withdrawal_invoice',$data,true);
+	        $this->email->message($msg);
+	  //       //Send mail 
+			if($this->email->send()){// dd($submit_withdraw_request);
+				unset($_SESSION['Withdrawal_errors']);
+				$this->session->set_flashdata('Withdrawal_msg', 'Withdrawal Status Updated and Mail Sent Successfully!');
+				redirect(base_url('company/withdrawal'));
+			}else{
+				unset($_SESSION['Withdrawal_errors']);
+				$this->session->set_flashdata('Withdrawal_msg', 'Withdrawal Status Updated but Mail Not Sending Error!');
+				redirect(base_url('company/withdrawal'));
+			}
 		}else{
 			// dd($submit_Withdrawal_request);
 			unset($_SESSION['Withdrawal_msg']);
@@ -995,7 +995,12 @@ public function mail_of_project_details($project_id,$u_id)
 			// }else{
 			// 	echo "No";
 			// }
-		$data['contant_view'] = 'company/mail/login_details';
+		$get_withdraw_report = $this->company_dash->get_withdraw_report(88);
+		$data['get_withdraw_report']=$get_withdraw_report;
+
+		// dd($get_withdraw_report);
+		
+		$data['contant_view'] = 'company/mail/withdrawal_invoice';
 		$this->template->template($data);
 	}
 

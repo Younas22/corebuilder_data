@@ -99,6 +99,7 @@ if (project_view_ == 'add-project') {
     $('#font').addClass('hide');
     $('#invoice_type').addClass('hide');
     $('#numbers_tape').addClass('hide');
+    $('#form_tape').addClass('hide');
 }
 
 
@@ -269,6 +270,15 @@ $("#p_id").on('change', function(){
 }
 });
 
+
+$("#p_id").on('change', function(){
+        let project_id = $('#p_id').val();
+if (project_id != 5) {
+        $('#form_tape').addClass('hide');
+}else{
+        $('#form_tape').removeClass('hide');
+}
+});
 
 $("#p_id").on('change', function(){
         let project_id = $('#p_id').val();

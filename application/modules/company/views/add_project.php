@@ -304,6 +304,17 @@ width: auto;
                                             <option value="3">Professional</option>
                                         </select>
                                     </div>
+
+                                    <div class="form-group" id="form_tape">
+                                        <style>.hide{display: none;}</style>
+                                        <label>Form Type</label>
+                                        <select name="numbers_tape" class="form-control" >
+                                            <option value="none" selected="" disabled="">Select Difficulty Type</option>
+                                            <option value="1">Form Filling –  Alpha</option>
+                                            <option value="2">Alphanumeric-1</option>
+                                            <option value="3">Alphanumeric-2</option>
+                                        </select>
+                                    </div>
 <!-- 
                                             <div class="form-group" id="invoice_type">
                                                 <style>.hide{display: none;}</style>
