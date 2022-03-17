@@ -114,9 +114,26 @@
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
           <tr>
             <td align="center" valign="top" style="background-color: white;"> <!-- style="padding: 36px 24px;" -->
+<!--               
               <a href="<?= base_url() ?>" target="_blank" style="display: inline-block;">
                 <img src="<?=base_url('assets/img/logo/mail_logo.png')?>" alt="Logo" border="0" width="48" style="display: block; width: 600px; max-width: 600px; min-width: 600px;">
+              </a> -->
+
+
+  <div style="width: 100%; display: table; margin-top: 30px;">
+        <div style="display: table-row; height: 100px;">
+            <div style="width: 50%; display: table-cell;">
+                <a href="<?= base_url() ?>" target="_blank" style="display: inline-block;">
+                <!-- <img src="http://localhost/corebuilder_data/assets/img/profile/1647427201logo.png" alt="Logo" border="0" width="250" > -->
+                <img src="<?=base_url('assets/img/profile/').$logo;?>" alt="Logo" border="0" width="300" >
               </a>
+            </div>
+            <div style="display: table-cell; font-size: 30px"> 
+                <h1><?=$ajency_name?></h1>
+            </div>
+        </div>
+    </div>
+
             </td>
           </tr>
         </table>
@@ -161,21 +178,52 @@
         <tr>
         <td align="center" valign="top" width="600">
         <![endif]-->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; font-size: 15px;">
 
           <!-- start copy -->
           <tr>
-            <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-              <p style="margin: 0;">Tap the button below to Login your account. If you didn't login on <a href="https://alphaexposofts.com/">Alphaexposofts</a>, you can safely delete this email.</p>
-              <br>
-              <p>Email: <span style="color:red"><?=$mail?></span></p>
-              <p>Password: <span style="color:red"><?=$password?></span></p>
-            </td>
+          <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+          <p style="margin: 0;">Dear <b><?=$name?></b>,<br>Greetings from <b><?=$ajency_name?></b>, your job partner.<br> We are glad that you have decided to work with us. We hope our Relationship will bring change for the good.</p><br>
+          <p>Kindly Download the Software as per your Devices.</p>
+          <b>Here are a few important points before you proceed:</b>
+          <ol style="font-size: 15px;">
+            <li>Download Core Builder Software for Desktop (Windows). <a href="https://drive.google.com/file/d/17BnSxqyvBDLoUwwVMGFUw9okW4JxAZkM/view?usp=sharing">CLICK HERE</a>
+              or click this link: <a href="https://drive.google.com/file/d/17BnSxqyvBDLoUwwVMGFUw9okW4JxAZkM/view?usp=sharing">https://drive.google.com/file/d/17BnSxqyvBDLoUwwVMGFUw9okW4JxAZkM/view?usp=sharing</a> (if a link is not working copy-paste the link in new tab)</li>
+
+           <li>Download Core Builder Software for Mobile (Android). <a href="https://drive.google.com/file/d/1SzD1x1Jzb0UG1ZtvO2LfUHqlw8eO9RkN/view?usp=sharing">CLICK HERE</a>
+              or click this link: <a href="https://drive.google.com/file/d/1SzD1x1Jzb0UG1ZtvO2LfUHqlw8eO9RkN/view?usp=sharing">https://drive.google.com/file/d/1SzD1x1Jzb0UG1ZtvO2LfUHqlw8eO9RkN/view?usp=sharing</a> (if a link is not working copy-paste the link in new tab)</li>
+          </ol>
+
+            <b>Here are your Login Credentials: -</b>
+            <br><b>Login ID: <?=$mail?></b><br>
+            <b>Password: <?=$password?></b>
+            <p>Use the login ID and password to login into the Core Builder: Data Entry Software.</p>
+            <b>NOTE:- Please do not End the project before completion as you want to do work on it again. If you ended the project without completion. it will be considered final. If you want to work again you have to contact your project provider.</b><br>
+
+            <b>Regarding Core Builder: Data Entry Software.</b>
+            <ol>
+              <li>Core Builder and the company you are working for (In your case <b><a href="<?=$ajency_web?>" target="_blank"><?=$ajency_web?></a></b>) are two different entities.</li>
+
+              <li>Core builder is just a task management platform and is not responsible for the work provided to you (In your case <b><a href="<?=$ajency_web?>" target="_blank"><?=$ajency_web?></a></b>).</li>
+
+              <li>The projects you are working on are not provided to you by Core Builder rather the company you took the project from (In your case <b><a href="<?=$ajency_web?>" target="_blank"><?=$ajency_web?></a></b>).</li>
+
+              <li>Core builder is not meant for any commercial transactions. Core Builder does not ask for any money to use its platform.</li>
+
+              <li>If you have paid any fee or any other type of transaction, that transaction will be handled by the company you are working for (In your case <b><a href="<?=$ajency_web?>" target="_blank"><?=$ajency_web?></a></b>).</li>
+
+            <li>For any disputes, please reach out to the company you are working for (In your case <b><a href="<?=$ajency_web?>" target="_blank"><?=$ajency_web?></a></b>).</li>
+            <li>Core Builder is having no knowledge about the agreement between you and the company you are working for (In your case <b><a href="<?=$ajency_web?>" target="_blank"><?=$ajency_web?></a></b>). Therefore, Core Builder is not responsible for any losses or damages.</li>
+            <li>Core Builder will never call you for your personal details. Like bank account details, addresses, or other similar details.</li>
+            </ol><hr>
+            <p>Copyright © 2022 All rights reserved. Data Entry Software by CORE BUILDER.</p><a href="https://www.thecorebuilder.com/">www.thecorebuilder.com <a href="https://www.thecorebuilder.com/t-c-privacy-policy" style="font-size: 10px;">Read T&C</a></a>
+          </td>
           </tr>
+
           <!-- end copy -->
 
           <!-- start button -->
-          <tr>
+<!--           <tr>
             <td align="left" bgcolor="#ffffff">
               <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
@@ -191,24 +239,24 @@
                 </tr>
               </table>
             </td>
-          </tr>
+          </tr> -->
           <!-- end button -->
 
           <!-- start copy -->
-          <tr>
+<!--           <tr>
             <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
               <p style="margin: 0;">If that doesn't work, copy and paste the following link in your browser:</p>
               <p style="margin: 0;"><a href="<?=$url?>" target="_blank">https://alphaexposofts.com/</a></p>
             </td>
-          </tr>
+          </tr> -->
           <!-- end copy -->
 
           <!-- start copy -->
-          <tr>
+<!--           <tr>
             <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
               <p style="margin: 0;">Cheers,<br> Alphaexposofts</p>
             </td>
-          </tr>
+          </tr> -->
           <!-- end copy -->
 
         </table>
@@ -256,6 +304,7 @@
         <![endif]-->
       </td>
     </tr>
+    <!-- <br><br><br><br><br> -->
     <!-- end footer -->
 
   </table>

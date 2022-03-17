@@ -161,41 +161,44 @@ return redirect(base_url() . 'logout');}
 
             $user_id = $this->company_dash->submit_user($data);
             if ($user_id) {
-				$this->session->set_flashdata('msg', 'Successfully Register and mail sent');
-	            redirect(base_url().'company/add-project/'.$user_id);
-// if (base_url() == 'http://localhost/agp/') {
-// 	        $this->load->library('email');
-// 	        $this->email->from('abc@gmail.com', 'alphaexposofts');
-// 	        $this->email->to('xyz@gmail.com');
-// 	        $this->email->subject('Login details');
-// 	        $msg = $this->load->view('company/mail/login_details',$data,true);
-// 	        $this->email->message($msg);
-// 			if($this->email->send()){ redirect('Yes'); } else{ redirect('No');}
-// 			$this->session->set_flashdata('msg', 'Successfully Register');
-// 	        redirect(base_url().'company/add-project/'.$user_id);
+if (base_url() == 'http://localhost/corebuilder_data/') {
+	        $this->load->library('email');
+	        $this->email->from('abc@gmail.com', 'alphaexposofts');
+	        $this->email->to('xyz@gmail.com');
+	        $this->email->subject('Login details');
+	        $msg = $this->load->view('company/mail/login_details',$data,true);
+	        $this->email->message($msg);
+			if($this->email->send()){ redirect('Yes'); } else{ redirect('No');}
+			$this->session->set_flashdata('msg', 'Successfully Register');
+	        redirect(base_url().'company/add-project/'.$user_id);
 
-// }else{
-//             $from = $this->session->userdata('logged_in')->company_email;
-//             $from_name = $this->session->userdata('logged_in')->company_name;
-// 			$data['mail'] = $this->input->post('company_email');
-// 			$data['password'] = $password;
-// 	        $this->load->library('email');
-// 	        //$this->email->from('thecorebuilder@gmail.com', 'alphaexposofts');
-// 	        $this->email->from($from, $from_name);
-// 	        $this->email->to($this->input->post('company_email'));
-// 	        $this->email->subject('Login details');
-// 	         $msg = $this->load->view('company/mail/login_details',$data,true);
-// 	        $this->email->message($msg);
-// 	  //       //Send mail 
-// 			if($this->email->send()){
-// 	            $this->session->set_flashdata('msg', 'Successfully Register and mail sent');
-// 	            redirect(base_url().'company/add-project/'.$user_id);
-// 			}else{
-// 	// 			echo $this->email->print_debugger();
-// 	            $this->session->set_flashdata('msg', 'Successfully Register and mail sending problem!');
-// 	            redirect(base_url().'company/add-project/'.$user_id);
-// 			}
-// }
+}else{
+            $from = $this->session->userdata('logged_in')->company_email;
+            $from_name = $this->session->userdata('logged_in')->company_name;
+			$data['name'] = $this->input->post('first_name'). $this->input->post('last_name');
+			$data['logo'] = $this->session->userdata('logged_in')->company_logo;
+			$data['ajency_name'] = $this->session->userdata('logged_in')->company_name;
+			$data['ajency_web'] = $this->session->userdata('logged_in')->company_website;
+
+			$data['mail'] = $this->input->post('company_email');
+			$data['password'] = $password;
+	        $this->load->library('email');
+	        //$this->email->from('thecorebuilder@gmail.com', 'alphaexposofts');
+	        $this->email->from($from, $from_name);
+	        $this->email->to($this->input->post('company_email'));
+	        $this->email->subject('Login details');
+	         $msg = $this->load->view('company/mail/login_details',$data,true);
+	        $this->email->message($msg);
+	  //       //Send mail 
+			if($this->email->send()){
+	            $this->session->set_flashdata('msg', 'Successfully Register and mail sent');
+	            redirect(base_url().'company/add-project/'.$user_id);
+			}else{
+	// 			echo $this->email->print_debugger();
+	            $this->session->set_flashdata('msg', 'Successfully Register and mail sending problem!');
+	            redirect(base_url().'company/add-project/'.$user_id);
+			}
+}
             }
 
 
@@ -977,7 +980,13 @@ public function mail_of_project_details($project_id,$u_id)
 	  //       $this->email->from('hm.younas22@gmail.com', 'Younas');
 	  //       $this->email->to('phpfiverrpk@gmail.com');
 	  //       $this->email->subject('mail testing');
-	  //       $data = 'mail testing';
+	        // $data = 'mail testing';
+			$data['name'] = 'Johen Smith';
+			$data['logo'] = 'http://localhost/corebuilder_data/assets/img/profile/1646740414Screenshot5.png';
+			$data['ajency_name'] = 'Core Builder';
+			$data['ajency_web'] = 'http://tecyoun.com';
+			$data['mail'] = 'abc';
+			$data['password'] = 'xyz';
 	  //       $msg = $this->load->view('company/mail/accuracy_report',$data,true);
 	  //       $this->email->message($msg);
 	  // //       //Send mail 
@@ -986,7 +995,7 @@ public function mail_of_project_details($project_id,$u_id)
 			// }else{
 			// 	echo "No";
 			// }
-		$data['contant_view'] = 'company/mail/autotyper_account';
+		$data['contant_view'] = 'company/mail/login_details';
 		$this->template->template($data);
 	}
 
