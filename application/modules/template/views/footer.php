@@ -9,7 +9,7 @@
                 <div class="row">
                         <div class="col-lg-12">
                                 <div class="footer-copy-right">
-                                        <p>Copyright © 2022 All rights reserved. Data Entry Software by CORE BUILDER. 43. <a href="https://thecorebuilder.com" target="_blank">www.thecorebuilder.com</a> <a href="https://www.thecorebuilder.com/t-c-privacy-policy" style="font-size: 8px;" target="_blank">Read T&C</a></p>
+                                        <p>Copyright © 2022 All rights reserved. Data Entry Software by CORE BUILDER. <a href="https://thecorebuilder.com" target="_blank">www.thecorebuilder.com</a> <a href="https://www.thecorebuilder.com/t-c-privacy-policy" style="font-size: 8px;" target="_blank">Read T&C</a></p>
                                 </div>
                         </div>
                 </div>

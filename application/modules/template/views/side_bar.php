@@ -150,14 +150,29 @@
   </a>
 </li>
 
-<li class="active">
+<!-- <li class="active">
 <a class="<?php if($this->uri->segment(2) == 'qc-report') echo "active_"; ?>" title="Send QC Report" data-toggle="modal" href="#tallModal_">
     <i class="fa fa-lock" aria-hidden="true"></i>
     <span class="mini-click-non">Send QC Report</span>
   </a>
+</li> -->
+
+<li>
+  <a class="<?php 
+  if($this->uri->segment(2) == 'qc-report' ||
+  $this->uri->segment(2) == 'premium-qc-report')echo "active_"; ?> has-arrow" title="qc-report" href="#" aria-expanded="false">
+    <i class="fa fa-creative-commons" aria-hidden="true"></i>
+    <span class="mini-click-non">Send QC Report</span>
+  </a>
+
+<ul class="submenu-angle" aria-expanded="false">
+<li><a title="Basic QC Report" href="<?=base_url('company/qc-report')?>"><span class="mini-sub-pro">Basic QC Report</span></a></li>
+<li><a title="Premium QC Report" title="Send QC Report" data-toggle="modal" href="#tallModal_">
+    <i class="fa fa-lock" aria-hidden="true"></i> <span class="mini-sub-pro">Premium QC Report</span></a></li>
+
+</ul>
+
 </li>
-
-
 
 
 

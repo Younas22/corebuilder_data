@@ -352,6 +352,16 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
         ->where('u_id',$user_id)
         ->get('u_projects')->num_rows();
     }
+
+        public function qc_report($company_id)
+    {
+        return $this->db->
+        select()
+        ->from('u_projects')
+        ->where('users.company_id',$company_id)
+        ->join('users', 'u_projects.u_id = users.id')
+        ->get()->num_rows();
+    }
 /*end projects and earning*/
 
     public function view($id)
@@ -371,6 +381,20 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
         ->order_by('users.id',"desc")
         ->limit($limit, $offset)
         ->where('users.id',$user_id)
+        ->join('u_projects', 'users.id = u_projects.u_id','right')
+        ->join('projects', 'u_projects.p_id = projects.id','right')
+        ->get()->result();
+    }
+
+    public function qc_report_projects($limit, $offset,$company_id)
+    {
+        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,projects_title,u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,invoice_type')
+        ->from('users')
+        ->order_by('users.id',"desc")
+        ->limit($limit, $offset)
+        ->where('u_projects.p_type','Target')
+        ->where('u_projects.end_project',1)
+        ->where('users.company_id',$company_id)
         ->join('u_projects', 'users.id = u_projects.u_id','right')
         ->join('projects', 'u_projects.p_id = projects.id','right')
         ->get()->result();

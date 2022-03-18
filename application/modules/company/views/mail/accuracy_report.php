@@ -103,8 +103,9 @@
           <td colspan="2">
             <table>
               <tr>
-                <td class="title">
-                  <img src="<?=base_url('assets/img/logo/mail_logo.png')?>" alt="Company logo" style="width: 100%; max-width: 300px" />
+                <td class="title" style="">
+                    <img src="<?=base_url('assets/img/logo/mail_logo.png')?>" alt="Company logo" style="width: 100%; max-width: 300px" />
+                    <h2 style="float: right; margin-top: 50px"><?=$this->session->userdata('logged_in')->company_name?></h2>
                 </td>
               </tr>
             </table>
@@ -154,4 +155,4 @@
       <br>
     </div>
   </body>
-</html>
+</html> 

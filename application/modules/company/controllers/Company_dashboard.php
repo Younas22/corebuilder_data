@@ -859,7 +859,42 @@ public function mail_of_project_details($project_id,$u_id)
 
 	public function qc_report()
 	{
-		echo "qc-report"; exit;
+			// echo accuracy_report(7); exit;
+		$company_id = $this->session->userdata('logged_in')->id;
+        $config = array();
+		$config["base_url"] = base_url() . "company/Company_dashboard/qc_report";
+		$config["total_rows"] = $this->company_dash->qc_report($company_id);
+        $config["per_page"] = 10;
+        $config["uri_segment"] = 4;
+        $config['full_tag_open'] = "<ul class='pagination'>";
+	    $config['full_tag_close'] = '</ul>';
+	    $config['num_tag_open'] = '<li>';
+	    $config['num_tag_close'] = '</li>';
+	    $config['cur_tag_open'] = '<li class="active"><a href="#">';
+	    $config['cur_tag_close'] = '</a></li>';
+	    $config['prev_tag_open'] = '<li>';
+	    $config['prev_tag_close'] = '</li>';
+	    $config['first_tag_open'] = '<li>';
+	    $config['first_tag_close'] = '</li>';
+	    $config['last_tag_open'] = '<li>';
+	    $config['last_tag_close'] = '</li>';
+	    $config['prev_link'] = 'Previous Page';
+	    $config['prev_tag_open'] = '<li>';
+	    $config['prev_tag_close'] = '</li>';
+	    $config['next_link'] = 'Next Page';
+	    $config['next_tag_open'] = '<li>';
+	    $config['next_tag_close'] = '</li>';
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $data["links"] = $this->pagination->create_links();
+        $data['alluser_projects'] = $this->company_dash->qc_report_projects($config["per_page"], 
+        	$page,$company_id);
+        // dd($data['alluser_projects']);
+		$data['url'] = current_url();
+		$data['url_title'] = 'User-Project';
+		$data['title'] = 'User Project';
+		$data['contant_view'] = 'company/user_projects';
+		$this->template->template($data);
 	}
 
 	public function sms_panel()
@@ -989,7 +1024,7 @@ public function mail_of_project_details($project_id,$u_id)
 			$data['password'] = 'xyz';
 	  //       $msg = $this->load->view('company/mail/accuracy_report',$data,true);
 	  //       $this->email->message($msg);
-	  // //       //Send mail 
+	  // //       //Send mail
 			// if($this->email->send()){
 			// 	echo "Yes";
 			// }else{
@@ -1000,7 +1035,7 @@ public function mail_of_project_details($project_id,$u_id)
 
 		// dd($get_withdraw_report);
 		
-		$data['contant_view'] = 'company/mail/withdrawal_invoice';
+		$data['contant_view'] = 'company/mail/accuracy_report';
 		$this->template->template($data);
 	}
 

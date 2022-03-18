@@ -302,6 +302,62 @@ if (!function_exists('project_check_dedline')){
     }
 
 
+
+
+/*get_project_dedline*/
+if (!function_exists('get_project_dedline')){
+     function get_project_dedline($project_id)
+    {
+        $CI =& get_instance();
+        $get_random_contant_img = $CI->db->
+         select()
+        ->from('u_projects')
+        ->where('u_projects.id',$project_id)
+        ->get()->row();
+
+        $get_complete_quantity = $CI->db->
+         select()
+        ->from('u_working')
+        ->where('u_working.p_id',$project_id)
+        ->get()->row();
+
+        $complete_quantity = $get_complete_quantity->complete_work;
+
+        $date = new DateTime("now", new DateTimeZone('Asia/Kolkata'));
+        // $date = new DateTime("now", new DateTimeZone('Asia/Kolkata'));
+        $today = $date->format('Y-m-d H:i:s');
+        $end_date = $get_random_contant_img->end_date;
+        $actual_quantity = $get_random_contant_img->quantity;
+        $project_type = $get_random_contant_img->p_type;
+        $project_end = $get_random_contant_img->end_project;
+
+        $today_time = strtotime($today);
+        $expire_time = strtotime($end_date);
+
+if ($project_end == 0) {
+    if ($project_type == 'Target') {
+        if ($expire_time > $today_time) {
+            if ($complete_quantity < $actual_quantity) {
+                return 1;
+            }else{
+                    return 0;
+                 }
+            }else{
+                return 0;
+            }
+                }else{
+                    if ($expire_time > $today_time) {
+                        return 1;
+                    }else{
+                    return 0;
+                    }
+                }
+                    }else{
+                    return 0;
+                    }
+    }
+}
+
 /*////////////total_user_company//////////*/
 if (!function_exists('total_user_company')){
       function total_user_company($company_id){
