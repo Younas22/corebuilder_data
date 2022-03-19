@@ -893,7 +893,7 @@ public function mail_of_project_details($project_id,$u_id)
 		$data['url'] = current_url();
 		$data['url_title'] = 'User-Project';
 		$data['title'] = 'User Project';
-		$data['contant_view'] = 'company/user_projects';
+		$data['contant_view'] = 'company/qc_projects';
 		$this->template->template($data);
 	}
 
