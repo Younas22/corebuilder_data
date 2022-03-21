@@ -166,9 +166,15 @@
   </a>
 
 <ul class="submenu-angle" aria-expanded="false">
-<li><a title="Basic QC Report" href="<?=base_url('company/qc-report')?>"><span class="mini-sub-pro">Basic QC Report</span></a></li>
-<li><a title="Premium QC Report" title="Send QC Report" data-toggle="modal" href="#tallModal_">
-    <i class="fa fa-lock" aria-hidden="true"></i> <span class="mini-sub-pro">Premium QC Report</span></a></li>
+<li>
+      <a title="Basic QC Report" href="<?=base_url('company/qc-report')?>">
+      <span class="mini-sub-pro">Basic QC Report</span></a>
+</li>
+<li>
+      <a title="Premium QC Report" title="Send QC Report" data-toggle="modal" href="#tallModal_o">
+      <i class="fa fa-lock" aria-hidden="true"></i>
+    <span class="mini-sub-pro">Premium QC Report</span></a>
+</li>
 
 </ul>
 
@@ -280,7 +286,7 @@
 
 <li>
   <?php if (!empty(user_active_projects())) { ?>
-<a class="has-arrow" href="all-students.html" aria-expanded="false"><i class="fa fa-cube icon-wrap"></i><span class="mini-click-non">Projects</span></a>
+<a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-cube icon-wrap"></i><span class="mini-click-non">Projects</span></a>
 
 <ul class="submenu-angle" aria-expanded="false">
 <li><a class="<?php if($this->uri->segment(2) == 'user-projects')echo "active_"; ?>" title="All Projects" href="<?=base_url('user/user-projects/').$this->session->userdata('logged_in')->id?>"><span class="mini-sub-pro">All Projects</span></a></li>
@@ -330,8 +336,7 @@
 
 
 
-  <!-- Modal -->
-
+<!-- Modal -->
 <div id="tallModal_" class="modal modal-wide fade">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -341,9 +346,28 @@
       </div>
       <div class="modal-body">
         <p>Contact us for getting these features unlcoked. Email Us at addon@corebuilder.in</p>
-    
-    <!-- <a href="https://thecorebuilder.com/about" target="_blank" class="btn btn-primary">Contact us</a> -->
+        <!-- <a href="https://thecorebuilder.com/about" target="_blank" class="btn btn-primary">Contact us</a> -->
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- Modal -->
+<div id="tallModal_o" class="modal modal-wide fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <!-- <h4 class="modal-title">Alert</h4> -->
+      </div>
+      <!-- <div class="modal-body"> -->
+          <img src="<?=base_url('assets/img/project_img/Advance Project Report.png')?>">
+      <!-- </div> -->
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
