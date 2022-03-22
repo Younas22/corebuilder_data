@@ -101,6 +101,12 @@ $route['company/set_results_per_page'] ='company/Company_dashboard/set_results_p
 $route['company/email-configuration'] ='company/Company_dashboard/email_configuration';
 $route['company/submit_email_configuration'] ='company/Company_dashboard/submit_email_configuration';
 
+//qc_view
+$route['company/qc-report-view/(:any)/(:num)'] ='company/Company_dashboard/qc_view/$1/$2';
+$route['company/qc-report-download/(:any)/(:num)'] ='company/Company_dashboard/qc_download/$1/$2';
+$route['company/qc-report-send/(:any)/(:num)'] ='company/Company_dashboard/qc_send/$1/$2';
+$route['company/qc-report-approve/(:num)'] ='company/Company_dashboard/qc_approve/$1';
+
 $route['company-page/(:any)/(:any)/(:num)/(:num)'] ='company/Company_dashboard/company_filling_project/$1/$2/$3/$4';
 
 // $route['how-to-compress-image'] ='company/Company_dashboard/how_to_compress_image';

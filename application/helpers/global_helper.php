@@ -35,6 +35,18 @@ if (!function_exists('check_already_exist')){
        }
 }
 
+/*////////////check_qc_status//////////*/
+if (!function_exists('check_qc_status')){
+      function check_qc_status($p_id){
+         $CI =& get_instance();
+         $profile_id = $CI->session->userdata('logged_in')->id;
+         $CI =& get_instance();
+         $CI->db->where('id', $p_id);
+         $query = $CI->db->get('u_projects')->row();
+         return $query->qc_report_status;
+       }
+}
+
 /*////////////profile//////////*/
 if (!function_exists('profile')){
       function profile(){
@@ -185,6 +197,17 @@ if (!function_exists('letest_projects_title')){
     }
 }
 // end letest_projects_title
+
+/*get_user_profile*/
+if (!function_exists('get_user_profile')){
+      function get_user_profile($user_id){
+         $CI =& get_instance();
+        return $CI->db->select('*')
+        ->where('id',$user_id)
+        ->get('users')->row();
+    }
+}
+// end get_user_project_QTY
 
 /*get_user_project_QTY*/
 if (!function_exists('get_user_project_QTY')){

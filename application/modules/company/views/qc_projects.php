@@ -40,13 +40,13 @@
     <div class="product-status-wrap larg_devices_mb">
         <h4>QC Report List</h4>
             
-<?php if (!empty($this->session->flashdata('project_msg'))) { ?>
+<?php if (!empty($this->session->flashdata('qc_status'))) { ?>
 <div class="alert alert-success alert-success-style2 alert-st-bg1">
 <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
 <span class="icon-sc-cl" aria-hidden="true">×</span>
 </button>
 <i class="fa fa-check edu-checked-pro admin-check-pro admin-check-pro-clr" aria-hidden="true"></i>
-<p><strong>Alert!</strong> <?= $this->session->flashdata('project_msg'); ?></p>
+<p><strong>Alert!</strong> <?= $this->session->flashdata('qc_status'); ?></p>
 </div>
 <?php }?>        <div class="asset-inner">
             <?php if (!empty($alluser_projects)) { ?>
@@ -80,15 +80,15 @@
                         
                         <td>
                             <button class="pd-setting-ed">
-                            <a href="<?=base_url('company/project-view/').$key->project_id?>" data-toggle="tooltip" title="View QC Report"><i class="fa fa-eye"></i></a>
+                            <a href="<?=base_url('company/qc-report-view/basic/').$key->project_id?>" data-toggle="tooltip" title="View QC Report"><i class="fa fa-eye"></i></a>
                             </button>
 
                             <button class="pd-setting-ed">
-                            <a href="<?=base_url('company/project-edit/').$key->project_id?>" data-toggle="tooltip" title="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                            <a href="<?=base_url('company/qc-report-download/basic/').$key->project_id?>" data-toggle="tooltip" title="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
                             </button>
 
                             <button class="pd-setting-ed">
-                            <a href="<?=base_url('company/project-edit/').$key->project_id?>" data-toggle="tooltip" title="Send QC Report"><i class="fa fa-send" aria-hidden="true"></i></a>
+                            <a href="<?=base_url('company/qc-report-send/basic/').$key->project_id?>" data-toggle="tooltip" title="Send QC Report"><i class="fa fa-send" aria-hidden="true"></i></a>
                             </button>
 
                             <button data-toggle="tooltip" title="Approve or Reject" class="pd-setting-ed">
@@ -103,21 +103,25 @@
 <center><div id="myModal<?php echo $key->project_id; ?>" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
+
+    <form action="<?=base_url('company/qc-report-approve/').$key->project_id?>" method="POST">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Approve or Reject</h4>
       </div>
       <div class="modal-body">
-        <select name="numbers_tape" class="form-control">
+        <select name="qc_status" class="form-control">
             <option disabled="" selected="">Approve or Reject</option>
-            <option value="Approve">Approve</option>
-            <option value="Reject">Reject</option>
+            <option value="approve">Approve</option>
+            <option value="reject">Reject</option>
         </select>
       </div>
       <div class="modal-footer">
-          <a  href="<?=base_url('company/user-delete/').$key->project_id?>" class="btn btn-danger"  >submit</a>
+        <button class="btn btn-danger" type="submit">submit</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
       </div>
+      </form>
+
     </div>
   </div>
 </div>
