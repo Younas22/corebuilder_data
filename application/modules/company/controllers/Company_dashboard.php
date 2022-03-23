@@ -913,12 +913,6 @@ public function mail_of_project_details($project_id,$u_id)
 //QC View
 		public function qc_view($type,$project_id)
 	{
-
-		$check_qc_status = check_qc_status($project_id);
-		if ($check_qc_status == 'no') {
-			$this->session->set_flashdata('qc_status', 'Please select a option (approve or reject)');
-			redirect('company/qc-report');
-		}
 			$company_id = $this->session->userdata('logged_in')->id;
 			$data['url'] = current_url();
 			$data['url_title'] = 'QC View';
@@ -933,15 +927,19 @@ public function mail_of_project_details($project_id,$u_id)
 //QC download
 		public function qc_download($type,$project_id)
 	{
-		echo "download"; exit();
-		$company_id = $this->session->userdata('logged_in')->id;
-		$data['url'] = current_url();
-		$data['url_title'] = 'SMS Panel';
-		$data['title'] = 'SMS Panel';
-		$data['contant_view'] = 'company/quick_support';
-		$data['action_type'] = base_url('company/update/profile');
-		$data['profile'] = $this->company_dash->profile($company_id);
-		$this->template->template($data);
+		$check_qc_status = check_qc_status($project_id);
+		if ($check_qc_status == 'no') {
+			$this->session->set_flashdata('qc_status', 'Please select a option (approve or reject)');
+			redirect('company/qc-report');
+		}
+			$company_id = $this->session->userdata('logged_in')->id;
+			$data['url'] = current_url();
+			$data['url_title'] = 'QC View';
+			$data['title'] = 'QC-Report Summary';
+			$data['contant_view'] = 'company/qc/qc_download';
+			$data['action_type'] = base_url('company/update/profile');
+			$data['project_view'] = $this->company_dash->project_view($project_id);
+			$this->template->template($data);
 	}
 
 //QC send
@@ -1099,7 +1097,7 @@ public function mail_of_project_details($project_id,$u_id)
 
 		// dd($get_withdraw_report);
 		
-		$data['contant_view'] = 'company/mail/withdrawal_invoice';
+		$data['contant_view'] = 'company/mail/accuracy_report';
 		$this->template->template($data);
 	}
 

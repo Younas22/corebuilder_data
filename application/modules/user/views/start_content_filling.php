@@ -58,6 +58,7 @@ input[type=text] { text-align:left } .form-control{ padding: 6px,4px !important;
         margin-bottom: 10px;
 }
 }
+
 </style>
 
 <div class="breadcome-area" style="display:none;">
@@ -833,10 +834,21 @@ You have to work for fixed time period set by the company you are working with.
                     </div><hr>
 
 
+<style>
+@import url(https://fonts.googleapis.com/css?family=Times+New+Roman);
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
 
+.font{
+    font-family: 'Indie Flower';
+}
+
+.new_font{
+    font-family: 'Times New Roman';
+}
+</style>
 <!-- difficulty 1 -->
 <?php if ($filling_projects->difficulty == 1) { ?>
-                    <div class="row"><style>.t_boxs{border: 1px solid red;}</style>
+                    <div class="row new_font"><style>.t_boxs{border: 1px solid red;}</style>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -860,7 +872,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row"><style>.t_boxs{border: 1px solid red;}</style>
+                    <div class="row new_font"><style>.t_boxs{border: 1px solid red;}</style>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -884,7 +896,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -908,7 +920,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -932,7 +944,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -959,7 +971,7 @@ You have to work for fixed time period set by the company you are working with.
 
 <!-- difficulty 2 -->
 <?php if ($filling_projects->difficulty == 2) { ?>
-                    <div class="row"><style>.t_boxs{border: 1px solid red;}</style>
+                    <div class="row new_font"><style>.t_boxs{border: 1px solid red;}</style>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -983,7 +995,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row"><style>.t_boxs{border: 1px solid red;}</style>
+                    <div class="row new_font"><style>.t_boxs{border: 1px solid red;}</style>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1007,7 +1019,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1031,7 +1043,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1055,7 +1067,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1079,7 +1091,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1107,7 +1119,7 @@ You have to work for fixed time period set by the company you are working with.
 
 <!-- difficulty 3 -->
 <?php if ($filling_projects->difficulty == 3) { ?>
-                    <div class="row"><style>.t_boxs{border: 1px solid red;}</style>
+                    <div class="row new_font"><style>.t_boxs{border: 1px solid red;}</style>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1131,7 +1143,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row"><style>.t_boxs{border: 1px solid red;}</style>
+                    <div class="row new_font"><style>.t_boxs{border: 1px solid red;}</style>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1155,7 +1167,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1179,7 +1191,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1203,7 +1215,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1227,7 +1239,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1251,7 +1263,7 @@ You have to work for fixed time period set by the company you are working with.
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -1276,7 +1288,7 @@ You have to work for fixed time period set by the company you are working with.
                     </div>
 
 
-                    <div class="row">
+                    <div class="row new_font">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row t_box">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
