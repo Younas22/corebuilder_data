@@ -388,15 +388,17 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
 
     public function qc_report_projects($limit, $offset,$company_id)
     {
-        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,projects_title,u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,invoice_type')
-        ->from('users')
+        return $this->db->select('u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,qc_report_status,custom_terms_conditions,img_one,img_two,img_three,img_four,
+            projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id,first_name,company_email,user_phone')
+        ->from('u_projects')
         ->order_by('users.id',"desc")
         ->limit($limit, $offset)
         ->where('u_projects.p_type','Target')
         ->where('u_projects.end_project',1)
         ->where('users.company_id',$company_id)
-        ->join('u_projects', 'users.id = u_projects.u_id','right')
-        ->join('projects', 'u_projects.p_id = projects.id','right')
+        ->join('users', 'u_projects.u_id = users.id')
+        ->join('u_working', 'u_projects.id = u_working.p_id')
+        ->join('projects', 'u_projects.p_id = projects.id')
         ->get()->result();
     }
 
@@ -404,7 +406,7 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
     {
         return $this->db->
         select(
-            'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,custom_terms_conditions,img_one,img_two,img_three,img_four,
+            'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,qc_report_status,custom_terms_conditions,img_one,img_two,img_three,img_four,
             projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id')
         ->from('u_projects')
         ->where('u_projects.id',$project_id)

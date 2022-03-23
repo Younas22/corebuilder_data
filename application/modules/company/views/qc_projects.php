@@ -1,5 +1,89 @@
 <?php  $user_type = $this->session->userdata('logged_in')->user_type; ?>
 <?php  $user_id = $this->session->userdata('logged_in')->id; ?>
+
+<style>
+
+.tile{
+    width: 100%;
+    background:#fff;
+    border-radius:5px;
+    box-shadow:0px 2px 3px -1px rgba(151, 171, 187, 0.7);
+    float:left;
+    transform-style: preserve-3d;
+    margin: 10px 5px;
+
+}
+
+.header{
+    border-bottom:1px solid #ebeff2;
+    padding:19px 0;
+    text-align:center;
+    color:#59687f;
+    font-size:600;
+    font-size:19px; 
+    position:relative;
+}
+
+.banner-img {
+    padding: 5px 5px 0;
+}
+
+.banner-img img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.dates{
+    border:1px solid #ebeff2;
+    border-radius:5px;
+    padding:20px 0px;
+    margin:10px 20px;
+    font-size:16px;
+    color:#5aadef;
+    font-weight:600;    
+    overflow:auto;
+}
+.dates div{
+    float:left;
+    width:50%;
+    text-align:center;
+    position:relative;
+}
+.dates strong,
+.stats strong{
+    display:block;
+    color:#adb8c2;
+    font-size:11px;
+    font-weight:700;
+}
+.dates span{
+    width:1px;
+    height:40px;
+    position:absolute;
+    right:0;
+    top:0;  
+    background:#ebeff2;
+}
+.stats{
+    border-top:1px solid #ebeff2;
+    background:#f7f8fa;
+    overflow:auto;
+    padding:15px 0;
+    font-size:16px;
+    color:#59687f;
+    font-weight:600;
+    border-radius: 0 0 5px 5px;
+}
+.stats div{
+    border-right:1px solid #ebeff2;
+    width: 33.33333%;
+    float:left;
+    text-align:center
+}
+
+.stats div:nth-of-type(3){border:none;}
+</style>
+
 <div class="breadcome-area" style="display:none;"> 
     <div class="container-fluid">
         <div class="row">
@@ -64,7 +148,9 @@
                     <th>Action</th>
                     <!-- <th>Action</th> -->
                 </tr>
-                <?php $count=1; foreach ($alluser_projects as $key):
+                <?php 
+                // dd($alluser_projects);
+                 $count=1; foreach ($alluser_projects as $key):
 
                 // echo get_project_dedline($key->project_id); exit();
 
@@ -79,8 +165,13 @@
                         <td><?=accuracy_report($key->project_id)?></td>
                         
                         <td>
-                            <button class="pd-setting-ed">
+                            <!-- <button class="pd-setting-ed">
                             <a href="<?=base_url('company/qc-report-view/basic/').$key->project_id?>" data-toggle="tooltip" title="View QC Report"><i class="fa fa-eye"></i></a>
+                            </button> -->
+
+                            <button data-toggle="tooltip" title="View QC Report" class="pd-setting-ed">
+                            <a href="" data-toggle="modal" data-target="#Qc_View_Modal<?php echo $key->project_id; ?>">
+                            <i class="fa fa-eye"></i>
                             </button>
 
                             <button class="pd-setting-ed">
@@ -123,6 +214,81 @@
       </form>
 
     </div>
+  </div>
+</div>
+</center>
+
+
+
+<center><div id="Qc_View_Modal<?php echo $key->project_id; ?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">QC-Report Summary</h4>
+
+        <div style="font-size:16px; color: red;">
+            <strong>Earning</strong> <?=$key->earning?>
+        </div>
+      </div>
+
+                        <div class="stats">
+                            <div style="font-size:12px">
+                                <strong>Name</strong> <?=$key->first_name?>
+                            </div>
+
+                            <div style="font-size:12px">
+                                <strong>Email</strong> <?=$key->company_email?>
+                            </div>
+
+                             <div style="font-size:12px">
+                                <strong>Phone</strong> <?=$key->user_phone?>
+                            </div>
+                        </div>
+
+
+                        <div class="dates">
+                            <div class="start">
+                                <strong>STARTS</strong> <?=date('m-d-Y',strtotime($key->start_date))?>
+                                <span></span>
+                            </div>
+
+
+                            <div class="ends">
+                                <strong>ENDS</strong> <?=date('m-d-Y',strtotime($key->end_date))?>
+                            </div>
+                        </div>
+
+                        <div class="stats">
+                            <div>
+                                <strong>Project</strong> <?=$key->projects_title?>
+                            </div>
+                            <div style="font-size:12px">
+                                <strong>Project Type</strong> <?=$key->p_type?>
+                            </div>
+
+                            
+                            <div>
+                                <strong>Overall Accuracy</strong> <?=overall_accuracy_report($key->project_id)?>
+                            </div>
+                        </div>
+
+                        <div class="stats">
+
+                            <div>
+                                <strong>Quantity</strong> <?=$key->quantity?>
+                            </div>
+
+                            <div>
+                                <strong>Right</strong> <?=$key->_right?>
+                            </div>
+
+                            <div>
+                                <strong>Wrong</strong> <?=$key->wrong?>
+                            </div>
+
+                        </div>
   </div>
 </div>
 </center>

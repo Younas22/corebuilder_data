@@ -939,7 +939,7 @@ public function mail_of_project_details($project_id,$u_id)
 			$data['contant_view'] = 'company/qc/qc_download';
 			$data['action_type'] = base_url('company/update/profile');
 			$data['project_view'] = $this->company_dash->project_view($project_id);
-			$this->template->template($data);
+			$this->load->view('company/qc/qc_download',$data);
 	}
 
 //QC send
