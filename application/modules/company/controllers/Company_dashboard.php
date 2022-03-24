@@ -945,15 +945,33 @@ public function mail_of_project_details($project_id,$u_id)
 //QC send
 		public function qc_send($type,$project_id)
 	{
-		echo "send"; exit();
-		$company_id = $this->session->userdata('logged_in')->id;
-		$data['url'] = current_url();
-		$data['url_title'] = 'SMS Panel';
-		$data['title'] = 'SMS Panel';
-		$data['contant_view'] = 'company/quick_support';
-		$data['action_type'] = base_url('company/update/profile');
-		$data['profile'] = $this->company_dash->profile($company_id);
-		$this->template->template($data);
+		$check_qc_status = check_qc_status($project_id);
+		if ($check_qc_status == 'no') {
+			$this->session->set_flashdata('qc_status', 'Please select a option (approve or reject)');
+			redirect('company/qc-report');
+		}
+
+		$qc_project = $this->company_dash->project_view($project_id);
+		$to = get_user_profile($qc_project->users_id)->company_email;
+		$from_mail = $this->session->userdata('logged_in')->company_email;
+		$data['project_view'] = $this->company_dash->project_view($project_id);
+
+		$company_name = $this->session->userdata('logged_in')->company_name;
+        $this->load->library('email');
+        $this->email->from($from_mail, $company_name);
+        $this->email->to($to);
+        $this->email->subject('QC Report');
+         $msg = $this->load->view('company/qc/qc_download',$data,true);
+        $this->email->message($msg);
+//      Send mail 
+		if($this->email->send()){
+// 		dd($submit_withdraw_request);
+		$this->session->set_flashdata('qc_status', 'QC Report sent!');
+		redirect('company/qc-report');
+		}else{
+		$this->session->set_flashdata('qc_status', 'Something Wrong!');
+		redirect('company/qc-report');
+		}
 	}
 
 //QC approve

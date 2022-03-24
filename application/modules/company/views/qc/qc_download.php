@@ -120,20 +120,35 @@
   </head>
   <body>
     <div class="invoice-box" id="important_thing" style="background-color: white; margin-bottom:40px; margin-top: 40px;">
+      
+      <div style="background-color: #0066ff; display: flex; padding: 10px;">
+      <div style="width: 50%; margin-left: 20px;"><h4 style="color: white"><?=$this->session->userdata('logged_in')->company_name?></h4></div>
+        <div style="width: 50%; text-align: right; margin-right: 20px;">
+          <img src="<?=base_url('assets/img/profile/').$this->session->userdata('logged_in')->company_logo;?>" alt="Company logo" style="max-width: 80px; max-height: 80px; margin-top: 5px;"/>
+        </div>
+      </div>
+
+      <div style="display: flex; margin-top: 30px; border-bottom: 1px solid;">
+      <div style="width: 50%; margin-left: 20px; "><p style="color: black"><?=$this->session->userdata('logged_in')->company_website?></p></div>
+      <div style="width: 50%; text-align: right; margin-right: 20px;"><p style="color: black"><?=$this->session->userdata('logged_in')->company_email?></p></div>
+      </div>
+      
+
       <table>
         <tr class="top">
           <td colspan="2">
             <table>
-              <tr>
-                <td class="title" style="">
-                    <img src="<?=base_url('assets/img/profile/').$this->session->userdata('logged_in')->company_logo;?>" alt="Company logo" style="width: 100%; max-width: 150px" />
-                    <h2 style="float: right; margin-top: 20px"><?=$this->session->userdata('logged_in')->company_name?></h2>
+<!--               <tr>
+                <td class="title" style="display: flex;">
+                  <h6 style=""><?=$this->session->userdata('logged_in')->company_name?></h6>
+                    <img src="<?=base_url('assets/img/profile/').$this->session->userdata('logged_in')->company_logo;?>" alt="Company logo" style="max-width: 100px; max-height: 100px;"/>
                 </td>
-              </tr>
+              </tr> -->
             </table>
           </td>
         </tr>
-      </table><hr>
+      </table>
+      <!-- <hr> -->
       <style>
       .table {
       font-family: arial, sans-serif;
@@ -154,10 +169,13 @@
         <p>Dear <b><?=get_user_profile($project_view->users_id)->first_name?></b><br>Greetings from <b><?=$this->session->userdata('logged_in')->company_name?>,</b> your job partner.<br><br>We are glad that you have decided to work with us. We hope our Relationship will bring change for the good.</p><br>
 
 <?php  if ($project_view->qc_report_status == 'approve') { ?>
-        <p>We are glad to inform you that your project workload for <b><?=$project_view->projects_title?></b> has been successfully completed. The results of your project are displayed below with this email. As you have successfully completed your project workload as per the standard protocol, your payout for the same will be credited into your given account within 7 business days.</p>
+
+      <p>We are glad to inform you that your project workload for <b><?=$project_view->projects_title?></b> has been successfully completed.</p><br>
+
+      <p>The results of your project are displayed below with this email. As you have successfully completed your project workload as per the standard protocol, your payout for the same will be credited into your given account within 7 business days.</p>
 
 <?php }else{?>
-        <p>We regret to inform you that your project workload for  <b><?=$project_view->projects_title?></b> has not been successfully completed. The results of your project are displayed below with this email. As you are not able to fulfill the requirements for the project and failed to maintain the required accuracy or completed within a given time-frame hence this project will be considered as rejected. However, in case you wish to choose a second project or are willing to work on any other projects kindly contact your respective representative.</p>
+        <p>We regret to inform you that your project workload for  <b><?=$project_view->projects_title?></b> has not been successfully completed.<br><br> The results of your project are displayed below with this email.<br><br> As you are not able to fulfill the requirements for the project and failed to maintain the required accuracy or failed to complete your project within a given time-frame hence this project will be considered as rejected.</p>
 <?php } ?>
 
 
@@ -189,8 +207,24 @@
       </tr>
   </table>
       <br>
-      <br><hr>
-        <div style="text-align: justify;"><p>Copyright © 2022 All rights reserved. Data Entry Software by CORE BUILDER. <a href="https://www.thecorebuilder.com/">www.thecorebuilder.com <a href="https://www.thecorebuilder.com/t-c-privacy-policy" style="font-size: 10px;">Read T&C</a></a></p></div>
+      <br>
+      <!-- <hr> -->
+        <!-- <div style="text-align: justify;"><p>Copyright © 2022 All rights reserved. Data Entry Software by CORE BUILDER. <a href="https://www.thecorebuilder.com/">www.thecorebuilder.com <a href="https://www.thecorebuilder.com/t-c-privacy-policy" style="font-size: 10px;">Read T&C</a></a></p></div> -->
+
+
+      <div style="background-color: #0066ff; display: flex; padding: 10px;">
+      <div style="width: 50%; margin-left: 20px;"><h4 style="color: white"><?=$this->session->userdata('logged_in')->company_name?></h4></div>
+
+      <div style="color: white; margin-top: 40px;">
+        <a href="https://www.thecorebuilder.com/" style="color: white">www.thecorebuilder.com</a>
+      </div>
+
+        <div style="width: 50%; text-align: right; margin-right: 20px;">
+          <img src="<?=base_url('assets/img/profile/').$this->session->userdata('logged_in')->company_logo;?>" alt="Company logo" style="max-width: 80px; max-height: 80px; margin-top: 5px;"/>
+        </div>
+      </div>
+
+
       <br>
       <br>
       <br>
