@@ -169,7 +169,7 @@
                             <a href="<?=base_url('company/qc-report-view/basic/').$key->project_id?>" data-toggle="tooltip" title="View QC Report"><i class="fa fa-eye"></i></a>
                             </button> -->
 
-                            <button data-toggle="tooltip" title="View QC Report" class="pd-setting-ed">
+                            <button data-toggle="tooltip" value="<?=$key->project_id?>" title="View QC Report" class="View_QCReport pd-setting-ed">
                             <a href="" data-toggle="modal" data-target="#Qc_View_Modal<?php echo $key->project_id; ?>">
                             <i class="fa fa-eye"></i>
                             </button>
@@ -186,10 +186,60 @@
                             <a href="" data-toggle="modal" data-target="#myModal<?php echo $key->project_id; ?>">
                             <i class="fa fa-check-circle" aria-hidden="true"></i>
                             </button>
+
+                            <button data-toggle="tooltip" title="Status" class="pd-setting-ed">
+                            <a href="" data-toggle="modal" data-target="#myModalstatus<?php echo $key->project_id; ?>">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            </button>
                         </td>
                     </tr>
 
 
+
+<center><div id="myModalstatus<?php echo $key->project_id; ?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+    <form action="<?=base_url('company/qc-report-approve/').$key->project_id?>" method="POST">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">QC Report Admin Status</h4>
+        <b style="color: red"><?php if ($key->qc_report_status == 'no') {
+            echo "No Action Made";
+        }else{echo $key->qc_report_status;} ?></b>
+      </div>
+      <div class="modal-body">
+
+<div style="display: flex;"><h4 style="text-align: left;">Report Updated: </h4>
+    <span style="text-align: right; color: white">-------------------------------------</span>
+    <span style="text-align: right;"><?php if ($key->report_status_date == null) { echo "No Action Made";}else{echo $key->report_status_date;} ?></span>
+</div>
+
+<div style="display: flex;"><h4 style="text-align: left;">Report Viewed: </h4>
+    <span style="text-align: right; color: white">---------------------------------------</span>
+    <span style="text-align: right;"><?php if ($key->report_view_date == null) { echo "No Action Made";}else{echo $key->report_view_date;} ?></span>
+</div>
+
+<div style="display: flex;"><h4 style="text-align: left;">Report Downloaded: </h4>
+    <span style="text-align: right; color: white">----------------------------</span>
+    <span style="text-align: right;"><?php if ($key->report_download_date == null) { echo "No Action Made";}else{echo $key->report_download_date;} ?></span>
+</div>
+
+<div style="display: flex;"><h4 style="text-align: left;">Report Send: </h4>
+    <span style="text-align: right; color: white">-------------------------------------------</span>
+    <span style="text-align: right;"><?php if ($key->report_send_date == null) { echo "No Action Made";}else{echo $key->report_send_date;} ?></span>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+      </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+</center>
 
 <center><div id="myModal<?php echo $key->project_id; ?>" class="modal fade" role="dialog">
   <div class="modal-dialog">

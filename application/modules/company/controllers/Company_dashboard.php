@@ -910,9 +910,21 @@ public function mail_of_project_details($project_id,$u_id)
 		$this->template->template($data);
 	}
 
-//QC View
+//View_QC Report date update
+		public function View_QCReport()
+	{
+			date_default_timezone_set("Asia/Kolkata");
+			$project_id = $this->input->post('id');
+			$data = array('report_view_date'=>date('d/m/Y | h:i:sa'));
+			$this->db->set($data)->where('id',$project_id)->update('u_projects');
+			echo true;
+	}
+
+	//QC View
 		public function qc_view($type,$project_id)
 	{
+			$data = array('report_view_date'=>date('d/m/Y | h:i:sa'));
+			$this->db->set($data)->where('id',$project_id)->update('u_projects');
 			$company_id = $this->session->userdata('logged_in')->id;
 			$data['url'] = current_url();
 			$data['url_title'] = 'QC View';
@@ -927,11 +939,15 @@ public function mail_of_project_details($project_id,$u_id)
 //QC download
 		public function qc_download($type,$project_id)
 	{
+		date_default_timezone_set("Asia/Kolkata");
 		$check_qc_status = check_qc_status($project_id);
 		if ($check_qc_status == 'no') {
 			$this->session->set_flashdata('qc_status', 'Please select a option (approve or reject)');
 			redirect('company/qc-report');
 		}
+			$data = array('report_download_date'=>date('d/m/Y | h:i:sa'));
+			$this->db->set($data)->where('id',$project_id)->update('u_projects');
+
 			$company_id = $this->session->userdata('logged_in')->id;
 			$data['url'] = current_url();
 			$data['url_title'] = 'QC View';
@@ -945,11 +961,14 @@ public function mail_of_project_details($project_id,$u_id)
 //QC send
 		public function qc_send($type,$project_id)
 	{
+		date_default_timezone_set("Asia/Kolkata");
 		$check_qc_status = check_qc_status($project_id);
 		if ($check_qc_status == 'no') {
 			$this->session->set_flashdata('qc_status', 'Please select a option (approve or reject)');
 			redirect('company/qc-report');
 		}
+
+
 
 		$qc_project = $this->company_dash->project_view($project_id);
 		$to = get_user_profile($qc_project->users_id)->company_email;
@@ -965,6 +984,9 @@ public function mail_of_project_details($project_id,$u_id)
         $this->email->message($msg);
 //      Send mail 
 		if($this->email->send()){
+		$data = array('report_send_date'=>date('d/m/Y | h:i:sa'));
+		$this->db->set($data)->where('id',$project_id)->update('u_projects');
+
 // 		dd($submit_withdraw_request);
 		$this->session->set_flashdata('qc_status', 'QC Report sent!');
 		redirect('company/qc-report');
@@ -977,10 +999,10 @@ public function mail_of_project_details($project_id,$u_id)
 //QC approve
 	public function qc_approve($project_id)
 	{
-
+		date_default_timezone_set("Asia/Kolkata");
 		$qc_status = $this->input->post('qc_status');
 		if (isset($qc_status)) {
-		$data = array('qc_report_status'=>$qc_status);
+		$data = array('qc_report_status'=>$qc_status,'report_status_date'=>date('d/m/Y | h:i:sa'));
 		$this->db->set($data)->where('id',$project_id)->update('u_projects');
 		$this->session->set_flashdata('qc_status', "QC Report ".$qc_status."");
 		}else{

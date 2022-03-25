@@ -100,6 +100,7 @@ $route['company/add_custom_project'] ='company/Company_dashboard/add_custom_proj
 $route['company/set_results_per_page'] ='company/Company_dashboard/set_results_per_page';
 $route['company/email-configuration'] ='company/Company_dashboard/email_configuration';
 $route['company/submit_email_configuration'] ='company/Company_dashboard/submit_email_configuration';
+$route['company/View_QCReport'] ='company/Company_dashboard/View_QCReport';
 
 //qc_view
 $route['company/qc-report-view/(:any)/(:num)'] ='company/Company_dashboard/qc_view/$1/$2';

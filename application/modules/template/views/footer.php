@@ -141,6 +141,26 @@ location.reload();
 });
 });
 
+$('.View_QCReport').click(function (e) {
+    var id = $(this).val();
+
+    $.ajax({
+url: "<?php echo base_url("company/View_QCReport");?>",
+type: "POST",
+data: {
+id: id
+},
+dataType:"json",
+cache: false,
+success: function(dataResult){
+// location.reload();
+}
+
+});
+
+
+})
+
 $('select[name="results"]').change(function() {
 let results = $(this).val();
 

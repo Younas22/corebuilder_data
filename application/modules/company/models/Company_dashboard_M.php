@@ -388,7 +388,7 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
 
     public function qc_report_projects($limit, $offset,$company_id)
     {
-        return $this->db->select('u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,qc_report_status,custom_terms_conditions,img_one,img_two,img_three,img_four,
+        return $this->db->select('u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,qc_report_status,report_status_date,report_view_date,report_download_date,report_send_date,custom_terms_conditions,img_one,img_two,img_three,img_four,
             projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id,first_name,company_email,user_phone')
         ->from('u_projects')
         ->order_by('users.id',"desc")
