@@ -137,14 +137,14 @@
             <table>
                 <tr>
                     <th>No</th>
+                    <th>Name</th>
+                    <th>Email</th>
                     <th>Project</th>
-                    <th>Type</th>
-                    <th>Start</th>
-                    <th>End</th>
+                    <!-- <th>End</th> -->
             <?php //if ($user_type == 'company') { echo "<th>Accuracy</th>";} ?>
             <?php //if ($user_type == 'company') { echo "<th>Font</th>";} ?>
                     <th>Overall Accuracy</th>
-                    <th>Accuracy</th>
+                    <!-- <th>Accuracy</th> -->
                     <th>Action</th>
                     <!-- <th>Action</th> -->
                 </tr>
@@ -157,12 +157,13 @@
                 ?>
                     <tr>
                         <td><?=$count?></td>
+                        <td><?=$key->first_name?></td>
+                        <td><?=$key->company_email?></td>
                         <td><?=$key->projects_title?></td>
-                        <td><?=$key->p_type?></td>
-                        <td><?=$key->start_date?></td>
-                        <td><?=$key->end_date?></td>
+                        <!-- <td><?=$key->start_date?></td> -->
+                        <!-- <td><?=$key->end_date?></td> -->
                         <td><?=overall_accuracy_report($key->project_id)?></td>
-                        <td><?=accuracy_report($key->project_id)?></td>
+                        <!-- <td><?=accuracy_report($key->project_id)?></td> -->
                         
                         <td>
                             <!-- <button class="pd-setting-ed">

@@ -121,16 +121,43 @@
   <body>
     <div class="invoice-box" id="important_thing" style="background-color: white; margin-bottom:40px; margin-top: 40px;">
       
-      <div style="background-color: #0066ff; display: flex; padding: 10px;">
+      <div style="background-color: #0066ff; display: flex; padding: 5px;">
+      <div style="width: 50%; margin-left: 20px;"><h2 style="color: white">Core Builder<br><b style="font-size: 15px;">Data Entry Software</b></h2></div>
+        <div style="width: 50%; text-align: right; margin-right: 20px;">
+          <img src="<?=base_url('assets/img/logo/Core builder Data Entry software for companies 1.png')?>" alt="Company logo" style="max-width: 50px; max-height: 50px; margin-top: 20px;"/>
+        </div>
+      </div>
+
+
+      <div style="background-color: white; display: flex; margin: 15px;">
+        <div style="width: 50%; margin-left: 20px;">
+          <img src="<?=base_url('assets/img/profile/').$this->session->userdata('logged_in')->company_logo;?>" alt="Company logo" style="max-width: 130px; max-height: 130px; margin-top: 5px;"/>
+        </div>
+
+        <div style="width: 50%; text-align: right; margin-right: 20px; margin-top: 20px;">
+          <h1 style="color: black; font-size: 3.5vw;"><b>
+            <?=$this->session->userdata('logged_in')->company_name?>
+              
+            </b></h1>
+        </div>
+      </div>
+<!-- 
+     <div style="background-color: #0066ff; display: flex; padding: 10px;">
       <div style="width: 50%; margin-left: 20px;"><h4 style="color: white"><?=$this->session->userdata('logged_in')->company_name?></h4></div>
         <div style="width: 50%; text-align: right; margin-right: 20px;">
           <img src="<?=base_url('assets/img/profile/').$this->session->userdata('logged_in')->company_logo;?>" alt="Company logo" style="max-width: 80px; max-height: 80px; margin-top: 5px;"/>
         </div>
-      </div>
+      </div>  -->
 
       <div style="display: flex; margin-top: 30px; border-bottom: 1px solid;">
-      <div style="width: 50%; margin-left: 20px; "><p style="color: black"><?=$this->session->userdata('logged_in')->company_website?></p></div>
-      <div style="width: 50%; text-align: right; margin-right: 20px;"><p style="color: black"><?=$this->session->userdata('logged_in')->company_email?></p></div>
+      <div style="width: 50%; margin-left: 20px; "><p style="color: black">
+        <!-- <?=$this->session->userdata('logged_in')->company_website?> -->
+        </p></div>
+      <div style="width: 50%; text-align: right; margin-right: 20px;"><p style="color: black">
+        <?=$this->session->userdata('logged_in')->company_website?><br>
+        <?=$this->session->userdata('logged_in')->company_email?>
+          
+        </p></div>
       </div>
       
 
@@ -208,10 +235,14 @@
   </table>
       <br>
       <br>
+
+      <?php  if ($project_view->qc_report_status == 'reject') { ?>
+      <p>No worries if you have not achieved the benchmark we are still here to offer you another chance, in case you wish to choose a second project or are willing to work on any other projects kindly contact your respective representative.</p>
+      <?php } ?>
       <!-- <hr> -->
         <!-- <div style="text-align: justify;"><p>Copyright © 2022 All rights reserved. Data Entry Software by CORE BUILDER. <a href="https://www.thecorebuilder.com/">www.thecorebuilder.com <a href="https://www.thecorebuilder.com/t-c-privacy-policy" style="font-size: 10px;">Read T&C</a></a></p></div> -->
 
-
+<!-- 
       <div style="background-color: #0066ff; display: flex; padding: 10px;">
       <div style="width: 50%; margin-left: 20px;"><h4 style="color: white"><?=$this->session->userdata('logged_in')->company_name?></h4></div>
 
@@ -221,6 +252,18 @@
 
         <div style="width: 50%; text-align: right; margin-right: 20px;">
           <img src="<?=base_url('assets/img/profile/').$this->session->userdata('logged_in')->company_logo;?>" alt="Company logo" style="max-width: 80px; max-height: 80px; margin-top: 5px;"/>
+        </div>
+      </div> -->
+
+      <div style="background-color: #0066ff; display: flex; padding: 5px;">
+      <div style="width: 50%; margin-left: 20px;"><h2 style="color: white">Core Builder<br><b style="font-size: 15px;">Data Entry Software</b></h2></div>
+
+      <div style="color: white; margin-top: 60px;">
+        <a href="https://www.thecorebuilder.com/" style="color: white; text-decoration: none;">www.thecorebuilder.com</a>
+      </div>
+
+        <div style="width: 50%; text-align: right; margin-right: 20px;">
+          <img src="<?=base_url('assets/img/logo/Core builder Data Entry software for companies 1.png')?>" alt="Company logo" style="max-width: 50px; max-height: 50px; margin-top: 20px;"/>
         </div>
       </div>
 
