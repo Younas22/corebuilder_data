@@ -1137,7 +1137,7 @@ public function mail_of_project_details($project_id,$u_id)
 
 		// dd($get_withdraw_report);
 		
-		$data['contant_view'] = 'company/mail/accuracy_report';
+		$data['contant_view'] = 'company/mail/login_details';
 		$this->template->template($data);
 	}
 

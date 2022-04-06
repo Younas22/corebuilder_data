@@ -187,11 +187,16 @@
           <p>Kindly Download the Software as per your Devices.</p>
           <b>Here are a few important points before you proceed:</b>
           <ol style="font-size: 15px;">
-            <li>Download Core Builder Software for Desktop (Windows). <a href="https://drive.google.com/file/d/17BnSxqyvBDLoUwwVMGFUw9okW4JxAZkM/view?usp=sharing">CLICK HERE</a>
-              or click this link: <a href="https://drive.google.com/file/d/17BnSxqyvBDLoUwwVMGFUw9okW4JxAZkM/view?usp=sharing">https://drive.google.com/file/d/17BnSxqyvBDLoUwwVMGFUw9okW4JxAZkM/view?usp=sharing</a> (if a link is not working copy-paste the link in new tab)</li>
+            <li>Download Core Builder Software for Desktop (Windows). <a href="https://drive.google.com/drive/folders/1O3v7NEhK7u86sfcm1PI0QYjqMbNtapgv?usp=sharing">CLICK HERE</a>
+              or click this link: <a href="https://drive.google.com/drive/folders/1O3v7NEhK7u86sfcm1PI0QYjqMbNtapgv?usp=sharing">https://drive.google.com/drive/folders/1O3v7NEhK7u86sfcm1PI0QYjqMbNtapgv?usp=sharing</a> (if a link is not working copy-paste the link in new tab)</li>
 
-           <li>Download Core Builder Software for Mobile (Android). <a href="https://drive.google.com/file/d/1SzD1x1Jzb0UG1ZtvO2LfUHqlw8eO9RkN/view?usp=sharing">CLICK HERE</a>
-              or click this link: <a href="https://drive.google.com/file/d/1SzD1x1Jzb0UG1ZtvO2LfUHqlw8eO9RkN/view?usp=sharing">https://drive.google.com/file/d/1SzD1x1Jzb0UG1ZtvO2LfUHqlw8eO9RkN/view?usp=sharing</a> (if a link is not working copy-paste the link in new tab)</li>
+           <li>Download Core Builder Software for Mobile (Android). <a href="https://drive.google.com/drive/folders/18p-NqgQ1F_n-rQMuFarUpVR9sQXjUsyq?usp=sharing">CLICK HERE</a>
+              or click this link: <a href="https://drive.google.com/drive/folders/18p-NqgQ1F_n-rQMuFarUpVR9sQXjUsyq?usp=sharing" style="font-size: 15px;"> https://drive.google.com/drive/folders/18p-NqgQ1F_n-rQMuFarUpVR9sQXjUsyq?usp=sharing</a> (if a link is not working copy-paste the link in new tab)</li>
+
+
+
+           <li>Follow the steps for installing the Core Builder App in your Laptop/desktop- Click on the link to watch installation video <a href="https://drive.google.com/drive/folders/1WodF63vwWM_FXV3SDTs4OUoe8rszr8M5?usp=sharing">CLICK HERE</a>
+              or click this link: <a href="https://drive.google.com/drive/folders/1WodF63vwWM_FXV3SDTs4OUoe8rszr8M5?usp=sharing" style="font-size: 15px;"> https://drive.google.com/drive/folders/1WodF63vwWM_FXV3SDTs4OUoe8rszr8M5?usp=sharing</a> (if a link is not working copy-paste the link in new tab)</li>
           </ol>
 
             <b>Here are your Login Credentials: -</b>
