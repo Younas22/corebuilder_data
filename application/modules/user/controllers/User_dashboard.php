@@ -139,7 +139,7 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 		$data['contant_view'] = 'company/project_view';
 		$data['project_view'] = $this->user_dash->project_view($p_id);
 		$data['profile'] = $this->user_dash->profile($user_id);
-		// dd($data['project_view']);
+		// dd($data['profile']);
 		$this->template->template($data);
 
 	}

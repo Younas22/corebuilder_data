@@ -338,6 +338,7 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
 			</div> -->
       <!-- img start -->
 
+
       <style>
       	.upload-image input{
     display: block !important;
@@ -365,80 +366,158 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
       <div class="container">
       	<div class="row">
       		<div class="col-lg-12" style="text-align:center;">
+
+<?php if ($profile[1]->custom_terms == 1) { ?>
+<form class="well form-horizontal">
+
+                      <fieldset>
+
+
+	<div class="form-group">
+	    <label class="col-md-4 control-label">Terms and Conditions</label>
+	    <div class="col-md-8 inputGroupContainer">
+	       <div class="input-group">
+	       	<span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span>
+		<input type="checkbox" name="terms_conditions_status" value="1" class="form-control">
+	</div><br><hr>
+	<input type="hidden" name="project_name" value="<?=strtolower(str_replace(' ', '-', $this->uri->segment(3)))?>">
+	<input type="hidden" name="project_id" value="<?=$project_view->project_id;?>">
+	       </div>
+	    </div>
+
+
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="fullName" name="fullName" placeholder="As Per Aadhar Card" class="form-control" required="true" value="" type="text"></div>
+                            </div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Date Of Birth</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="addressLine1" name="addressLine1" placeholder="DD/MM/YYYY" class="form-control" required="true" value="" type="text"></div>
+                            </div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Aadhar Number </label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="addressLine2" name="addressLine2" placeholder="0000-0000-0000" class="form-control" required="true" value="" type="text"></div>
+                            </div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Pan Card</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="city" name="city" placeholder="ABCDE1234F" class="form-control" required="true" value="" type="text"></div>
+                            </div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Bank Name</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="state" name="state" placeholder="Enter Bank Name" class="form-control" required="true" value="" type="text"></div>
+                            </div>
+                         </div>
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Account No</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Bank Account number" class="form-control" required="true" value="" type="text"></div>
+                            </div>
+                         </div>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">IFSC Code</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Enter IFSC Code" class="form-control" required="true" value="" type="text"></div>
+                            </div>
+                         </div><br>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Aadhar Card Front</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Enter IFSC Code" class="form-control" required="true" value="" type="file"></div>
+                            </div>
+                         </div>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Aadhar Card Back</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Enter IFSC Code" class="form-control" required="true" value="" type="file"></div>
+                            </div>
+                         </div>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Pan Card</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Enter IFSC Code" class="form-control" required="true" value="" type="file"></div>
+                            </div>
+                         </div>
+
+                         <div class="form-group">
+                            <label class="col-md-4 control-label">Other ID Front</label>
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Enter IFSC Code" class="form-control" required="true" value="" type="file"></div>
+                            </div>
+                         </div>
+
+                      </fieldset>
+                   </form>
+
+<?php }else{ ?>
+
+
 <form class="form-inline" action="<?= base_url('user/accep-terms')?>" method="POST" enctype="multipart/form-data">
 	<div class="form-group">
-	<label for="Terms and Conditions">Terms and Conditions</label>
-<input type="checkbox" name="terms_conditions_status" value="1" class="form-control">
-</div><br><hr>
-<input type="hidden" name="project_name" value="<?=strtolower(str_replace(' ', '-', $this->uri->segment(3)))?>">
-<input type="hidden" name="project_id" value="<?=$project_view->project_id;?>">
-
-<div class="row">
-	<div class="col-lg-6 col-md-6 col-sm-12 col-12">
-		<div class="form-group">
-	<label>Img1<span style="color:red; font-size: 20px;">*</span></label>
-  <div class="form-control">
-      <input type='file'  name="img_one" required size="50" />
-  </div>
-  <br>
-</div>
-	</div>
-
+		<label for="Terms and Conditions">Terms and Conditions</label>
+		<input type="checkbox" name="terms_conditions_status" value="1" class="form-control">
+	</div><br><hr>
+	<input type="hidden" name="project_name" value="<?=strtolower(str_replace(' ', '-', $this->uri->segment(3)))?>">
+	<input type="hidden" name="project_id" value="<?=$project_view->project_id;?>">
+	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-12 col-12">
-		<div class="form-group">
-	<label>Img2<span style="color:red; font-size: 20px;">*</span></label>
- <div class="form-control">
-     <input type='file'  name="img_two" required size="50" />
- </div>
-  <br>
-</div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-lg-6 col-md-6 col-sm-12 col-12">
-		<div class="form-group">
-	<label>Img3</label>
-  <div class="form-control">
-      <input type='file'  name="img_three" />
-  </div>
-  <br>
-</div>
-	</div>
-
+			<div class="form-group">
+				<label>Img1<span style="color:red; font-size: 20px;">*</span></label>
+				<div class="form-control">
+					<input type='file'  name="img_one" required size="50" />
+				</div>
+				<br>
+			</div>
+		</div>
 		<div class="col-lg-6 col-md-6 col-sm-12 col-12">
-		<div class="form-group">
-	<label>Img4</label>
- <div class="form-control">
-     <input type='file'  name="img_four" />
- </div>
-  <br>
-</div>
+			<div class="form-group">
+				<label>Img2<span style="color:red; font-size: 20px;">*</span></label>
+				<div class="form-control">
+					<input type='file'  name="img_two" required size="50" />
+				</div>
+				<br>
+			</div>
+		</div>
 	</div>
-</div>
-
-
-<!-- 
-
-<div class="form-group">
-	<label>Img2</label>
- <div class="form-control">
-     <input type='file'  name="back" />
- </div>
-  <br>
-</div>
-
-<div class="form-group">
-	<label>Img2</label>
- <div class="form-control">
-     <input type='file'  name="back" />
- </div>
-  <br>
-</div> -->
-
-<br>
-<button type="submit" class="btn btn-primary">Upload</button>
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-12 col-12">
+			<div class="form-group">
+				<label>Img3</label>
+				<div class="form-control">
+					<input type='file'  name="img_three" />
+				</div>
+				<br>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-12">
+			<div class="form-group">
+				<label>Img4</label>
+				<div class="form-control">
+					<input type='file'  name="img_four" />
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+	<br>
+	<button type="submit" class="btn btn-primary">Upload</button>
 </form>
+<?php } ?>
+
+
       		</div>
       	</div>
       </div>
