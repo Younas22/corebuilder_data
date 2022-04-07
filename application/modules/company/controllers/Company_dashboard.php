@@ -1119,7 +1119,7 @@ public function mail_of_project_details($project_id,$u_id)
 	  //       $this->email->subject('mail testing');
 	        // $data = 'mail testing';
 			$data['name'] = 'Johen Smith';
-			$data['logo'] = 'http://localhost/corebuilder_data/assets/img/profile/1646740414Screenshot5.png';
+			$data['logo'] = '1646740414Screenshot5.png';
 			$data['ajency_name'] = 'Core Builder';
 			$data['ajency_web'] = 'http://tecyoun.com';
 			$data['mail'] = 'abc';

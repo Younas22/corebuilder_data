@@ -111,22 +111,17 @@
         <tr>
         <td align="center" valign="top" width="600">
         <![endif]-->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+<!--         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
           <tr>
-            <td align="center" valign="top" style="background-color: white;"> <!-- style="padding: 36px 24px;" -->
-<!--               
-              <a href="<?= base_url() ?>" target="_blank" style="display: inline-block;">
-                <img src="<?=base_url('assets/img/logo/mail_logo.png')?>" alt="Logo" border="0" width="48" style="display: block; width: 600px; max-width: 600px; min-width: 600px;">
-              </a> -->
-
-
+            <td align="center" valign="top" style="background-color: white;">
+ 
   <div style="width: 100%; display: table; margin-top: 30px;">
-        <div style="display: table-row; height: 100px;">
+        <div style="display: table-row; height: 100px; ">
             <div style="width: 50%; display: table-cell;">
                 <a href="<?= base_url() ?>" target="_blank" style="display: inline-block;">
-                <!-- <img src="http://localhost/corebuilder_data/assets/img/profile/1647427201logo.png" alt="Logo" border="0" width="250" > -->
-                <img src="<?=base_url('assets/img/profile/').$logo;?>" alt="Logo" border="0" width="300" >
-              </a>
+                <img src="https://alphaexposofts.com/assets/img/profile/1649312573PerfectuniqueattractivestylishgeometrictechPDDPPDinitialbasedlettericonlogo.png" alt="Logo" border="0" width="250" > -->
+                <!-- <img src="<?=base_url('assets/img/profile/').$logo;?>" alt="Logo" border="0" width="300" > -->
+<!--               </a>
             </div>
             <div style="display: table-cell; font-size: 30px"> 
                 <h1><?=$ajency_name?></h1>
@@ -136,7 +131,23 @@
 
             </td>
           </tr>
+        </table> -->
+
+
+
+
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+          <tr>
+            <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
+              <img src="https://alphaexposofts.com/assets/img/profile/1649312573PerfectuniqueattractivestylishgeometrictechPDDPPDinitialbasedlettericonlogo.png" alt="Logo" border="0" width="250" >
+            </td>
+
+            <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
+              <h1 style="margin: 0; font-size: 50px; font-weight: 700; letter-spacing: -1px; line-height: 48px;"><?=$ajency_name?></h1>
+            </td>
+          </tr>
         </table>
+
         <!--[if (gte mso 9)|(IE)]>
         </td>
         </tr>
