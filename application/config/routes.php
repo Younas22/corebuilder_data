@@ -121,7 +121,7 @@ $route['company/(:any)/users/(:num)'] ='company/Company_dashboard/company_fillin
 // $route['company/(:any)/(:any)/(:num)'] ='company/Company_dashboard/company_filling_project/$1/$2/$3';
 // //end company_filling_project
 
-
+ 
 /*User routes*/
 $route['user/dashboard'] = 'user/User_dashboard';
 $route['user/profile'] = 'user/User_dashboard/profile';
@@ -129,6 +129,7 @@ $route['user/end_project'] = 'user/User_dashboard/end_project';
 $route['user/update/profile'] = 'user/User_dashboard/update_profile';
 $route['user/user-project-details/(:any)/(:num)'] = 'user/User_dashboard/user_project_details/$1/$2';
 $route['user/accep-terms'] = 'user/User_dashboard/accep_terms';
+$route['user/accep-terms_'] = 'user/User_dashboard/accep_terms_';
 $route['user/user-projects/(:num)']='user/User_dashboard/user_projects/$1';
 $route['user/get_skip/(:num)']='user/User_dashboard/get_skip/$1';
 $route['user/get_skip_/(:num)/(:num)']='user/User_dashboard/get_skip_/$1/$2';

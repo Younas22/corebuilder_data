@@ -668,7 +668,11 @@ $config["total_rows"] = $this->company_dash->user_projects($user_id);
 		$data['title'] = 'Project View';
 		$data['contant_view'] = 'company/project_view';
 		$data['profile'] = $this->company_dash->profile($company_id);
+		$data['custom_terms'] = $this->company_dash->profile($company_id)->custom_terms;
+		// dd($data['custom_terms']);
+
 		$data['project_view'] = $this->company_dash->project_view($project_id);
+		// dd($this->company_dash->project_view($project_id));
 		
 		$this->template->template($data);
 	}

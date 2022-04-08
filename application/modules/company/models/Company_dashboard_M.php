@@ -404,9 +404,19 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
 
     public function project_view($project_id)
     {
-        return $this->db->
-        select(
-            'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,qc_report_status,custom_terms_conditions,img_one,img_two,img_three,img_four,
+        // return $this->db->
+        // select(
+        //     'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,qc_report_status,custom_terms_conditions,img_one,img_two,img_three,img_four,
+        //     projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id')
+        // ->from('u_projects')
+        // ->where('u_projects.id',$project_id)
+        // ->join('users', 'u_projects.u_id = users.id')
+        // ->join('u_working', 'u_projects.id = u_working.p_id')
+        // ->join('projects', 'u_projects.p_id = projects.id')
+        // ->get()->row();
+
+        return $this->db->select(
+            'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,custom_terms_conditions,img_one,img_two,img_three,img_four,fname,date_of_birth,aadhar_number,pan_card,bank_name,account_no,IFSC_code,
             projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id')
         ->from('u_projects')
         ->where('u_projects.id',$project_id)

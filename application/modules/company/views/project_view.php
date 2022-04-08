@@ -367,100 +367,90 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
       	<div class="row">
       		<div class="col-lg-12" style="text-align:center;">
 
-<?php if ($profile[1]->custom_terms == 1) { ?>
-<form class="well form-horizontal">
-
-                      <fieldset>
-
-
-	<div class="form-group">
-	    <label class="col-md-4 control-label">Terms and Conditions</label>
-	    <div class="col-md-8 inputGroupContainer">
-	       <div class="input-group">
-	       	<span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span>
-		<input type="checkbox" name="terms_conditions_status" value="1" class="form-control">
-	</div><br><hr>
-	<input type="hidden" name="project_name" value="<?=strtolower(str_replace(' ', '-', $this->uri->segment(3)))?>">
-	<input type="hidden" name="project_id" value="<?=$project_view->project_id;?>">
-	       </div>
-	    </div>
-
-
-
-                         <div class="form-group">
-                            <label class="col-md-4 control-label">Name</label>
-                            <div class="col-md-8 inputGroupContainer">
-                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="fullName" name="fullName" placeholder="As Per Aadhar Card" class="form-control" required="true" value="" type="text"></div>
-                            </div>
-                         </div>
-                         <div class="form-group">
-                            <label class="col-md-4 control-label">Date Of Birth</label>
-                            <div class="col-md-8 inputGroupContainer">
-                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="addressLine1" name="addressLine1" placeholder="DD/MM/YYYY" class="form-control" required="true" value="" type="text"></div>
-                            </div>
-                         </div>
-                         <div class="form-group">
-                            <label class="col-md-4 control-label">Aadhar Number </label>
-                            <div class="col-md-8 inputGroupContainer">
-                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="addressLine2" name="addressLine2" placeholder="0000-0000-0000" class="form-control" required="true" value="" type="text"></div>
-                            </div>
-                         </div>
-                         <div class="form-group">
-                            <label class="col-md-4 control-label">Pan Card</label>
-                            <div class="col-md-8 inputGroupContainer">
-                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="city" name="city" placeholder="ABCDE1234F" class="form-control" required="true" value="" type="text"></div>
-                            </div>
-                         </div>
-                         <div class="form-group">
-                            <label class="col-md-4 control-label">Bank Name</label>
-                            <div class="col-md-8 inputGroupContainer">
-                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="state" name="state" placeholder="Enter Bank Name" class="form-control" required="true" value="" type="text"></div>
-                            </div>
-                         </div>
-                         <div class="form-group">
-                            <label class="col-md-4 control-label">Account No</label>
-                            <div class="col-md-8 inputGroupContainer">
-                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Bank Account number" class="form-control" required="true" value="" type="text"></div>
-                            </div>
-                         </div>
-
-                         <div class="form-group">
-                            <label class="col-md-4 control-label">IFSC Code</label>
-                            <div class="col-md-8 inputGroupContainer">
-                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Enter IFSC Code" class="form-control" required="true" value="" type="text"></div>
-                            </div>
-                         </div><br>
-
-                         <div class="form-group">
-                            <label class="col-md-4 control-label">Aadhar Card Front</label>
-                            <div class="col-md-8 inputGroupContainer">
-                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Enter IFSC Code" class="form-control" required="true" value="" type="file"></div>
-                            </div>
-                         </div>
-
-                         <div class="form-group">
-                            <label class="col-md-4 control-label">Aadhar Card Back</label>
-                            <div class="col-md-8 inputGroupContainer">
-                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Enter IFSC Code" class="form-control" required="true" value="" type="file"></div>
-                            </div>
-                         </div>
-
-                         <div class="form-group">
-                            <label class="col-md-4 control-label">Pan Card</label>
-                            <div class="col-md-8 inputGroupContainer">
-                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Enter IFSC Code" class="form-control" required="true" value="" type="file"></div>
-                            </div>
-                         </div>
-
-                         <div class="form-group">
-                            <label class="col-md-4 control-label">Other ID Front</label>
-                            <div class="col-md-8 inputGroupContainer">
-                               <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="postcode" name="postcode" placeholder="Enter IFSC Code" class="form-control" required="true" value="" type="file"></div>
-                            </div>
-                         </div>
-
-                      </fieldset>
-                   </form>
+<?php if ($custom_terms == 1) { ?>
+<form class="well form-horizontal" action="<?= base_url('user/accep-terms_')?>" method="POST" enctype="multipart/form-data">
+	<fieldset>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Terms and Conditions</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span>
+					<input type="checkbox" name="terms_conditions_status" value="1" class="form-control">
+				</div><br><hr>
+				<input type="hidden" name="project_name" value="<?=strtolower(str_replace(' ', '-', $this->uri->segment(3)))?>">
+				<input type="hidden" name="project_id" value="<?=$project_view->project_id;?>">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Name</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="fullName" name="fname" placeholder="As Per Aadhar Card" class="form-control" required="true" value="" type="text"></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Date Of Birth</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="date_of_birth" name="date_of_birth" placeholder="DD/MM/YYYY" class="form-control" required="true" value="" type="date"></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Aadhar Number </label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="aadhar_number" name="aadhar_number" placeholder="0000-0000-0000" class="form-control" required="true" value="" type="number"></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Pan Card</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="pan_card" name="pan_card" placeholder="ABCDE1234F" class="form-control" required="true" value="" type="text"></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Bank Name</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="bank_name" name="bank_name" placeholder="Enter Bank Name" class="form-control" required="true" value="" type="text"></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Account No</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="account_no" name="account_no" placeholder="Bank Account number" class="form-control" required="true" value="" type="number"></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">IFSC Code</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="IFSC_code" name="IFSC_code" placeholder="Enter IFSC Code" class="form-control" required="true" value="" type="text"></div>
+			</div>
+		</div><br>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Aadhar Card Front</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="img_one" name="img_one" placeholder="Enter IFSC Code" class="form-control" required="true" type="file"></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Aadhar Card Back</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="img_two" name="img_two" placeholder="Enter IFSC Code" class="form-control" required="true" type="file"></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Pan Card</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="img_three" name="img_three" placeholder="Enter IFSC Code" class="form-control" required="true" type="file"></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">Other ID Front</label>
+			<div class="col-md-8 inputGroupContainer">
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="img_four" name="img_four" placeholder="Enter IFSC Code" class="form-control" required="true" type="file"></div>
+			</div>
+		</div>
+	</fieldset>
+		<br>
+	<button type="submit" class="btn btn-primary">Upload</button>
+</form>
 
 <?php }else{ ?>
 
@@ -534,7 +524,101 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
 
 
 
+<?php if ($custom_terms == 1) { ?>
+<!-- Accepted_terms -->
+<div id="Accepted_terms" class="modal modal-wide fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Terms and Conditions</h4>
+      </div>
+      <div class="modal-body">
+		<h3>Terms and Conditions</h3>
+    <?=$project_view->custom_terms_conditions?>
+      </div>
+      <br><br><br><hr>
 
+
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+</style>
+
+<div class="container" style="text-align:center !important;">
+	<div class="row"><h3>User Details</h3>
+		<div class="col-lg-12" style="text-align:left !important;">
+			<span>Name: </span><b><?=$project_view->fname?></b><br>
+			<span>Date Of Birth: </span><b><?=$project_view->date_of_birth?></b><br>
+			<span>Aadhar Number: </span><b><?=$project_view->aadhar_number?></b><br>
+			<span>Pan Card: </span><b><?=$project_view->pan_card?></b><br>
+			<span>Bank Name: </span><b><?=$project_view->bank_name?></b><br>
+			<span>Account No: </span><b><?=$project_view->account_no?></b><br>
+			<span>IFSC Code: </span><b><?=$project_view->IFSC_code?></b><br>
+		</div>
+	</div><hr>
+
+		<div class="row">
+		<div class="col-lg-6">
+			<div class="card">
+				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_one?>" alt="Avatar" style="width:100%">
+				<div class=""><hr>
+					<h4><b>Aadhar Card Front</b></h4>
+					<a href="<?=base_url('assets/img/term_conditions/').$project_view->img_one?>" download>Download</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="card">
+				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_two?>" alt="Avatar" style="width:100%">
+				<div class=""><hr>
+					<h4><b>Aadhar Card Back</b></h4>
+					<a href="<?=base_url('assets/img/term_conditions/').$project_view->img_two?>" download>Download</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<hr>
+		<div class="row">
+		<div class="col-lg-6">
+			<div class="card">
+				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_three?>" alt="Avatar" style="width:100%">
+				<div class=""><hr>
+					<h4><b>Pan Card</b></h4>
+					<a href="<?=base_url('assets/img/term_conditions/').$project_view->img_three?>" download>Download</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="card">
+				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_four?>" alt="Avatar" style="width:100%">
+				<div class=""><hr>
+					<h4><b>Other ID Front</b></h4>
+					<a href="<?=base_url('assets/img/term_conditions/').$project_view->img_four?>" download>Download</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+      <!-- img end -->
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<?php }else{?>
 <!-- Accepted_terms -->
 <div id="Accepted_terms" class="modal modal-wide fade">
   <div class="modal-dialog">
@@ -616,6 +700,7 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<?php } ?>
 
 
 <!-- jQuery first, then Popper.js and Bootstrap JS. -->

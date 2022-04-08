@@ -139,9 +139,8 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 		$data['contant_view'] = 'company/project_view';
 		$data['project_view'] = $this->user_dash->project_view($p_id);
 		$data['profile'] = $this->user_dash->profile($user_id);
-		// dd($data['profile']);
+		$data['custom_terms'] = $this->user_dash->profile($user_id)[1]->custom_terms;
 		$this->template->template($data);
-
 	}
 
 
@@ -157,9 +156,112 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 	}
 
 
+	public function accep_terms_()
+	{
+		// dd($this->input->post());
+		$this->session->unset_userdata('accep_terms');
+    	$project_title = $this->input->post('project_name');
+    	$pid = $this->input->post('project_id');
+// 
+		if ($this->input->post('terms_conditions_status')) {
+        $config['upload_path'] = './assets/img/term_conditions';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = 51200;
+        $config['encrypt_name'] = true;
+        $this->load->library('upload', $config);
+        $data['fname'] = $this->input->post('fname');
+        $data['date_of_birth'] = $this->input->post('date_of_birth');
+        $data['aadhar_number'] = $this->input->post('aadhar_number');
+        $data['pan_card'] = $this->input->post('pan_card');
+        $data['bank_name'] = $this->input->post('bank_name');
+        $data['account_no'] = $this->input->post('account_no');
+        $data['IFSC_code'] = $this->input->post('IFSC_code');
+        $data['terms_conditions_status'] = 1;
+
+	// if($_FILES['img_one']['size']>51200)
+	// {
+	// $this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
+	// $url = 'user/user-project-details/'.$project_title.'/'.$pid;
+	// redirect($url);
+	// }
+
+	// if($_FILES['img_two']['size']>51200)
+	// {
+	// $this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
+	// $url = 'user/user-project-details/'.$project_title.'/'.$pid;
+	// redirect($url);
+	// }
+
+	// if($_FILES['img_three']['size']>51200)
+	// {
+	// $this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
+	// $url = 'user/user-project-details/'.$project_title.'/'.$pid;
+	// redirect($url);
+	// }
+
+	// if($_FILES['img_four']['size']>51200)
+	// {
+	// $this->session->set_flashdata('accep_terms_error', 'Max 50kb file is allowed for image.');
+	// $url = 'user/user-project-details/'.$project_title.'/'.$pid;
+	// redirect($url);
+	// }
+
+	if (!$this->upload->do_upload('img_one')) {
+		$this->session->set_flashdata('accep_terms_error', 'Please add img1');
+		$url = 'user/user-project-details/'.$project_title.'/'.$pid;
+		redirect($url);
+	} else {
+		$fileData = $this->upload->data();
+		$data['img_one'] = $fileData['file_name'];
+		$this->resize($fileData['file_name']);
+	}
+
+	if (!$this->upload->do_upload('img_two')) {
+		$this->session->set_flashdata('accep_terms_error', 'Please add img2');
+		$url = 'user/user-project-details/'.$project_title.'/'.$pid;
+		redirect($url);
+	} else {
+		$fileData = $this->upload->data();
+		$data['img_two'] = $fileData['file_name'];
+		$this->resize($fileData['file_name']);
+	}
+
+	if ($this->upload->do_upload('img_three')) {
+		$fileData = $this->upload->data();
+		$data['img_three'] = $fileData['file_name'];
+		$this->resize($fileData['file_name']);
+	}
+
+	if ($this->upload->do_upload('img_four')) {
+		$fileData = $this->upload->data();
+		$data['img_four'] = $fileData['file_name'];
+		$this->resize($fileData['file_name']);
+	}
+
+
+	// print_r($data); die;
+
+        $this->db->where('id',$pid);
+        $accep_terms = $this->db->update('u_projects',$data);
+        // $accep_terms = '1';
+	if ($accep_terms){
+		$this->session->unset_userdata('accep_terms_error');
+	$this->session->set_flashdata('accep_terms', 'Accepted Terms and Conditions, Now you can start Work');
+	$url = 'user/user-project-details/'.$project_title.'/'.$pid;
+	redirect($url);
+	}
+
+	}else{
+		$this->session->set_flashdata('accep_terms_error', 'Please accept Terms and Conditions');
+		$url = 'user/user-project-details/'.$project_title.'/'.$pid;
+		redirect($url);
+		}
+
+	}
+
+
 	public function accep_terms()
 	{
-
 		$this->session->unset_userdata('accep_terms');
     	$project_title = $this->input->post('project_name');
     	$pid = $this->input->post('project_id');
