@@ -58,6 +58,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Password</th>
+                    <th>Users Document</th>
                     <!-- <th>Project</th> -->
                     <!-- <th>Type</th> -->
                     <!-- <th>Start</th> -->
@@ -79,6 +80,22 @@
                     <!-- <td><?=$key->p_type?></td> -->
                     <!-- <td><?=$key->start_date?></td> -->
                     <!-- <td><?=$key->end_date?></td> -->
+
+<?php if ($key->custom_terms == 1) { ?>
+
+<td><span class="badge badge-primary" style="background:blue; cursor: pointer;">
+    <a data-toggle="modal" data-target="#myModal<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
+    data-placement="top" title="Users Document" style="color: white;">ON</a></span>
+</td>
+
+<?php }else{ ?>
+
+<td><span class="badge badge-secondary" style="background:gray; cursor: pointer;"><a data-toggle="modal" data-target="#myModal<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
+    data-placement="top" title="Users Document" style="color: white;">OFF</a></span>
+</td>
+
+
+<?php } ?>
 
 <?php if ($key->user_status == 1) { ?>
 <td><span class="badge badge-primary" style="background:blue;">
@@ -110,6 +127,29 @@ data-placement="top" title="Click and enable Account" style="color: white;">OFF<
 </td>
 
 </tr>
+
+
+
+<center><div id="myModal<?php echo $key->users_id; ?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Users Document</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to active Users Document? </p>
+      </div>
+      <div class="modal-footer">
+      <a  href="<?=base_url('admin/agency/active-document/').$key->users_id?>" class="btn btn-default"  >Yes</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+      </div>
+    </div>
+
+  </div>
+</div></center>
 <?php $count++; endforeach; ?>
 </table>
     <?php }else{ echo "Data Not Found!"; } ?>

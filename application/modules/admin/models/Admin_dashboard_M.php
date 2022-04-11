@@ -149,7 +149,7 @@ class Admin_dashboard_M extends CI_Model {
     /************all-agencies data*********/
     public function all_agencies($limit, $offset)
     {
-        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status')
+        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,custom_terms')
         ->from('users')
         ->order_by('users.id',"desc")
         ->limit($limit, $offset)

@@ -760,5 +760,18 @@ public function help()
         dd($empInfo); exit;
 
 }
+
+/*////////////active document////////////*/
+	public function active_document($id)
+{
+	$custom_terms = $this->db->where('id',$id)->get('users')->row();
+	if ($custom_terms->custom_terms == 1) {
+		$custom_terms = 0;
+	}else{
+		$custom_terms = 1;
+	}
+	$this->db->where('id',$id)->update('users',array('custom_terms'=>$custom_terms));
+		redirect($_SERVER['HTTP_REFERER']);
+}
 /*////////////end export data////////////*/
 }

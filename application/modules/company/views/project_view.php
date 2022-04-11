@@ -17,6 +17,20 @@
 // dd($project_view);
 
 ?> 
+<style>
+input[type="date"]::-webkit-calendar-picker-indicator {
+background: transparent;
+bottom: 0;
+color: transparent;
+cursor: pointer;
+height: auto;
+left: 0;
+position: absolute;
+right: 0;
+top: 0;
+width: auto;
+}
+</style>
 
 <div style="margin-top:20px;"></div>
 <?php if ($project_view->terms_conditions_status == 1 && !empty($this->session->flashdata('accep_terms'))) { ?>
@@ -277,23 +291,37 @@ if(!empty($this->session->flashdata('accep_terms_error'))){?>
 						<?php if ($user_type == 'company') { ?>
 							<a href="<?= base_url('company/user-projects/').$project_view->users_id; ?>" class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px; margin-right: 20px; margin-bottom: 70px;">Back to Projects</a>
 
-						<?php 
-							if ($project_view->terms_conditions_status == 1) { ?>
+						<?php if ($project_view->terms_conditions_status == 2) { ?>
+							<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px;" data-toggle="modal" href="#Accepted_terms" class="btn btn-primary">Document Uploaded</a>
+						<?php }if ($project_view->terms_conditions_status == 3) { ?>
+							<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px;" data-toggle="modal" href="#Accepted_terms" class="btn btn-primary">Rejacted terms</a>
+						<?php }if ($project_view->terms_conditions_status == 1) { ?>
 							<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px;" data-toggle="modal" href="#Accepted_terms" class="btn btn-primary">Accepted terms</a>			
-							<?php }else{ ?>
+							<?php }if ($project_view->terms_conditions_status == 0) { ?>
 							<p><br><b style="color:red;"> [User Still not accepted Terms and Conditions]</b></p>
 							<?php } }else{ ?>
 
-								<?php if ($project_view->terms_conditions_status == 1) { 
-if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'novel-typing' || $this->uri->segment(3) == 'dialogue-typing') {
-									?>
-							<a href="<?= base_url('user/start-project/').strtolower(str_replace(' ', '-', $this->uri->segment(3))).'/'.$project_view->project_id.'/'.$project_view->users_id; ?>" class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;">Start Projects</a>				
-							<?php }else{?>
-							<a href="<?= base_url('user/start-filling-project/').strtolower(str_replace(' ', '-', $this->uri->segment(3))).'/'.$project_view->project_id.'/'.$project_view->users_id; ?>" class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;">Start Projects</a>
-							<?php } }else{ if ($this->session->userdata('logged_in')->user_type != 'admin') {?>
-							<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;" data-toggle="modal" href="#tallModal" id="accep_terms">Accep terms</a>
+<?php 
+if ($project_view->terms_conditions_status == 1) { 
+if ($this->uri->segment(3) == 'content-writing' || 
+$this->uri->segment(3) == 'novel-typing' || 
+$this->uri->segment(3) == 'dialogue-typing') { 
+?>
 
-							<?php } } } ?>
+<a href="<?= base_url('user/start-project/').strtolower(str_replace(' ', '-', $this->uri->segment(3))).'/'.$project_view->project_id.'/'.$project_view->users_id; ?>" class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;">Start Projects</a>				
+<?php }else{?>
+<a href="<?= base_url('user/start-filling-project/').strtolower(str_replace(' ', '-', $this->uri->segment(3))).'/'.$project_view->project_id.'/'.$project_view->users_id; ?>" class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;">Start Projects</a>
+<?php } } if ($project_view->terms_conditions_status == 2) { if ($this->session->userdata('logged_in')->user_type != 'admin') {?>
+<a  class="btn btn-warning waves-effect mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;" data-toggle="modal">pending</a>
+
+<?php } } if ($project_view->terms_conditions_status == 3) { if ($this->session->userdata('logged_in')->user_type != 'admin') {?>
+<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;" data-toggle="modal" href="#tallModal" id="accep_terms">Your documents rejacted!</a>
+
+<?php } }if ($project_view->terms_conditions_status == 0){ if ($this->session->userdata('logged_in')->user_type != 'admin') {?>
+<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;" data-toggle="modal" href="#tallModal" id="accep_terms">Accep terms</a>
+
+
+<?php } } } ?>
 
 
 						</div>
@@ -375,7 +403,7 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
 			<div class="col-md-8 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span>
-					<input type="checkbox" name="terms_conditions_status" value="1" class="form-control">
+					<input type="checkbox" name="terms_conditions_status" value="2" class="form-control">
 				</div><br><hr>
 				<input type="hidden" name="project_name" value="<?=strtolower(str_replace(' ', '-', $this->uri->segment(3)))?>">
 				<input type="hidden" name="project_id" value="<?=$project_view->project_id;?>">
@@ -444,7 +472,7 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
 		<div class="form-group">
 			<label class="col-md-4 control-label">Other ID Front</label>
 			<div class="col-md-8 inputGroupContainer">
-				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="img_four" name="img_four" placeholder="Enter IFSC Code" class="form-control" required="true" type="file"></div>
+				<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></span><input id="img_four" name="img_four" placeholder="Enter IFSC Code" class="form-control" type="file"></div>
 			</div>
 		</div>
 	</fieldset>
@@ -531,6 +559,22 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+<?php if ($project_view->terms_conditions_status == 2) { ?>
+	<button data-toggle="tooltip" title="Document Approv" class="pd-setting-ed" style="float: right; color: white; background: green; padding: 10px; margin: 10px;">
+		<a href="<?=base_url('company/document-approval/').$this->uri->segment(3).'/'.$project_view->terms_conditions_status?>" >Document Approval</a>
+	</button>
+<?php }if ($project_view->terms_conditions_status == 1) { ?>
+	<span style="float: right; background: green; padding: 10px; margin: 10px;">
+		<a href="<?=base_url('company/document-approval/').$this->uri->segment(3).'/'.$project_view->terms_conditions_status?>" style="color: white;">Approved</a>
+	</span>
+<?php }if ($project_view->terms_conditions_status == 3) { ?>
+	<span style="float: right; background: red; padding: 10px; margin: 10px;">
+		<a href="<?=base_url('company/document-approval/').$this->uri->segment(3).'/'.$project_view->terms_conditions_status?>" style="color: white;">Rejacted</a>
+	</span>
+<?php } ?>
+
+
         <h4 class="modal-title">Terms and Conditions</h4>
       </div>
       <div class="modal-body">
@@ -553,6 +597,8 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
 
 </style>
 
+
+
 <div class="container" style="text-align:center !important;">
 	<div class="row"><h3>User Details</h3>
 		<div class="col-lg-12" style="text-align:left !important;">
@@ -569,7 +615,7 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
 		<div class="row">
 		<div class="col-lg-6">
 			<div class="card">
-				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_one?>" alt="Avatar" style="width:100%">
+				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_one?>" alt="Aadhar Card Front" style="width:100%">
 				<div class=""><hr>
 					<h4><b>Aadhar Card Front</b></h4>
 					<a href="<?=base_url('assets/img/term_conditions/').$project_view->img_one?>" download>Download</a>
@@ -578,7 +624,7 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
 		</div>
 		<div class="col-lg-6">
 			<div class="card">
-				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_two?>" alt="Avatar" style="width:100%">
+				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_two?>" alt="Aadhar Card Back" style="width:100%">
 				<div class=""><hr>
 					<h4><b>Aadhar Card Back</b></h4>
 					<a href="<?=base_url('assets/img/term_conditions/').$project_view->img_two?>" download>Download</a>
@@ -590,7 +636,7 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
 		<div class="row">
 		<div class="col-lg-6">
 			<div class="card">
-				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_three?>" alt="Avatar" style="width:100%">
+				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_three?>" alt="Pan Card" style="width:100%">
 				<div class=""><hr>
 					<h4><b>Pan Card</b></h4>
 					<a href="<?=base_url('assets/img/term_conditions/').$project_view->img_three?>" download>Download</a>
@@ -599,7 +645,7 @@ if ($this->uri->segment(3) == 'content-writing' || $this->uri->segment(3) == 'no
 		</div>
 		<div class="col-lg-6">
 			<div class="card">
-				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_four?>" alt="Avatar" style="width:100%">
+				<img src="<?=base_url('assets/img/term_conditions/').$project_view->img_four?>" alt="Other ID Front" style="width:100%">
 				<div class=""><hr>
 					<h4><b>Other ID Front</b></h4>
 					<a href="<?=base_url('assets/img/term_conditions/').$project_view->img_four?>" download>Download</a>

@@ -176,7 +176,7 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
         $data['bank_name'] = $this->input->post('bank_name');
         $data['account_no'] = $this->input->post('account_no');
         $data['IFSC_code'] = $this->input->post('IFSC_code');
-        $data['terms_conditions_status'] = 1;
+        $data['terms_conditions_status'] = 2;
 
 	// if($_FILES['img_one']['size']>51200)
 	// {
@@ -207,7 +207,7 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 	// }
 
 	if (!$this->upload->do_upload('img_one')) {
-		$this->session->set_flashdata('accep_terms_error', 'Please add img1');
+		$this->session->set_flashdata('accep_terms_error', 'Please add Aadhar Card Front Image');
 		$url = 'user/user-project-details/'.$project_title.'/'.$pid;
 		redirect($url);
 	} else {
@@ -217,7 +217,7 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 	}
 
 	if (!$this->upload->do_upload('img_two')) {
-		$this->session->set_flashdata('accep_terms_error', 'Please add img2');
+		$this->session->set_flashdata('accep_terms_error', 'Please add Aadhar Card Back Image');
 		$url = 'user/user-project-details/'.$project_title.'/'.$pid;
 		redirect($url);
 	} else {
@@ -226,11 +226,16 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 		$this->resize($fileData['file_name']);
 	}
 
-	if ($this->upload->do_upload('img_three')) {
+	if (!$this->upload->do_upload('img_three')) {
+		$this->session->set_flashdata('accep_terms_error', 'Please add Pan Card Image');
+		$url = 'user/user-project-details/'.$project_title.'/'.$pid;
+		redirect($url);
+	} else {
 		$fileData = $this->upload->data();
 		$data['img_three'] = $fileData['file_name'];
 		$this->resize($fileData['file_name']);
 	}
+
 
 	if ($this->upload->do_upload('img_four')) {
 		$fileData = $this->upload->data();

@@ -150,6 +150,23 @@
   </a>
 </li>
 
+<?php if (profile()->custom_terms == 0) { ?>
+  <li class="active">
+  <a class="<?php if($this->uri->segment(3) == 'user-documents') echo "active_"; ?>" title="user documents" data-toggle="modal" href="#tallModal_">
+    <i class="fa fa-lock" aria-hidden="true"></i>
+    <span class="mini-click-non">User's Documents</span>
+  </a>
+</li>
+<?php }else{ ?>
+<li class="active">
+<a class="<?php if($this->uri->segment(2) == 'user-documents') echo "active_"; ?>" title="user-documents" href="<?=base_url('company/user-documents')?>" aria-expanded="false">
+    <i class="fa fa-file" aria-hidden="true"></i>
+    <span class="mini-click-non">User's Documents</span>
+  </a>
+</li>
+<?php }?>
+
+
 <!-- <li class="active">
 <a class="<?php if($this->uri->segment(2) == 'qc-report') echo "active_"; ?>" title="Send QC Report" data-toggle="modal" href="#tallModal_">
     <i class="fa fa-lock" aria-hidden="true"></i>

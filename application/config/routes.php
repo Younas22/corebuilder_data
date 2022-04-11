@@ -37,6 +37,7 @@ $route['admin/all-agencies'] = 'admin/Admin_dashboard/all_agencies';
 $route['admin/agency/all-users/(:num)'] = 'admin/Admin_dashboard/agency_all_users/$1';
 $route['admin/agency/downloaded-users/(:num)/(:num)'] = 'admin/Admin_dashboard/agency_downloaded_users/$1/$2';
 $route['admin/agency/new-users/(:num)/(:num)'] = 'admin/Admin_dashboard/agency_new_users/$1/$2';
+$route['admin/agency/active-document/(:num)'] = 'admin/Admin_dashboard/active_document/$1';
 
 $route['admin/downloaded_user_xlsx'] = 'admin/Downloaded_user/index';
 $route['admin/export-data'] = 'admin/Downloaded_user/export_data';
@@ -107,6 +108,8 @@ $route['company/qc-report-view/(:any)/(:num)'] ='company/Company_dashboard/qc_vi
 $route['company/qc-report-download/(:any)/(:num)'] ='company/Company_dashboard/qc_download/$1/$2';
 $route['company/qc-report-send/(:any)/(:num)'] ='company/Company_dashboard/qc_send/$1/$2';
 $route['company/qc-report-approve/(:num)'] ='company/Company_dashboard/qc_approve/$1';
+$route['company/document-approval/(:num)/(:num)'] ='company/Company_dashboard/document_approval/$1/$2';
+$route['company/user-documents'] ='company/Company_dashboard/user_documents';
 
 $route['company-page/(:any)/(:any)/(:num)/(:num)'] ='company/Company_dashboard/company_filling_project/$1/$2/$3/$4';
 
