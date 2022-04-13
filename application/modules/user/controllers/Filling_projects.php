@@ -82,7 +82,7 @@ $this->load->library('../modules/user/controllers/User_dashboard');
 		$data['captcha_img'] = $captcha['image'];
 		$data['captcha_word'] = $captcha['word'];
 		}
-		// dd($data['filling_projects']);
+		// dd(active_font($project_id)[0]);
 			$this->template->template($data);
 		}else{
 			redirect (base_url('user/end_project'));

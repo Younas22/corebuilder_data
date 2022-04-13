@@ -12,7 +12,7 @@ class Filling_projects_M extends CI_Model {
     {
         return $this->db->
         select(
-            'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,invoice_type,quantity,
+            'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,auto_font,invoice_type,quantity,
             projects.projects_title,u_working._right,wrong,earning,refrash_limit')
         ->from('u_projects')
         ->where('u_projects.id',$project_id)
@@ -312,12 +312,20 @@ if ($project_end == 0) {
 
 
         if (array_diff($data,$get_form_filling_arr) == array_diff($get_form_filling_arr,$data)) {
-
             $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
             $this->db->set('_right','_right+'.(int)1, FALSE);
             $this->db->set('earning','earning+'.$earning, FALSE);
             $this->db->where('p_id', $p_id);
             $res = $this->db->update('u_working');
+
+            //auto font function
+            $total_entry = $this->db->where('p_id', $p_id)->get('u_working')->row();
+            $get_total_entry = $total_entry->complete_work;
+            $project_name = $this->db->select('u_projects.id as project_id, projects.projects_title')->where('u_projects.id', $p_id)->from('u_projects')
+            ->join('projects', 'u_projects.p_id = projects.id')->get()->row();
+            $get_projects_title = $project_name->projects_title;
+            // auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
+
             if($res){ return TRUE;  }else{  return FALSE; }
         }
 
@@ -327,6 +335,15 @@ if ($project_end == 0) {
             $this->db->set('wrong','wrong+'.(int)1, FALSE);
             $this->db->where('p_id', $p_id);
             $res = $this->db->update('u_working');
+
+            //auto font function
+            $total_entry = $this->db->where('p_id', $p_id)->get('u_working')->row();
+            $get_total_entry = $total_entry->complete_work;
+            $project_name = $this->db->select('u_projects.id as project_id, projects.projects_title')->where('u_projects.id', $p_id)->from('u_projects')
+            ->join('projects', 'u_projects.p_id = projects.id')->get()->row();
+            $get_projects_title = $project_name->projects_title;
+            // auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
+            
             if($res){ return TRUE; }else{ return FALSE; }
         }
     }

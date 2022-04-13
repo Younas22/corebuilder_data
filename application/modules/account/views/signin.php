@@ -174,7 +174,7 @@
 
 <div class="container">
   <div class="row" style="background:white;">
-    <b style="float: right; margin: 10px;">Download Users Version <a href="#"><img height="30px" width="30px" src="<?=base_url()?>assets/img/1024px-Font_Awesome_5_regular_arrow-circle-up_blue.svg.png"></a></b><br>
+    <b style="float: right; margin: 10px;">Download Users Version <a href="<?=base_url()?>assets/files/Core-Builder-Android-Windows.rar"><img height="30px" width="30px" src="<?=base_url()?>assets/img/1024px-Font_Awesome_5_regular_arrow-circle-up_blue.svg.png"></a></b><br>
     <div class="col-lg-6 col-md-6 col-sm-12 col-12 panel-body">
       
 

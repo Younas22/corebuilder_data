@@ -175,7 +175,7 @@
 <div class="container ">
   <div class="row" style="background:white;">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 panel-body ">
-      <b style="float: right;">Download Agencies Version <a href="#"><img height="30px" width="30px" src="<?=base_url()?>assets/img/1024px-Font_Awesome_5_regular_arrow-circle-up_blue.svg.png"></a></b><br><br><br>
+      <b style="float: right;">Download Agencies Version <a href="<?=base_url()?>assets/files/CoreBuilders_agencies_2.exe"><img height="30px" width="30px" src="<?=base_url()?>assets/img/1024px-Font_Awesome_5_regular_arrow-circle-up_blue.svg.png"></a></b><br><br><br>
               <form action="<?=base_url('doLogin')?>" id="loginForm" method="POST" class="col">
                 <?php if ($this->session->flashdata()) { ?>
                 <div class="alert alert-warning p-2">

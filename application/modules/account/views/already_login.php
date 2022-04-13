@@ -71,7 +71,7 @@
         </div>
         <div class="text-center custom-login" style="margin-top: 20px;">
           <h3>Login Status</h3>
-        </div>
+        </div> 
         <div class="content-error">
           <div class="hpanel">
             <div class="panel-body">
@@ -80,7 +80,7 @@
 $this->session->set_userdata('logged_in',(object)$this->session->flashdata('login_status'));
 echo "This User Already logged, first You need to logout!"; ?>
               </p>
-              <a href="<?=base_url('logout')?>"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+              <a href="<?=base_url('logout/').$this->uri->segment(2);?>"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
             </div>
           </div>
         </div>

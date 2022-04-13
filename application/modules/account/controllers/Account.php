@@ -95,7 +95,7 @@ $this->session->set_userdata('login_status',
 array('login_status'=>check_login_status($check_login->id),
 'id'=>$check_login->id)
 );
-return redirect(base_url() . 'already_login');
+return redirect(base_url() . 'already_login/'.$check_login->user_type);
 // echo "This User Already logged, first You need to logout!"; exit;
                         }else{
 

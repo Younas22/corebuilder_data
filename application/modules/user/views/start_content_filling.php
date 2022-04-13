@@ -696,9 +696,14 @@ You have to work for fixed time period set by the company you are working with.
                     <div class="row" style="text-align:center">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label class="">Submit Your Answer</label>
+                            <!-- <br><?=$captcha_word?> -->
                         </div>
+                        <!-- <br><?=$get_content_writing->font?><br><?=$get_content_writing->auto_font?> -->
                         
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<!--                             <label class=""><input style="border:1px solid;" type="text"  name="captcha_val" class="form-control" notab="notab"></label> -->
+
+
                             <label class=""><input style="border:1px solid;" type="text" onpaste="return false;" onCopy="return false" onCut="return false" onDrop="return false" autocomplete="off" notab="notab" name="captcha_val" class="form-control" notab="notab" name=""></label>
             <input type="hidden" notab="notab" name="captcha_word" value="<?=$captcha_word?>">
             <input type="hidden" class="form-control" notab="notab" name="id" value="4" />
