@@ -321,6 +321,27 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
         ->get('users')->num_rows();
     }
 
+ 
+        public function total_users_documents($company_id)
+    {
+        $users_documents = array();
+        $result = $this->db->select()
+        ->where('company_id',$company_id)
+        ->get('users')->result();
+        foreach ($result as $key) {
+            $documents = $this->db->select('u_projects.*,users.first_name')
+            ->where('u_id',$key->id)
+            ->from('u_projects')
+            ->where('u_id',$key->id)
+            ->where('terms_conditions_status',2)
+            ->join('users', 'u_projects.u_id = users.id')
+            ->get()->result();
+            array_push($users_documents, $documents);
+        }
+        // dd($users_documents);
+        return $users_documents;
+    }
+
         public function get_users_search($search,$company_id)
     {
         return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status')

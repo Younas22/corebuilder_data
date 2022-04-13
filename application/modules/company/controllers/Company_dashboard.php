@@ -1294,67 +1294,26 @@ $page,$project_id);
 
 	public function document_approval($id,$val)
 	{
-		if ($val == 2) {
-			$val_ = 1;
-		}if ($val == 1) {
-			// dd('ok');
+		if ($this->input->post('status') == 'pending') {
 			$val_ = 3;
-		}if ($val == 3) {
-			$val_ = 1;
+		}else{
+			if ($val == 2) { $val_ = 1; }
+			if ($val == 1) { $val_ = 1; }
+			if ($val == 3) { $val_ = 1; }
 		}
-		// dd($val_);
-		$this->db->where('id',$id)->update('u_projects',array('terms_conditions_status'=>$val_));
+
+		$this->db->where('id',$id)->update('u_projects',array('terms_conditions_status'=>$val_,'rejection_reason'=>$this->input->post('rejection_reason')));
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function user_documents()
 	{
-		$results = $this->session->userdata('results');
-		if (isset($results)) {
-			$results = $results;
-		}else{
-			$results = 10;
-		}
 		$company_id = $this->session->userdata('logged_in')->id;
-		$search = $this->input->get('user_searching');
-        $config = array();
-        $config["base_url"] = base_url() . "company/Company_dashboard/user_documents";
-        $config["total_rows"] = $this->company_dash->total_users($company_id);
-        $config["per_page"] = $results;
-        $config["uri_segment"] = 4;
-        $config['full_tag_open'] = "<ul class='pagination'>";
-	    $config['full_tag_close'] = '</ul>';
-	    $config['num_tag_open'] = '<li>';
-	    $config['num_tag_close'] = '</li>';
-	    $config['cur_tag_open'] = '<li class="active"><a href="#">';
-	    $config['cur_tag_close'] = '</a></li>';
-	    $config['prev_tag_open'] = '<li>';
-	    $config['prev_tag_close'] = '</li>';
-	    $config['first_tag_open'] = '<li>';
-	    $config['first_tag_close'] = '</li>';
-	    $config['last_tag_open'] = '<li>';
-	    $config['last_tag_close'] = '</li>';
-	    $config['prev_link'] = 'Previous Page';
-	    $config['prev_tag_open'] = '<li>';
-	    $config['prev_tag_close'] = '</li>';
-	    $config['next_link'] = 'Next Page';
-	    $config['next_tag_open'] = '<li>';
-	    $config['next_tag_close'] = '</li>';
-        $this->pagination->initialize($config);
-        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        $data["links"] = $this->pagination->create_links();
-
-
-if (!empty($search)) {
-$data['all_users'] = $this->company_dash->get_users_search($search,$company_id);
-}else{
-$data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$company_id);
-}
-		$data['total_user'] = $this->company_dash->total_users($company_id);
+		$data['total_users_documents'] = $this->company_dash->total_users_documents($company_id);
 		$data['url'] = current_url();
 		$data['url_title'] = 'all-users';
 		$data['title'] = 'All Users';
-		$data['contant_view'] = 'company/all_users';
+		$data['contant_view'] = 'company/total_users_documents';
 		$data['profile'] = $this->company_dash->profile($company_id);
 		$this->template->template($data);
 	}

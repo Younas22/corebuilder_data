@@ -294,7 +294,7 @@ if(!empty($this->session->flashdata('accep_terms_error'))){?>
 						<?php if ($project_view->terms_conditions_status == 2) { ?>
 							<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px;" data-toggle="modal" href="#Accepted_terms" class="btn btn-primary">Document Uploaded</a>
 						<?php }if ($project_view->terms_conditions_status == 3) { ?>
-							<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px;" data-toggle="modal" href="#Accepted_terms" class="btn btn-primary">Rejacted terms</a>
+							<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px;" data-toggle="modal" href="#Accepted_terms" class="btn btn-primary">Rejected terms</a>
 						<?php }if ($project_view->terms_conditions_status == 1) { ?>
 							<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px;" data-toggle="modal" href="#Accepted_terms" class="btn btn-primary">Accepted terms</a>			
 							<?php }if ($project_view->terms_conditions_status == 0) { ?>
@@ -315,7 +315,7 @@ $this->uri->segment(3) == 'dialogue-typing') {
 <a  class="btn btn-warning waves-effect mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;" data-toggle="modal">pending</a>
 
 <?php } } if ($project_view->terms_conditions_status == 3) { if ($this->session->userdata('logged_in')->user_type != 'admin') {?>
-<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;" data-toggle="modal" href="#tallModal" id="accep_terms">Your documents rejacted!</a>
+<a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;" data-toggle="modal" href="#tallModal" id="accep_terms">Your documents rejected!</a>
 
 <?php } }if ($project_view->terms_conditions_status == 0){ if ($this->session->userdata('logged_in')->user_type != 'admin') {?>
 <a  class="btn btn-primary waves-effect waves-light mg-b-15 col-md-4" style="margin-top: 20px; margin-bottom: 100px;" data-toggle="modal" href="#tallModal" id="accep_terms">Accep terms</a>
@@ -396,6 +396,10 @@ $this->uri->segment(3) == 'dialogue-typing') {
       		<div class="col-lg-12" style="text-align:center;">
 
 <?php if ($custom_terms == 1) { ?>
+	<?php if ($project_view->terms_conditions_status == 3) { ?>
+		<h3>Rejection Reason</h3>
+		<p style="color: red"><?=$project_view->rejection_reason?></p>
+	<?php } ?>
 <form class="well form-horizontal" action="<?= base_url('user/accep-terms_')?>" method="POST" enctype="multipart/form-data">
 	<fieldset>
 		<div class="form-group">
@@ -561,21 +565,37 @@ $this->uri->segment(3) == 'dialogue-typing') {
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
 <?php if ($project_view->terms_conditions_status == 2) { ?>
-	<button data-toggle="tooltip" title="Document Approv" class="pd-setting-ed" style="float: right; color: white; background: green; padding: 10px; margin: 10px;">
-		<a href="<?=base_url('company/document-approval/').$this->uri->segment(3).'/'.$project_view->terms_conditions_status?>" >Document Approval</a>
-	</button>
+	<span data-toggle="tooltip" title="Click and Approve document" class="pd-setting-ed" style="float: right; color: white; background: #ff9900; padding: 10px; margin: 10px;">
+		<a href="<?=base_url('company/document-approval/').$this->uri->segment(3).'/'.$project_view->terms_conditions_status?>" style="color: white;">Approve</a>
+	</span>
+
+	<span  data-toggle="tooltip" title="Click and Reject document" style="float: right; background: red; padding: 10px; margin: 10px;">
+		<a style="color: white;" data-toggle="modal" href="#myModal">Reject</a>
+	</span>
+
 <?php }if ($project_view->terms_conditions_status == 1) { ?>
-	<span style="float: right; background: green; padding: 10px; margin: 10px;">
-		<a href="<?=base_url('company/document-approval/').$this->uri->segment(3).'/'.$project_view->terms_conditions_status?>" style="color: white;">Approved</a>
+	<span  data-toggle="tooltip" title="Click and Reject document" style="float: right; background: red; padding: 10px; margin: 10px;">
+		<a style="color: white;" data-toggle="modal" href="#myModal">Reject</a>
 	</span>
 <?php }if ($project_view->terms_conditions_status == 3) { ?>
-	<span style="float: right; background: red; padding: 10px; margin: 10px;">
-		<a href="<?=base_url('company/document-approval/').$this->uri->segment(3).'/'.$project_view->terms_conditions_status?>" style="color: white;">Rejacted</a>
+	<span data-toggle="tooltip" title="Click and Approve document" class="pd-setting-ed" style="float: right; color: white; background: #ff9900; padding: 10px; margin: 10px;">
+		<a href="<?=base_url('company/document-approval/').$this->uri->segment(3).'/'.$project_view->terms_conditions_status?>" style="color: white;">Approve</a>
+	</span>
+
+	<span  data-toggle="tooltip" title="Click and Reject document" style="float: right; background: red; padding: 10px; margin: 10px;">
+		<a style="color: white;" data-toggle="modal" href="#myModal">Reject</a>
 	</span>
 <?php } ?>
 
 
-        <h4 class="modal-title">Terms and Conditions</h4>
+
+
+        <h4 class="modal-title">Terms and Conditions 
+        	<?php 
+        	if ($project_view->terms_conditions_status == 2) {echo "(Pending)"; }
+        	if ($project_view->terms_conditions_status == 1) {echo "(Approved)"; }
+        	if ($project_view->terms_conditions_status == 3) {echo "(Rejected)"; }
+        	?></h4>
       </div>
       <div class="modal-body">
 		<h3>Terms and Conditions</h3>
@@ -748,7 +768,29 @@ $this->uri->segment(3) == 'dialogue-typing') {
 </div><!-- /.modal -->
 <?php } ?>
 
-
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        	<span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="exampleModalLabel">Document Reject</h4>
+      </div>
+      <form action="<?=base_url('company/document-approval/').$this->uri->segment(3).'/'?>3" method="POST">
+      <div class="modal-body">
+      	<textarea name="rejection_reason" placeholder="rejection reason" style="height: 100%; width: 100%; padding: 10px;">
+      	</textarea>
+      	<input type="hidden" name="status" value="pending">
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default"  style="background: red; color: white">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 <!-- jQuery first, then Popper.js and Bootstrap JS. -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

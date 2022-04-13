@@ -1,14 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['default_controller'] = 'account/Account';
+$route['default_controller'] = 'error';
 
  
 /*account url*/
-$route['signin'] = 'account/Account';
+$route['company-login'] = 'account/Account';
+$route['user-login'] = 'account/Account/user_login';
 $route['doLogin'] = 'account/Account/doLogin';
 $route['already_login'] = 'account/Account/already_login';
-$route['logout'] = 'account/Account/logout';
+$route['logout/(:any)'] = 'account/Account/logout/$1';
 $route['signup'] = 'account/Account/signup';
 $route['do-register'] = 'account/Account/do_register';
 

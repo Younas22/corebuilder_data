@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Account extends MY_Controller {
+class User_Account extends MY_Controller {
 
 
 		function __construct()
@@ -10,36 +10,8 @@ class Account extends MY_Controller {
 		$this->load->model('LoginModel', 'login');
 	} 
 	
- 
-	public function index()
-	{
-        
-$curl = curl_init();
-curl_setopt_array($curl, array(
-CURLOPT_URL => 'http://localhost/agp_api/agp_base_url',
-CURLOPT_RETURNTRANSFER => true,
-CURLOPT_FOLLOWLOCATION => true,
-CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-CURLOPT_CUSTOMREQUEST => 'POST',
-CURLOPT_POSTFIELDS => array('base_url' => base_url()),
-));
-
-$response = curl_exec($curl);
-curl_close($curl);
-
-		if(!empty($this->session->userdata('logged_in')))
-		{
-		return redirect(base_url() . $this->session->userdata('logged_in')->user_type.'/dashboard');
-		}
-		$data['url'] = current_url();
-		$data['url_title'] = 'sign in';
-		$data['title'] = 'sign in your account';
-		$data['contant_view'] = 'account/signin';
-		$this->template->template($data);
-	}
 
 
-//user_login
     public function user_login()
     {
         if(!empty($this->session->userdata('logged_in')))
@@ -49,7 +21,7 @@ curl_close($curl);
         $data['url'] = current_url();
         $data['url_title'] = 'sign in';
         $data['title'] = 'sign in your account';
-        $data['contant_view'] = 'account/user_signin';
+        $data['contant_view'] = 'account/signin';
         $this->template->template($data);
     }
 
@@ -78,15 +50,9 @@ curl_close($curl);
 
 	public function doLogin() {
         $email = $this->input->post('email');
-        $type = $this->input->post('type');
         $password = sha1($this->input->post('password'));
         $check_login = $this->login->checkLogin($email, $password);
-
-        if ($check_login->user_type != $type && $check_login->user_type != 'admin') {
-            $this->session->set_flashdata('msg', 'something wrong!');
-            redirect(base_url() . $type.'-login');
-        }
-
+        // dd($this->input->post());
         if ($check_login) {
                 if ($check_login->user_status == 1) {
                     if ($check_login->login_status > 0) 
@@ -118,39 +84,30 @@ $this->session->set_userdata('logged_in',$check_login);
 $login_session = $this->session->userdata('logged_in');
 // dd($this->session->userdata('login_status')['login_status']);
                             /*update login status*/
-                            if ($login_session->user_type == $type) {
-                                return redirect(base_url().$type.'/dashboard');
+                            if ($login_session->user_type == 'company') {
+                                return redirect(base_url().'company/dashboard');
+                            }if ($login_session->user_type == 'admin') {
+                            return redirect(base_url().'admin/dashboard');
+                            }if ($login_session->user_type == 'user') {
+                            return redirect(base_url().'user/dashboard');
                             }
-
-                            if ($login_session->user_type == 'admin') {
-                                return redirect(base_url().'admin/dashboard');
-                            }else{
-                                $this->session->set_flashdata('msg', 'something wrong!');
-                                redirect(base_url() . $type.'-login');
-                            }
-
-                            // if ($login_session->user_type == 'admin') {
-                            // return redirect(base_url().'admin/dashboard');
-                            // }if ($login_session->user_type == 'user') {
-                            // return redirect(base_url().'user/dashboard');
-                            // }
                         }
 
                 }else{
             $this->session->set_flashdata('msg', 'Your Account is disabled!');
-            redirect(base_url() . $login_session->user_type.'-login');
+            redirect(base_url() . 'user-login');
               }
 
 
         } else {
 
             $this->session->set_flashdata('msg', 'Username / Password Invalid');
-            redirect(base_url() . $login_session->user_type.'-login');            
+            redirect(base_url() . 'user-login');            
         }
     }
 
 
-    public function logout($type) {
+    public function logout() {
         // dd($this->session->userdata('login_status'));
         // dd($this->session->userdata('logged_in')->id);
         /*update login status*/
@@ -160,7 +117,7 @@ $login_session = $this->session->userdata('logged_in');
         if ($login_status) {
         $this->session->unset_userdata('login_status');
         $this->session->unset_userdata('logged_in');
-        redirect(base_url($type.'-login'));
+        redirect(base_url());
         }
 
     }
@@ -205,7 +162,7 @@ $login_session = $this->session->userdata('logged_in');
             $insert_data = $this->login->add_user($data);
             if ($insert_data) {
                 $this->session->set_flashdata('msg', 'Successfully Register');
-                redirect(base_url().$login_session->user_type.'-login');
+                redirect(base_url().'user-login');
             }
 
 

@@ -253,7 +253,7 @@
                   <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                   <li><a href="<?=base_url($this->session->userdata('logged_in')->user_type.'/profile')?>"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
                 </li>
-            <li><a href="<?=base_url('logout')?>"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+            <li><a href="<?php if(profile()->user_type == 'admin'){echo base_url('logout/company');}else{echo base_url('logout/').profile()->user_type;}?>"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
           </li>
         </ul>
       </li>

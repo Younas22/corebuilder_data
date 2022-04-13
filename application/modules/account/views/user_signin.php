@@ -64,7 +64,7 @@
     <style>
 .error-page-int{max-width:100% !important ;}
 .col {
-  float: left;
+  /*float: left;*/
   width: 50%;
   margin: auto;
   padding: 0 50px;
@@ -166,18 +166,16 @@
           <img src="<?=base_url()?>assets/img/logo/New Project.png" alt="logo" width="100" class="shadow-light rounded-circle">
         </div>
         <div class="text-center m-b-md custom-login" style="margin-top: 20px;">
-          <h3>Login Here As A Company</h3>
+          <h3>Login Here As A User</h3>
         </div>
         <!-- <div class="content-error"> -->
 <!--           <div class="hpanel">
             <div class="panel-body"> -->
 
-<div class="container">
+<div class="container ">
   <div class="row" style="background:white;">
-    <b style="float: right; margin: 10px;">Download Users Version <a href="#"><img height="30px" width="30px" src="<?=base_url()?>assets/img/1024px-Font_Awesome_5_regular_arrow-circle-up_blue.svg.png"></a></b><br>
-    <div class="col-lg-6 col-md-6 col-sm-12 col-12 panel-body">
-      
-
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 panel-body ">
+      <b style="float: right;">Download Agencies Version <a href="#"><img height="30px" width="30px" src="<?=base_url()?>assets/img/1024px-Font_Awesome_5_regular_arrow-circle-up_blue.svg.png"></a></b><br><br><br>
               <form action="<?=base_url('doLogin')?>" id="loginForm" method="POST" class="col">
                 <?php if ($this->session->flashdata()) { ?>
                 <div class="alert alert-warning p-2">
@@ -193,40 +191,20 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="hidden" name="type" value="company">
+                  <input type="hidden" name="type" value="user">
+                  <label for="email">password</label>
                   <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
                   <?= form_error('password', '<div class="text-warning">', '</div>'); ?>
                   <div class="invalid-feedback labal-font">
                     please fill in your password
                   </div>
                 </div>
-                <!-- <div class="form-group">
-                  <input id="terms_status" type="checkbox" class="form-controld" name="terms_status" tabindex="2" required>
-                  <?= form_error('terms_status', '<div class="text-warning">', '</div>'); ?>
-                  <div class="invalid-feedback">
-                    please check terms
-                  </div>
-                </div> -->
-
-
-<!-- <div class="form-group" style="margin-top:10px;">
-<a data-toggle="modal" href="#tallModal" class="btn btn-danger" style="width:50%; background-color: #d9534f !important;">Terms and Conditions</a>
-<input type="checkbox" name="terms_status" id="gridRadios1" value="1" required="">
-</div> -->
-
-
                 <div class="form-group" style="text-align:center">
                   <button type="submit" class="btn btn-primary btn-padding" tabindex="4">Login</button>
                 </div>
               </form>
     </div>
 
-
-    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-          <div style="text-align: center;">
-              <a href="<?=base_url('signup')?>" class="btnnn thirdd btn btn-primary" style="padding: 30px 40px !important; margin-top:70px">Register as a Company<br><br>Click Here (Only for Company)</a>
-          </div>
-    </div>
   </div>
 </div>
 
