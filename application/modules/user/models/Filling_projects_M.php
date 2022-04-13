@@ -12,7 +12,7 @@ class Filling_projects_M extends CI_Model {
     {
         return $this->db->
         select(
-            'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,auto_font,invoice_type,quantity,
+            'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,invoice_type,quantity,
             projects.projects_title,u_working._right,wrong,earning,refrash_limit')
         ->from('u_projects')
         ->where('u_projects.id',$project_id)
