@@ -196,6 +196,7 @@ $this->load->library('../modules/user/controllers/User_dashboard');
 	/*submit_form_filling*/
 	public function submit_invoice_filling()
 	{
+
 		$User_dashboard = new User_dashboard();
 		$p_id = $this->input->post('p_id');
 		$User_dashboard->skip_added($p_id);
@@ -203,6 +204,8 @@ $this->load->library('../modules/user/controllers/User_dashboard');
 		$current_url = $this->input->post('current_url');
 		$project_id = $this->input->post('id');
         $data = $this->input->post('total_cost');
+
+        // dd($p_id);
 		$res = $this->filling_projects->submit_filling($project_id,$p_id,$data,$user_id);
 		// dd($res);
 		if ($res) {

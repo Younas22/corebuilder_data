@@ -153,7 +153,6 @@ if ($project_end == 0) {
     /************submit_content_writing********/
     public function submit_filling($project_id,$p_id,$data,$user_id)
     {
-        // dd($data);
         // return 1;
         // dd($p_id);
         $get_price = $this->db->select()
@@ -288,12 +287,32 @@ if ($project_end == 0) {
             $this->db->set('earning','earning+'.$earning, FALSE);
             $this->db->where('p_id', $p_id);
             $res = $this->db->update('u_working');
+
+            //auto Difficulty function
+            $project_name = $this->db->select('u_projects.id as project_id,u_projects.auto_font, projects.projects_title')->where('u_projects.id', $p_id)->from('u_projects')
+            ->join('projects', 'u_projects.p_id = projects.id')->get()->row();
+            if ($project_name->auto_font == 1) {
+                $total_entry = $this->db->where('p_id', $p_id)->get('u_working')->row();
+                $get_total_entry = $total_entry->complete_work;
+                $get_projects_title = $project_name->projects_title;
+                auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
+            }
             if($res){ return TRUE;  }else{  return FALSE; }
+
             }else{
             $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
             $this->db->set('wrong','wrong+'.(int)1, FALSE);
             $this->db->where('p_id', $p_id);
             $res = $this->db->update('u_working');
+            //auto Difficulty function
+            $project_name = $this->db->select('u_projects.id as project_id,u_projects.auto_font, projects.projects_title')->where('u_projects.id', $p_id)->from('u_projects')
+            ->join('projects', 'u_projects.p_id = projects.id')->get()->row();
+            if ($project_name->auto_font == 1) {
+                $total_entry = $this->db->where('p_id', $p_id)->get('u_working')->row();
+                $get_total_entry = $total_entry->complete_work;
+                $get_projects_title = $project_name->projects_title;
+                auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
+            }
             if($res){ return TRUE; }else{ return FALSE; }
             }
         }
@@ -318,32 +337,33 @@ if ($project_end == 0) {
             $this->db->where('p_id', $p_id);
             $res = $this->db->update('u_working');
 
-            //auto font function
-            $total_entry = $this->db->where('p_id', $p_id)->get('u_working')->row();
-            $get_total_entry = $total_entry->complete_work;
-            $project_name = $this->db->select('u_projects.id as project_id, projects.projects_title')->where('u_projects.id', $p_id)->from('u_projects')
+            //auto Difficulty function
+            $project_name = $this->db->select('u_projects.id as project_id,u_projects.auto_font, projects.projects_title')->where('u_projects.id', $p_id)->from('u_projects')
             ->join('projects', 'u_projects.p_id = projects.id')->get()->row();
-            $get_projects_title = $project_name->projects_title;
-            // auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
-
+            if ($project_name->auto_font == 1) {
+                $total_entry = $this->db->where('p_id', $p_id)->get('u_working')->row();
+                $get_total_entry = $total_entry->complete_work;
+                $get_projects_title = $project_name->projects_title;
+                auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
+            }
             if($res){ return TRUE;  }else{  return FALSE; }
         }
 
         if (array_diff($data,$get_form_filling_arr) != array_diff($get_form_filling_arr,$data)) {
-
             $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
             $this->db->set('wrong','wrong+'.(int)1, FALSE);
             $this->db->where('p_id', $p_id);
             $res = $this->db->update('u_working');
 
-            //auto font function
-            $total_entry = $this->db->where('p_id', $p_id)->get('u_working')->row();
-            $get_total_entry = $total_entry->complete_work;
-            $project_name = $this->db->select('u_projects.id as project_id, projects.projects_title')->where('u_projects.id', $p_id)->from('u_projects')
+            //auto Difficulty function
+            $project_name = $this->db->select('u_projects.id as project_id,u_projects.auto_font, projects.projects_title')->where('u_projects.id', $p_id)->from('u_projects')
             ->join('projects', 'u_projects.p_id = projects.id')->get()->row();
-            $get_projects_title = $project_name->projects_title;
-            // auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
-            
+            if ($project_name->auto_font == 1) {
+                $total_entry = $this->db->where('p_id', $p_id)->get('u_working')->row();
+                $get_total_entry = $total_entry->complete_work;
+                $get_projects_title = $project_name->projects_title;
+                auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
+            }
             if($res){ return TRUE; }else{ return FALSE; }
         }
     }
