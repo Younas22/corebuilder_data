@@ -615,6 +615,25 @@ $data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$
 	}
 /*end user delete*/
 
+/*user delete*/
+		public function user_auto_font($user_id,$val)
+	{
+		// dd('ok');
+		if ($val == 1) { $val = 0; $msg = 'Disabled';}else{ $val = 1; $msg = 'Activated';}
+		 $user_auto_font = $this->db->where('users.id',$user_id)->update('users',array('auto_font'=>$val));
+		if ($user_auto_font == 1) {
+			// dd($submit_withdraw_request);
+			unset($_SESSION['user_errors']);
+			$this->session->set_flashdata('user_msg', 'User Auto Font '.$msg);
+		}else{
+			// dd($submit_user_request);
+			unset($_SESSION['user_msg']);
+		        $this->session->set_flashdata('user_errors','there is Something Wrong!');
+		}
+		redirect(base_url('company/all-users'));
+	}
+/*end user delete*/
+
 /*user_projects view*/
 		public function user_projects($user_id)
 	{

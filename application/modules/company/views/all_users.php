@@ -142,6 +142,7 @@ if(!empty($this->session->flashdata('user_errors'))){?>
 </div>
 <?php } ?>
 
+
         <div class="asset-inner">
             <?php if (!empty($all_users)) { ?>
             <table>
@@ -171,7 +172,8 @@ if(!empty($this->session->flashdata('user_errors'))){?>
                     <!-- <td><?=$key->start_date?></td> -->
                     <!-- <td><?=$key->end_date?></td> -->
 
-<?php if ($key->user_status == 1) { ?>
+<?php if ($key->auto_font == null) {$auto_font = 0;}else{$auto_font = $key->auto_font;} 
+if ($key->user_status == 1) { ?>
 <td>
     <label class="switch">
         <input type="checkbox" onclick='window.location.assign("<?=base_url('company/user-status/').$key->users_id?>/0?>")' checked>
@@ -195,6 +197,16 @@ if(!empty($this->session->flashdata('user_errors'))){?>
 <a href="" data-toggle="modal" data-target="#myModal<?php echo $key->users_id; ?>">
 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
 </button>
+
+<?php if ($auto_font == 1) { ?>
+  <button class="pd-setting-ed"><a href="<?=base_url('company/user-auto-font/').$key->users_id.'/'.$auto_font?>" data-toggle="tooltip" title="Auto Font Disable"><i class="fa fa-check"></i></a></button>
+<?php }else{ ?>
+  <button class="pd-setting-ed"><a href="<?=base_url('company/user-auto-font/').$key->users_id.'/'.$auto_font?>" data-toggle="tooltip" title="Auto Font Active"><i class="fa fa-times"></i></a></button>
+<?php } ?>
+
+
+
+
                     </td>
                     <!-- <td><button class="pd-setting">Active</button></td> -->
                 </tr>
