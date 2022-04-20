@@ -94,7 +94,9 @@ input[type=text] { text-align:left } .form-control{ padding: 6px,4px !important;
 <div style="margin-top:20px"></div>
 </div>
 <!-- Single pro tab review Start-->
-<div class="single-pro-review-area mt-t-30 mg-b-15">
+
+
+<div class="single-pro-review-area mt-t-30 mg-b-15 fast">
 <div class="container-fluid">
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1580,7 +1582,6 @@ You have to work for fixed time period set by the company you are working with.
 </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <script>
 jQuery(document).ready(function ($) {
   //open popup
@@ -1632,6 +1633,21 @@ $.ajax({
 
 
     });
+
+
+
+// document.onreadystatechange = function () {
+//   var state = document.readyState
+//   if (state == 'interactive') {
+//        document.getElementById('contents').style.visibility="hidden";
+//   } else if (state == 'complete') {
+//       setTimeout(function(){
+//          document.getElementById('interactive');
+//          document.getElementById('load').style.visibility="hidden";
+//          document.getElementById('contents').style.visibility="visible";
+//       },1000);
+//   }
+// }
 
 });
 </script>

@@ -173,6 +173,19 @@
     <!-- Start Left menu area -->
     <?php $this->load->view('side_bar'); ?>
     <!-- End Left menu area -->
+
+<style>
+#load{
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:9999;
+    background:url("http://code.jquery.com/mobile/1.3.1/images/ajax-loader.gif") no-repeat center center rgba(12, 13, 13)
+}
+</style>
+<div id="load"></div>
+
+
     <!-- Start Welcome area -->
     <div class="all-content-wrapper">
       <div class="container-fluid">
@@ -331,6 +344,8 @@
 </div>
 </div>
 <!-- Mobile Menu end -->
+
+
 
 
 <center>

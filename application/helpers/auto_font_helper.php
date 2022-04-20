@@ -137,3 +137,13 @@ if (!function_exists('update_font_n_difficulty')){
 
        }
 }
+
+
+
+/*////////////update_slow_loading//////////*/
+if (!function_exists('slow_loading')){
+      function slow_loading($pro_id,$pro_title){
+        $CI =& get_instance();
+          return 1000;
+       }
+}

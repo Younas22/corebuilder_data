@@ -487,8 +487,31 @@ if (parseInt(diff) >= 1) {
 
     }
 }
-
 /*end company profile fill function*/
+
+jQuery(document).ready(function() {
+    let get_url = $(location).attr('href');
+    var url_splitByForwardSlash = get_url.split('/');
+
+    let pro_id = url_splitByForwardSlash[url_splitByForwardSlash.length-2];
+    let pro_title = url_splitByForwardSlash[url_splitByForwardSlash.length-3];
+    let pro_type = url_splitByForwardSlash[url_splitByForwardSlash.length-4];
+
+
+    // alert("<?=slow_loading('"+pro_id+"','"+pro_title+"')?>");
+    if (pro_type == 'start-filling-project') {
+        jQuery('.all-content-wrapper').hide();
+        jQuery('#load').fadeOut(10000);
+        jQuery('.all-content-wrapper').show();
+    }else{
+        jQuery('.all-content-wrapper').hide();
+        jQuery('#load').fadeOut(3000);
+        jQuery('.all-content-wrapper').show();
+    }
+
+    
+});
+
 });
 </script>
 </body>
