@@ -497,12 +497,25 @@ jQuery(document).ready(function() {
     let pro_title = url_splitByForwardSlash[url_splitByForwardSlash.length-3];
     let pro_type = url_splitByForwardSlash[url_splitByForwardSlash.length-4];
 
+     // if(typeof integer == 'number'){
+     //    alert(integer + " is a number <br/>");
+     // }else{
+     //    alert(integer + " is not a number <br/>");
+     // }
 
-    // alert("<?=slow_loading('"+pro_id+"','"+pro_title+"')?>");
+     //alert("<?=slow_loading('"+parseInt(pro_id)+"')?>");
+     let fadeOut_time = "<?php echo slow_loading($this->uri->segment(4))?>";
+     // alert(fadeOut_time);
     if (pro_type == 'start-filling-project') {
-        jQuery('.all-content-wrapper').hide();
-        jQuery('#load').fadeOut(10000);
-        jQuery('.all-content-wrapper').show();
+        if (fadeOut_time == 50000) {
+            jQuery('.all-content-wrapper').hide();
+            jQuery('#load').fadeOut(50000);
+            jQuery('.all-content-wrapper').show();
+        }else{
+            jQuery('.all-content-wrapper').hide();
+            jQuery('#load').fadeOut(1000);
+            jQuery('.all-content-wrapper').show();
+        }
     }else{
         jQuery('.all-content-wrapper').hide();
         jQuery('#load').fadeOut(3000);

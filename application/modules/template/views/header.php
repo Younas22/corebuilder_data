@@ -180,7 +180,7 @@
     height:100%;
     position:fixed;
     z-index:9999;
-    background:url("http://code.jquery.com/mobile/1.3.1/images/ajax-loader.gif") no-repeat center center rgba(12, 13, 13)
+    background:url("<?=base_url('assets/img/output-onlinegiftools.gif')?>") no-repeat center center rgb(204, 204, 179)
 }
 </style>
 <div id="load"></div>

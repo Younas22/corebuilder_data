@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
- 
+  
  /*/////////////auto_font///////////*/
 if (!function_exists('auto_font')){
       function auto_font($total_entry,$p_id,$get_projects_title){
@@ -142,8 +142,56 @@ if (!function_exists('update_font_n_difficulty')){
 
 /*////////////update_slow_loading//////////*/
 if (!function_exists('slow_loading')){
-      function slow_loading($pro_id,$pro_title){
+      function slow_loading($pro_id){
         $CI =& get_instance();
-          return 1000;
-       }
+        
+        $check_val = $CI->db->select('
+        u_working.complete_work,
+        earning,
+        u_projects.p_type,
+        projects.projects_title')
+        ->from('u_working')
+        ->where('u_working.p_id',$pro_id)
+        ->join('u_projects','u_working.p_id = u_projects.id')
+        ->join('projects','u_projects.p_id = projects.id')
+        ->get()->row();
+        // return  $check_val->projects_title;
+
+        if ($check_val->projects_title == 'Captcha' ||
+            $check_val->projects_title == 'Invoice Calculation'||
+            $check_val->projects_title == 'Alpha-Numeric Validation') {
+            
+            if ($check_val->p_type == 'Target') {
+              if ($check_val->complete_work > 950) {
+                return 50000;
+              }
+            }
+
+            if ($check_val->p_type == 'Non Target') {
+              if ($check_val->earning > 220) {
+                return 50000;
+              }
+            }
+        }
+
+
+
+
+        if ($check_val->projects_title == 'Form Filling') {
+            if ($check_val->p_type == 'Target') {
+              // if ($check_val->complete_work > 380) {
+              if ($check_val->complete_work > 9) {
+                return 50000;
+              }
+            }
+
+            if ($check_val->p_type == 'Non Target') {
+              if ($check_val->earning > 220) {
+                return 50000;
+              }
+            }
+        }
+
+        return 1000;
+     }
 }
