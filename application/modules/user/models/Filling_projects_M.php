@@ -281,7 +281,7 @@ if ($project_end == 0) {
                 +$get_form_filling->invoice_ten;
 
             // return $actual_total;
-            if (str_replace(".","",$actual_total) == str_replace(".","",$actual_total)) {
+            if (str_replace(".","",$data) == str_replace(".","",$actual_total)) {
             $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
             $this->db->set('_right','_right+'.(int)1, FALSE);
             $this->db->set('earning','earning+'.$earning, FALSE);

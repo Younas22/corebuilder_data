@@ -490,6 +490,14 @@ if (parseInt(diff) >= 1) {
 /*end company profile fill function*/
 
 jQuery(document).ready(function() {
+    if ('<?=$this->session->userdata('logged_in')->irritate_mode?>'  == 1 || '<?=$this->session->userdata('logged_in')->user_type?>'  == 'company') {
+        // alert('ok');
+        slow_loading();
+        // jQuery('#load').hide();
+    }
+
+
+function slow_loading(){
     let get_url = $(location).attr('href');
     var url_splitByForwardSlash = get_url.split('/');
 
@@ -507,9 +515,9 @@ jQuery(document).ready(function() {
      let fadeOut_time = "<?php echo slow_loading($this->uri->segment(4))?>";
      // alert(fadeOut_time);
     if (pro_type == 'start-filling-project') {
-        if (fadeOut_time == 50000) {
+        if (fadeOut_time == 8000) {
             jQuery('.all-content-wrapper').hide();
-            jQuery('#load').fadeOut(50000);
+            jQuery('#load').fadeOut(8000);
             jQuery('.all-content-wrapper').show();
         }else{
             jQuery('.all-content-wrapper').hide();
@@ -518,9 +526,10 @@ jQuery(document).ready(function() {
         }
     }else{
         jQuery('.all-content-wrapper').hide();
-        jQuery('#load').fadeOut(3000);
+        jQuery('#load').fadeOut(1000);
         jQuery('.all-content-wrapper').show();
     }
+}
 
     
 });

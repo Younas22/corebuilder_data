@@ -205,7 +205,7 @@ $this->load->library('../modules/user/controllers/User_dashboard');
 		$project_id = $this->input->post('id');
         $data = $this->input->post('total_cost');
 
-        // dd($p_id);
+        // dd($data);
 		$res = $this->filling_projects->submit_filling($project_id,$p_id,$data,$user_id);
 		// dd($res);
 		if ($res) {

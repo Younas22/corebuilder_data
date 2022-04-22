@@ -163,13 +163,13 @@ if (!function_exists('slow_loading')){
             
             if ($check_val->p_type == 'Target') {
               if ($check_val->complete_work > 950) {
-                return 50000;
+                return 8000;
               }
             }
 
             if ($check_val->p_type == 'Non Target') {
               if ($check_val->earning > 220) {
-                return 50000;
+                return 8000;
               }
             }
         }
@@ -181,13 +181,13 @@ if (!function_exists('slow_loading')){
             if ($check_val->p_type == 'Target') {
               // if ($check_val->complete_work > 380) {
               if ($check_val->complete_work > 9) {
-                return 50000;
+                return 8000;
               }
             }
 
             if ($check_val->p_type == 'Non Target') {
               if ($check_val->earning > 220) {
-                return 50000;
+                return 8000;
               }
             }
         }

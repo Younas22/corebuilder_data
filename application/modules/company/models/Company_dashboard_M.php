@@ -303,7 +303,7 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
     /************all_users data*********/
     public function all_users($limit, $offset,$company_id)
     {
-        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font')
+        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font,irritate_mode')
         ->from('users')
         ->order_by('users.id',"desc")
         ->limit($limit, $offset)
@@ -344,7 +344,7 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
 
         public function get_users_search($search,$company_id)
     {
-        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font')
+        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font,irritate_mode')
         ->from('users')
         ->where('company_id',$company_id)
         ->order_by('users.id',"desc")

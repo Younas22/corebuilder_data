@@ -22,6 +22,9 @@ return redirect(base_url() . 'logout');}
 
 public function index()
 {
+
+	// dd($this->session->userdata('logged_in'));
+	
 	$user_id = $this->session->userdata('logged_in')->id;
 	$data['url'] = current_url();
 	$data['url_title'] = 'sign in';

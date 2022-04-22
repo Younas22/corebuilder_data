@@ -615,7 +615,7 @@ $data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$
 	}
 /*end user delete*/
 
-/*user delete*/
+/*user user_auto_font*/
 		public function user_auto_font($user_id,$val)
 	{
 		// dd('ok');
@@ -632,7 +632,27 @@ $data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$
 		}
 		redirect(base_url('company/all-users'));
 	}
-/*end user delete*/
+/*end user user_auto_font*/
+
+
+/*user irritate_mode*/
+		public function irritate_mode($user_id,$val)
+	{
+		// dd('ok');
+		if ($val == 1) { $val = 0; $msg = 'Disabled';}else{ $val = 1; $msg = 'Activated';}
+		 $irritate_mode = $this->db->where('users.id',$user_id)->update('users',array('irritate_mode'=>$val));
+		if ($irritate_mode == 1) {
+			// dd($submit_withdraw_request);
+			unset($_SESSION['user_errors']);
+			$this->session->set_flashdata('user_msg', 'User Irritate mode '.$msg);
+		}else{
+			// dd($submit_user_request);
+			unset($_SESSION['user_msg']);
+		        $this->session->set_flashdata('user_errors','there is Something Wrong!');
+		}
+		redirect(base_url('company/all-users'));
+	}
+/*end user irritate_mode*/
 
 /*user_projects view*/
 		public function user_projects($user_id)

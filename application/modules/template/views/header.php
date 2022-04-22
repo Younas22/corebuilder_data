@@ -183,7 +183,11 @@
     background:url("<?=base_url('assets/img/output-onlinegiftools.gif')?>") no-repeat center center rgb(204, 204, 179)
 }
 </style>
-<div id="load"></div>
+
+<?php  if ($this->session->userdata('logged_in')->user_type == 'company' || $this->session->userdata('logged_in')->irritate_mode  == 1) { ?>
+  <div id="load"></div>
+<?php  } ?>
+
 
 
     <!-- Start Welcome area -->

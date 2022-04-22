@@ -74,6 +74,7 @@ $route['company/user-view/(:num)'] = 'company/Company_dashboard/user_view/$1';
 $route['company/update/user_profile'] = 'company/Company_dashboard/update_user_profile';
 $route['company/user-delete/(:num)'] = 'company/Company_dashboard/user_delete/$1';
 $route['company/user-auto-font/(:num)/(:any)'] = 'company/Company_dashboard/user_auto_font/$1/$2';
+$route['company/irritate-mode/(:num)/(:any)'] = 'company/Company_dashboard/irritate_mode/$1/$2';
 
 $route['company/user-projects/(:num)']='company/Company_dashboard/user_projects/$1';
 $route['company/project-view/(:num)'] ='company/Company_dashboard/project_view/$1';

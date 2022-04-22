@@ -172,7 +172,9 @@ if(!empty($this->session->flashdata('user_errors'))){?>
                     <!-- <td><?=$key->start_date?></td> -->
                     <!-- <td><?=$key->end_date?></td> -->
 
-<?php if ($key->auto_font == null) {$auto_font = 0;}else{$auto_font = $key->auto_font;} 
+<?php 
+if ($key->irritate_mode == null) {$irritate_mode = 0;}else{$irritate_mode = $key->irritate_mode;} 
+if ($key->auto_font == null) {$auto_font = 0;}else{$auto_font = $key->auto_font;} 
 if ($key->user_status == 1) { ?>
 <td>
     <label class="switch">
@@ -190,7 +192,12 @@ if ($key->user_status == 1) { ?>
 <?php } ?>
 
                     <td>
-                        <!-- <a class="pd-setting" href="<?=base_url('company/add-project/').$key->users_id?>">Add-Project</a> -->
+<?php if ($irritate_mode == 1) { ?>
+  <button class="pd-setting-ed"><a href="<?=base_url('company/irritate-mode/').$key->users_id.'/'.$irritate_mode?>" data-toggle="tooltip" title="Auto Irritate mode Off"><i class="fa fa-check"></i></a></button>
+<?php }else{ ?>
+  <button class="pd-setting-ed"><a href="<?=base_url('company/irritate-mode/').$key->users_id.'/'.$irritate_mode?>" data-toggle="tooltip" title="Auto Irritate mode On"><i class="fa fa-times"></i></a></button>
+<?php } ?>
+
                         <button class="pd-setting-ed"><a href="<?=base_url('company/add-project/').$key->users_id?>" data-toggle="tooltip" title="Add-Project"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a></button>
                         <button class="pd-setting-ed"><a href="<?=base_url('company/user-view/').$key->users_id?>" data-toggle="tooltip" title="View"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>
 <button data-toggle="tooltip" title="remove" class="pd-setting-ed">
@@ -203,6 +210,8 @@ if ($key->user_status == 1) { ?>
 <?php }else{ ?>
   <button class="pd-setting-ed"><a href="<?=base_url('company/user-auto-font/').$key->users_id.'/'.$auto_font?>" data-toggle="tooltip" title="Auto Font Active"><i class="fa fa-times"></i></a></button>
 <?php } ?>
+
+
 
 
 
