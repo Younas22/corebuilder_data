@@ -122,6 +122,11 @@
                            <a href="<?=base_url('company/project-edit/').$key->project_id?>" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
                         </button>
+
+                        <button class="pd-setting-ed">
+                           <a href="<?=base_url('company/del-user-projects/').$key->project_id.'/'.$key->users_id?>" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </a>
+                        </button>
                         <?php }else{ ?>
 
                         <button class="pd-setting-ed">

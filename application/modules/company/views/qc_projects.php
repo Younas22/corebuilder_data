@@ -84,7 +84,7 @@
 .stats div:nth-of-type(3){border:none;}
 </style>
 
-<div class="breadcome-area" style="display:none;"> 
+<div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -92,21 +92,22 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcome-heading">
-                                <form role="search" class="sr-input-func">
-                                    <input type="text" placeholder="Search..." class="search-int form-control">
-                                    <a href="#"><i class="fa fa-search"></i></a>
+                                <form action="<?=base_url('company/qc-report')?>" method="GET" role="search" class="sr-input-func">
+                                    <input type="text" placeholder="Search..." class="search-int form-control" name="user_searching">
+                                    <!-- <a href="" type="submit"><i class="fa fa-search"></i></a> -->
+                                    <button type="submit"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <ul class="breadcome-menu">
-                                <li><a href="<?=$_SERVER['HTTP_REFERER']?>">Back</a> <span class="bread-slash"></span>
+                            <!-- <ul class="breadcome-menu">
+                                <li><a href="<?=base_url()?>">Home</a> <span class="bread-slash">/</span>
                             </li>
-                        <!-- <?php if ($user_type == 'company') { ?>
-                        <li><span class="bread-blod"><?=$user_type?> / <?=$url_title?></span>
+                            <?php if ($user_type == 'company') { ?>
+                            <li><span class="bread-blod"><?=$user_type?> / <?=$url_title?></span>
                             <?php } ?>
-                        </li> -->
-                    </ul>
+                        </li>
+                    </ul> -->
                 </div>
             </div>
         </div>
@@ -114,6 +115,7 @@
 </div>
 </div>
 </div>
+
 <div style="margin-top:20px;"></div>
 </div>
 <!-- Single pro tab review Start-->
@@ -122,9 +124,27 @@
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="product-status-wrap larg_devices_mb">
-        <h4>QC Report List</h4>
-            
-<?php if (!empty($this->session->flashdata('qc_status'))) { ?>
+
+<div style="display: flex;">
+<h4 style="margin-right: 60%;">QC Report List <span  data-toggle="tooltip"  title="Total Users"></span></h4>
+<select name="qcresults" class="form-control" style="float:right; width:28%;">
+    <?php 
+    $results = $this->session->userdata('qcresults');
+    $results_arr = [10,20,50,100];
+    for ($i=0; $i < count($results_arr); $i++) { 
+        if ($results_arr[$i] == $results) { ?>
+            <option value="<?=$results_arr[$i]?>" selected><?=$results_arr[$i]?></option>
+        <?php }else{?>
+            <option value="<?=$results_arr[$i]?>"><?=$results_arr[$i]?></option>
+        <?php } } ?>
+<!--         <option value="10" selected="">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option> -->
+    </select>
+</div>
+
+    <?php if (!empty($this->session->flashdata('qc_status'))) { ?>
 <div class="alert alert-success alert-success-style2 alert-st-bg1">
 <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
 <span class="icon-sc-cl" aria-hidden="true">×</span>
@@ -135,7 +155,7 @@
 <?php }?>        <div class="asset-inner">
             <?php if (!empty($alluser_projects)) { ?>
             <table>
-                <tr>
+                <tr> 
                     <th>No</th>
                     <th>Name</th>
                     <th>Email</th>

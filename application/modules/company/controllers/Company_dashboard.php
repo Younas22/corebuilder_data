@@ -615,6 +615,23 @@ $data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$
 	}
 /*end user delete*/
 
+/*deluser_projects*/
+		public function deluser_projects($p_project,$user_id)
+	{
+		$project_deleted = $this->db->where('id',$p_project)->delete('u_projects');
+		if ($project_deleted == 1) {
+			// dd($submit_withdraw_request);
+			unset($_SESSION['project_errors']);
+			$this->session->set_flashdata('project_msg', 'Project deleted Successfully!');
+		}else{
+			// dd($submit_user_request);
+			unset($_SESSION['project_msg']);
+		        $this->session->set_flashdata('project_errors','Something Wrong!');
+		}
+		redirect(base_url('company/user-projects/'.$user_id));
+	}
+/*end deluser_projects*/
+
 /*user user_auto_font*/
 		public function user_auto_font($user_id,$val)
 	{
@@ -900,14 +917,34 @@ public function mail_of_project_details($project_id,$u_id)
 		echo "project_accuracy"; exit;
 	}
 
+
+
+	public function set_qcresults_per_page()
+	{
+		$results = $this->input->post('results');
+		$this->session->set_userdata('qcresults',$results);
+		echo true;
+	}
+
 	public function qc_report()
 	{
 			// echo accuracy_report(7); exit;
+
+		$results = $this->session->userdata('qcresults');
+		// dd($results);
+		if (isset($results)) {
+			$results = $results;
+		}else{
+			$results = 10;
+		}
+
+
 		$company_id = $this->session->userdata('logged_in')->id;
+		$search = $this->input->get('user_searching');
         $config = array();
 		$config["base_url"] = base_url() . "company/Company_dashboard/qc_report";
 		$config["total_rows"] = $this->company_dash->qc_report($company_id);
-        $config["per_page"] = 10;
+        $config["per_page"] = $results;
         $config["uri_segment"] = 4;
         $config['full_tag_open'] = "<ul class='pagination'>";
 	    $config['full_tag_close'] = '</ul>';
@@ -930,8 +967,16 @@ public function mail_of_project_details($project_id,$u_id)
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $data["links"] = $this->pagination->create_links();
-        $data['alluser_projects'] = $this->company_dash->qc_report_projects($config["per_page"], 
+
+if (!empty($search)) {
+$data['alluser_projects'] = $this->company_dash->search_qc_report_projects($search,$company_id);
+}else{
+$data['alluser_projects'] = $this->company_dash->qc_report_projects($config["per_page"], 
         	$page,$company_id);
+}
+
+
+        
         // dd($data['alluser_projects']);
 		$data['url'] = current_url();
 		$data['url_title'] = 'User-Project';
@@ -952,7 +997,7 @@ public function mail_of_project_details($project_id,$u_id)
 		$data['profile'] = $this->company_dash->profile($company_id);
 		$this->template->template($data);
 	}
-
+ 
 //View_QC Report date update
 		public function View_QCReport()
 	{

@@ -179,6 +179,24 @@ location.reload();
 });
 });
 
+$('select[name="qcresults"]').change(function() {
+let results = $(this).val();
+// alert(results);
+$.ajax({
+url: "<?php echo base_url("company/set_qcresults_per_page");?>",
+type: "POST",
+data: {
+results: results
+},
+dataType:"json",
+cache: false,
+success: function(dataResult){
+location.reload();
+}
+
+});
+});
+
 
 $('select[name="invoice_type_"]').change(function() {
 let invoice_types = $(this).val();

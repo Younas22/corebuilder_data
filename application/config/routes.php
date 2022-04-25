@@ -77,6 +77,7 @@ $route['company/user-auto-font/(:num)/(:any)'] = 'company/Company_dashboard/user
 $route['company/irritate-mode/(:num)/(:any)'] = 'company/Company_dashboard/irritate_mode/$1/$2';
 
 $route['company/user-projects/(:num)']='company/Company_dashboard/user_projects/$1';
+$route['company/del-user-projects/(:num)/(:num)']='company/Company_dashboard/deluser_projects/$1/$2';
 $route['company/project-view/(:num)'] ='company/Company_dashboard/project_view/$1';
 $route['company/project-edit/(:num)'] ='company/Company_dashboard/project_edit/$1';
 $route['company/project_update'] ='company/Company_dashboard/update_projects';
@@ -102,6 +103,7 @@ $route['company/unlock-projects'] ='company/Company_dashboard/unlock_projects';
 $route['company/develop-projects'] ='company/Company_dashboard/develop_projects';
 $route['company/add_custom_project'] ='company/Company_dashboard/add_custom_project';
 $route['company/set_results_per_page'] ='company/Company_dashboard/set_results_per_page';
+$route['company/set_qcresults_per_page'] ='company/Company_dashboard/set_qcresults_per_page';
 $route['company/email-configuration'] ='company/Company_dashboard/email_configuration';
 $route['company/submit_email_configuration'] ='company/Company_dashboard/submit_email_configuration';
 $route['company/View_QCReport'] ='company/Company_dashboard/View_QCReport';
