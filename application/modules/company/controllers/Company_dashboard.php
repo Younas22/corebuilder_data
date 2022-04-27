@@ -926,6 +926,13 @@ public function mail_of_project_details($project_id,$u_id)
 		echo true;
 	}
 
+	public function set_qcprojects()
+	{
+		$results = $this->input->post('results');
+		$this->session->set_userdata('qcprojects',$results);
+		echo true;
+	}
+
 	public function qc_report()
 	{
 			// echo accuracy_report(7); exit;
@@ -976,7 +983,8 @@ $data['alluser_projects'] = $this->company_dash->qc_report_projects($config["per
 }
 
 
-        
+        $data['get_projects'] = $this->company_dash->get_projects();
+        // dd($data['get_projects']);
         // dd($data['alluser_projects']);
 		$data['url'] = current_url();
 		$data['url_title'] = 'User-Project';

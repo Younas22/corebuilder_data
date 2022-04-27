@@ -104,6 +104,7 @@ $route['company/develop-projects'] ='company/Company_dashboard/develop_projects'
 $route['company/add_custom_project'] ='company/Company_dashboard/add_custom_project';
 $route['company/set_results_per_page'] ='company/Company_dashboard/set_results_per_page';
 $route['company/set_qcresults_per_page'] ='company/Company_dashboard/set_qcresults_per_page';
+$route['company/set_qcprojects'] ='company/Company_dashboard/set_qcprojects';
 $route['company/email-configuration'] ='company/Company_dashboard/email_configuration';
 $route['company/submit_email_configuration'] ='company/Company_dashboard/submit_email_configuration';
 $route['company/View_QCReport'] ='company/Company_dashboard/View_QCReport';

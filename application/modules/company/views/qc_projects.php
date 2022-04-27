@@ -1,5 +1,5 @@
 <?php  $user_type = $this->session->userdata('logged_in')->user_type; ?>
-<?php  $user_id = $this->session->userdata('logged_in')->id; ?>
+<?php  $user_id = $this->session->userdata('logged_in')->id;  ?>
 
 <style>
 
@@ -127,7 +127,7 @@
 
 <div style="display: flex;">
 <h4 style="margin-right: 60%;">QC Report List <span  data-toggle="tooltip"  title="Total Users"></span></h4>
-<select name="qcresults" class="form-control" style="float:right; width:28%;">
+<select name="qcresults" class="form-control" style="float:right; width:10%; margin-right: 10px;">
     <?php 
     $results = $this->session->userdata('qcresults');
     $results_arr = [10,20,50,100];
@@ -137,10 +137,20 @@
         <?php }else{?>
             <option value="<?=$results_arr[$i]?>"><?=$results_arr[$i]?></option>
         <?php } } ?>
-<!--         <option value="10" selected="">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-        <option value="100">100</option> -->
+    </select>
+
+
+    <select name="qcprojects" class="form-control" style="float:right; width:10%;">
+    <?php 
+    $results_ = $this->session->userdata('qcprojects');
+    $qcprojects = 0;
+    foreach ($get_projects as $key) {
+        if ($qcprojects < 4) {
+     if ($key->projects_title == $results_) { ?>
+            <option value="<?=$key->projects_title?>" selected><?=$key->projects_title?></option>
+        <?php }else{?>
+            <option value="<?=$key->projects_title?>"><?=$key->projects_title?></option>
+        <?php } }$qcprojects++; } ?>
     </select>
 </div>
 

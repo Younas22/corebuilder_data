@@ -374,17 +374,7 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
         ->get('u_projects')->num_rows();
     }
 
-        public function qc_report($company_id)
-    {
-        return $this->db->
-        select()
-        ->from('u_projects')
-        ->where('users.company_id',$company_id)
-        ->where('u_projects.p_type','Target')
-        ->where('u_projects.end_project',1)
-        ->join('users', 'u_projects.u_id = users.id')
-        ->get()->num_rows();
-    }
+
 /*end projects and earning*/
 
     public function view($id)
@@ -409,20 +399,52 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
         ->get()->result();
     }
 
+        public function qc_report($company_id)
+    {
+        $qcprojects = $this->session->userdata('qcprojects');
+        $date = new DateTime("now", new DateTimeZone('Asia/Kolkata'));
+        $today = $date->format('Y-m-d H:i:s');
+        $where = '(u_projects.end_date<"'.$today.'" or u_projects.end_project = "1")';
+
+        $this->db->select();
+        $this->db->from('u_projects');
+        $this->db->where('users.company_id',$company_id);
+        $this->db->where('u_projects.p_type','Target');
+        $this->db->where($where);
+        if (isset($qcprojects)) {
+            $this->db->where('projects.projects_title',$qcprojects);
+        }
+        $this->db->join('users', 'u_projects.u_id = users.id');
+        $this->db->join('projects', 'u_projects.p_id = projects.id');
+        $return = $this->db->get()->num_rows();
+
+        return $return;
+    }
+
     public function qc_report_projects($limit, $offset,$company_id)
     {
-        return $this->db->select('u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,qc_report_status,report_status_date,report_view_date,report_download_date,report_send_date,custom_terms_conditions,img_one,img_two,img_three,img_four,
-            projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id,first_name,company_email,user_phone')
-        ->from('u_projects')
-        ->order_by('users.id',"desc")
-        ->limit($limit, $offset)
-        ->where('u_projects.p_type','Target')
-        ->where('u_projects.end_project',1)
-        ->where('users.company_id',$company_id)
-        ->join('users', 'u_projects.u_id = users.id')
-        ->join('u_working', 'u_projects.id = u_working.p_id')
-        ->join('projects', 'u_projects.p_id = projects.id')
-        ->get()->result();
+        $qcprojects = $this->session->userdata('qcprojects');
+        $date = new DateTime("now", new DateTimeZone('Asia/Kolkata'));
+        $today = $date->format('Y-m-d H:i:s');
+        $where = '(u_projects.end_date<"'.$today.'" or u_projects.end_project = "1")';
+
+        $this->db->select('u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,qc_report_status,report_status_date,report_view_date,report_download_date,report_send_date,custom_terms_conditions,img_one,img_two,img_three,img_four,
+            projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id,first_name,company_email,user_phone');
+        $this->db->from('u_projects');
+        $this->db->order_by('users.id',"desc");
+        $this->db->limit($limit, $offset);
+        $this->db->where('u_projects.p_type','Target');
+        $this->db->where($where);
+        if (isset($qcprojects)) {
+            $this->db->where('projects.projects_title',$qcprojects);
+        }
+        $this->db->where('users.company_id',$company_id);
+        $this->db->join('users', 'u_projects.u_id = users.id');
+        $this->db->join('u_working', 'u_projects.id = u_working.p_id');
+        $this->db->join('projects', 'u_projects.p_id = projects.id');
+        $qc_report_projects = $this->db->get()->result();
+
+        return $qc_report_projects;
 
         // dd($return);
     }
@@ -430,22 +452,31 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
 
     public function search_qc_report_projects($search,$company_id)
     {
-        return $this->db->select('u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,qc_report_status,report_status_date,report_view_date,report_download_date,report_send_date,custom_terms_conditions,img_one,img_two,img_three,img_four,
-            projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id,first_name,company_email,user_phone')
-        ->from('u_projects')
-        ->where('u_projects.p_type','Target')
-        ->where('u_projects.end_project',1)
-        ->where('users.company_id',$company_id)
-        ->order_by('users.id',"desc")
-        ->group_start()
-        ->like('users.first_name',$search)
-        ->or_like('users.user_phone', $search)
-        ->or_like('users.company_email', $search)
-        ->group_end()
-        ->join('users', 'u_projects.u_id = users.id')
-        ->join('u_working', 'u_projects.id = u_working.p_id')
-        ->join('projects', 'u_projects.p_id = projects.id')
-        ->get()->result();
+        $qcprojects = $this->session->userdata('qcprojects');
+        $date = new DateTime("now", new DateTimeZone('Asia/Kolkata'));
+        $today = $date->format('Y-m-d H:i:s');
+        $where = '(u_projects.end_date<"'.$today.'" or u_projects.end_project = "1")';
+        
+        $this->db->select('u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,qc_report_status,report_status_date,report_view_date,report_download_date,report_send_date,custom_terms_conditions,img_one,img_two,img_three,img_four,
+            projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id,first_name,company_email,user_phone');
+        $this->db->from('u_projects');
+        $this->db->where('u_projects.p_type','Target');
+        $this->db->where($where);
+        if (isset($qcprojects)) {
+            $this->db->where('projects.projects_title',$qcprojects);
+        }
+        $this->db->where('users.company_id',$company_id);
+        $this->db->order_by('users.id',"desc");
+        $this->db->group_start();
+        $this->db->like('users.first_name',$search);
+        $this->db->or_like('users.user_phone', $search);
+        $this->db->or_like('users.company_email', $search);
+        $this->db->group_end();
+        $this->db->join('users', 'u_projects.u_id = users.id');
+        $this->db->join('u_working', 'u_projects.id = u_working.p_id');
+        $this->db->join('projects', 'u_projects.p_id = projects.id');
+        $search_qc_report_projects = $this->db->get()->result();
+        return $search_qc_report_projects;
     }
 
 

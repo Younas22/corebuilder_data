@@ -179,6 +179,24 @@ location.reload();
 });
 });
 
+$('select[name="qcprojects"]').change(function() {
+let results = $(this).val();
+
+$.ajax({
+url: "<?php echo base_url("company/set_qcprojects");?>",
+type: "POST",
+data: {
+results: results
+},
+dataType:"json",
+cache: false,
+success: function(dataResult){
+window.location.href = "<?php echo base_url("company/qc-report");?>"; 
+}
+
+});
+});
+
 $('select[name="qcresults"]').change(function() {
 let results = $(this).val();
 // alert(results);

@@ -16,9 +16,9 @@ if (!function_exists('auto_font')){
             // $inner_loop = 11;
                 $main_loop = 100;
                 if ($u_projects->p_type == 'Target'){
-                $count_val = 5;
-                $change_font_counting = 5;
-                }else{ $change_font_counting = 2; $count_val = 2;}
+                $count_val = 250;
+                $change_font_counting = 250;
+                }else{ $change_font_counting = 250; $count_val = 250;}
                 
                 $inner_loop = 11;
                 $count = 0;
@@ -42,9 +42,9 @@ if (!function_exists('auto_font')){
             // $inner_loop = 11;
                 $main_loop = 100;
                 if ($u_projects->p_type == 'Target'){
-                $count_val = 5;
-                $change_font_counting = 5;
-                }else{ $change_font_counting = 3; $count_val = 3;}
+                $count_val = 150;
+                $change_font_counting = 150;
+                }else{ $change_font_counting = 180; $count_val = 180;}
                 $inner_loop = 4;
                 $count = 0;
                 for ($i=1; $i < $main_loop; $i++) {
@@ -66,9 +66,9 @@ if (!function_exists('auto_font')){
             // $inner_loop = 11;
                 $main_loop = 100;
                 if ($u_projects->p_type == 'Target'){
-                $count_val = 5;
-                $change_font_counting = 5;
-                }else{ $change_font_counting = 3; $count_val = 3;}
+                $count_val = 110;
+                $change_font_counting = 110;
+                }else{ $change_font_counting = 100; $count_val = 100;}
                 $inner_loop = 4;
                 $count = 0;
                 for ($i=1; $i < $main_loop; $i++) {
@@ -90,9 +90,9 @@ if (!function_exists('auto_font')){
             // $inner_loop = 11;
                 $main_loop = 100;
                 if ($u_projects->p_type == 'Target'){
-                $count_val = 5;
-                $change_font_counting = 5;
-                }else{ $change_font_counting = 3; $count_val = 3;}
+                $count_val = 80;
+                $change_font_counting = 80;
+                }else{ $change_font_counting = 150; $count_val = 150;}
                 $inner_loop = 4;
                 $count = 0;
                 for ($i=1; $i < $main_loop; $i++) {
