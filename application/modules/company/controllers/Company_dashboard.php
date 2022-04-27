@@ -475,6 +475,16 @@ public function get_project_terms()
 		$this->session->set_userdata('results',$results);
 		echo true;
 	}
+
+
+	public function userprojects()
+	{
+		$results = $this->input->post('results');
+		$this->session->set_userdata('userprojects',$results);
+		echo true;
+	}
+
+
 /*get all user list*/
 	public function all_users()
 	{
@@ -519,6 +529,9 @@ $data['all_users'] = $this->company_dash->get_users_search($search,$company_id);
 }else{
 $data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$company_id);
 }
+	
+	// dd($config["total_rows"]);	
+		$data['get_projects'] = $this->company_dash->get_projects();
 		$data['total_user'] = $this->company_dash->total_users($company_id);
 		$data['url'] = current_url();
 		$data['url_title'] = 'all-users';

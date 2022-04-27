@@ -197,6 +197,24 @@ window.location.href = "<?php echo base_url("company/qc-report");?>";
 });
 });
 
+$('select[name="userprojects"]').change(function() {
+let results = $(this).val();
+
+$.ajax({
+url: "<?php echo base_url("company/userprojects");?>",
+type: "POST",
+data: {
+results: results
+},
+dataType:"json",
+cache: false,
+success: function(dataResult){
+window.location.href = "<?php echo base_url("company/all-users");?>"; 
+}
+
+});
+});
+
 $('select[name="qcresults"]').change(function() {
 let results = $(this).val();
 // alert(results);

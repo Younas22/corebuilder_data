@@ -303,22 +303,57 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
     /************all_users data*********/
     public function all_users($limit, $offset,$company_id)
     {
-        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font,irritate_mode')
-        ->from('users')
-        ->order_by('users.id',"desc")
-        ->limit($limit, $offset)
-        ->where('company_id',$company_id)
-        // ->join('u_projects', 'users.id = u_projects.u_id','right')
-        // ->join('projects', 'u_projects.p_id = projects.id','right')
-        ->get()->result();
+        $userprojects = $this->session->userdata('userprojects');
+        // dd($userprojects);
+        $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font,irritate_mode,projects.projects_title');
+        $this->db->from('users');
+        $this->db->order_by('users.id',"desc");
+        $this->db->limit($limit, $offset);
+        $this->db->where('company_id',$company_id);
+        if (isset($userprojects)) {
+            $this->db->where('projects.projects_title',$userprojects);
+        }
+        $this->db->join('u_projects', 'users.id = u_projects.u_id');
+        $this->db->join('projects', 'u_projects.p_id = projects.id');
+        $all_users = $this->db->get()->result();
+        return $all_users;
         
     }
  
+
+        public function get_users_search($search,$company_id)
+    {
+        $userprojects = $this->session->userdata('userprojects');
+        $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font,irritate_mode,projects.projects_title');
+        $this->db->from('users');
+        $this->db->where('company_id',$company_id);
+        if (isset($userprojects)) {
+            $this->db->where('projects.projects_title',$userprojects);
+        }
+        $this->db->order_by('users.id',"desc");
+        $this->db->group_start();
+        $this->db->like('first_name',$search);
+        $this->db->or_like('user_phone', $search);
+        $this->db->or_like('company_email', $search);
+        $this->db->group_end();
+        $this->db->join('u_projects', 'users.id = u_projects.u_id');
+        $this->db->join('projects', 'u_projects.p_id = projects.id');
+        $get_users_search = $this->db->get()->result();
+        return $get_users_search;
+    }
+
         public function total_users($company_id)
     {
-        return $this->db->select()
-        ->where('company_id',$company_id)
-        ->get('users')->num_rows();
+        $userprojects = $this->session->userdata('userprojects');
+        $this->db->select();
+        $this->db->where('company_id',$company_id);
+        if (isset($userprojects)) {
+            $this->db->where('projects.projects_title',$userprojects);
+        }
+        $this->db->join('u_projects', 'users.id = u_projects.u_id');
+        $this->db->join('projects', 'u_projects.p_id = projects.id');
+        $total_users = $this->db->get('users')->num_rows();
+        return $total_users;
     }
 
  
@@ -342,19 +377,6 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
         return $users_documents;
     }
 
-        public function get_users_search($search,$company_id)
-    {
-        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font,irritate_mode')
-        ->from('users')
-        ->where('company_id',$company_id)
-        ->order_by('users.id',"desc")
-        ->group_start()
-        ->like('first_name',$search)
-        ->or_like('user_phone', $search)
-        ->or_like('company_email', $search)
-        ->group_end()
-        ->get()->result();
-    }
 /*projects and earning*/
         public function user_earning($user_id)
     {
@@ -456,7 +478,7 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
         $date = new DateTime("now", new DateTimeZone('Asia/Kolkata'));
         $today = $date->format('Y-m-d H:i:s');
         $where = '(u_projects.end_date<"'.$today.'" or u_projects.end_project = "1")';
-        
+
         $this->db->select('u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,qc_report_status,report_status_date,report_view_date,report_download_date,report_send_date,custom_terms_conditions,img_one,img_two,img_three,img_four,
             projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id,first_name,company_email,user_phone');
         $this->db->from('u_projects');

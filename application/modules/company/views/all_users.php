@@ -103,7 +103,7 @@ input:checked + .slider:before {
 
 <div style="display: flex;">
 <h4 style="margin-right: 60%;">Users List <span  data-toggle="tooltip"  title="Total Users"> (<?=$total_user?>) </span></h4>
-<select name="results" class="form-control" style="float:right; width:28%;">
+<select name="results" class="form-control" style="float:right; width:10%; margin-right: 10px;">
     <?php 
     $results = $this->session->userdata('results');
     $results_arr = [10,20,50,100];
@@ -113,10 +113,19 @@ input:checked + .slider:before {
         <?php }else{?>
             <option value="<?=$results_arr[$i]?>"><?=$results_arr[$i]?></option>
         <?php } } ?>
-<!--         <option value="10" selected="">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-        <option value="100">100</option> -->
+    </select>
+
+  <select name="userprojects" class="form-control" style="float:right; width:10%;">
+    <?php 
+    $results_ = $this->session->userdata('userprojects');
+    $userprojects = 0;
+    foreach ($get_projects as $key) {
+        if ($userprojects < 4) {
+     if ($key->projects_title == $results_) { ?>
+            <option value="<?=$key->projects_title?>" selected><?=$key->projects_title?></option>
+        <?php }else{?>
+            <option value="<?=$key->projects_title?>"><?=$key->projects_title?></option>
+        <?php } }$userprojects++; } ?>
     </select>
 </div>
 
@@ -167,7 +176,7 @@ if(!empty($this->session->flashdata('user_errors'))){?>
                     <td><?=$key->company_email?></td>
                     <td><?=$key->user_phone?></td>
                     <td><?=$key->decript_password?></td>
-                    <td><?=letest_projects_title($key->users_id)->projects_title;?></td>
+                    <td><?=$key->projects_title;?></td>
                     <!-- <td><?=$key->p_type?></td> -->
                     <!-- <td><?=$key->start_date?></td> -->
                     <!-- <td><?=$key->end_date?></td> -->
