@@ -116,6 +116,7 @@ input:checked + .slider:before {
     </select>
 
   <select name="userprojects" class="form-control" style="float:right; width:10%;">
+    <option value="all">All</option>
     <?php 
     $results_ = $this->session->userdata('userprojects');
     $userprojects = 0;

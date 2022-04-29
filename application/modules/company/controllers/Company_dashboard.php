@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Company_dashboard extends MY_Controller {
     
- 
+  
 		function __construct()
 	{
 		parent:: __construct();
@@ -480,7 +480,11 @@ public function get_project_terms()
 	public function userprojects()
 	{
 		$results = $this->input->post('results');
-		$this->session->set_userdata('userprojects',$results);
+			if ($results == 'all') {
+				$this->session->unset_userdata('userprojects');
+			}else{
+				$this->session->set_userdata('userprojects',$results);
+			}
 		echo true;
 	}
 
@@ -942,7 +946,12 @@ public function mail_of_project_details($project_id,$u_id)
 	public function set_qcprojects()
 	{
 		$results = $this->input->post('results');
-		$this->session->set_userdata('qcprojects',$results);
+		if ($results == 'all') {
+			$this->session->unset_userdata('qcprojects');
+		}else{
+			$this->session->set_userdata('qcprojects',$results);
+		}
+		
 		echo true;
 	}
 
@@ -1359,7 +1368,6 @@ $page,$project_id);
 
 	public function add_custom_project()
 	{
-
 		// dd($this->input->post('get_custom_image')[0]);
 		$company_id = $this->session->userdata('logged_in')->id;
 		$image_data = count($this->input->post('get_custom_image'));
@@ -1401,13 +1409,21 @@ $page,$project_id);
 	{
 		if ($this->input->post('status') == 'pending') {
 			$val_ = 3;
+			$this->db->where('id',$id)->update('u_projects',array('terms_conditions_status'=>$val_,'rejection_reason'=>$this->input->post('rejection_reason')));
 		}else{
 			if ($val == 2) { $val_ = 1; }
 			if ($val == 1) { $val_ = 1; }
 			if ($val == 3) { $val_ = 1; }
+
+			$this->db->where('id',$id)->update('u_projects',array('terms_conditions_status'=>$val_,'rejection_reason'=>$this->input->post('rejection_reason')));
 		}
 
-		$this->db->where('id',$id)->update('u_projects',array('terms_conditions_status'=>$val_,'rejection_reason'=>$this->input->post('rejection_reason')));
+
+		// date_default_timezone_set("Asia/Karachi");
+		// $date = $this->db->where('id',$id)->get('u_projects')->row();
+		// dd(date('Y-m-d').'T'.date('h:i').'|'.$date->start_date);
+		// dd($date->start_date);
+		
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 

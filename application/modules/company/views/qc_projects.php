@@ -1,6 +1,6 @@
 <?php  $user_type = $this->session->userdata('logged_in')->user_type; ?>
 <?php  $user_id = $this->session->userdata('logged_in')->id;  ?>
-
+ 
 <style>
 
 .tile{
@@ -141,12 +141,15 @@
 
 
     <select name="qcprojects" class="form-control" style="float:right; width:10%;">
+        <option value="all">All</option>
     <?php 
     $results_ = $this->session->userdata('qcprojects');
     $qcprojects = 0;
     foreach ($get_projects as $key) {
         if ($qcprojects < 4) {
+
      if ($key->projects_title == $results_) { ?>
+            
             <option value="<?=$key->projects_title?>" selected><?=$key->projects_title?></option>
         <?php }else{?>
             <option value="<?=$key->projects_title?>"><?=$key->projects_title?></option>
