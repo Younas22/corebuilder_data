@@ -114,7 +114,7 @@ input:checked + .slider:before {
             <option value="<?=$results_arr[$i]?>"><?=$results_arr[$i]?></option>
         <?php } } ?>
     </select>
-
+ 
   <select name="userprojects" class="form-control" style="float:right; width:10%;">
     <option value="all">All</option>
     <?php 
@@ -182,7 +182,8 @@ if(!empty($this->session->flashdata('user_errors'))){?>
                     <!-- <td><?=$key->start_date?></td> -->
                     <!-- <td><?=$key->end_date?></td> -->
 
-<?php 
+<?php
+
 if ($key->irritate_mode == null) {$irritate_mode = 0;}else{$irritate_mode = $key->irritate_mode;} 
 if ($key->auto_font == null) {$auto_font = 0;}else{$auto_font = $key->auto_font;} 
 if ($key->user_status == 1) { ?>
@@ -202,11 +203,11 @@ if ($key->user_status == 1) { ?>
 <?php } ?>
 
                     <td>
-<?php if ($irritate_mode == 1) { ?>
-  <button class="pd-setting-ed"><a href="<?=base_url('company/irritate-mode/').$key->users_id.'/'.$irritate_mode?>" data-toggle="tooltip" title="Auto Irritate mode Off"><i class="fa fa-check"></i></a></button>
+<?php if ($irritate_mode_status == 1) { if ($irritate_mode == 1) { ?>
+  <button class="pd-setting-ed"><a href="<?=base_url('company/irritate-mode/').$key->users_id.'/'.$irritate_mode?>" data-toggle="tooltip" title="Auto Delay Mode Off"><i class="fa fa-check"></i></a></button>
 <?php }else{ ?>
-  <button class="pd-setting-ed"><a href="<?=base_url('company/irritate-mode/').$key->users_id.'/'.$irritate_mode?>" data-toggle="tooltip" title="Auto Irritate mode On"><i class="fa fa-times"></i></a></button>
-<?php } ?>
+  <button class="pd-setting-ed"><a href="<?=base_url('company/irritate-mode/').$key->users_id.'/'.$irritate_mode?>" data-toggle="tooltip" title="Auto Delay Mode On"><i class="fa fa-times"></i></a></button>
+<?php } } ?>
 
                         <button class="pd-setting-ed"><a href="<?=base_url('company/add-project/').$key->users_id?>" data-toggle="tooltip" title="Add-Project"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a></button>
                         <button class="pd-setting-ed"><a href="<?=base_url('company/user-view/').$key->users_id?>" data-toggle="tooltip" title="View"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>
@@ -215,11 +216,11 @@ if ($key->user_status == 1) { ?>
 <i class="fa fa-trash-o" aria-hidden="true"></i></a>
 </button>
 
-<?php if ($auto_font == 1) { ?>
-  <button class="pd-setting-ed"><a href="<?=base_url('company/user-auto-font/').$key->users_id.'/'.$auto_font?>" data-toggle="tooltip" title="Auto Font Disable"><i class="fa fa-check"></i></a></button>
+<?php if($auto_font_status == 1){ if ($auto_font == 1) { ?>
+  <button class="pd-setting-ed"><a href="<?=base_url('company/user-auto-font/').$key->users_id.'/'.$auto_font?>" data-toggle="tooltip" title="Auto-Stage Disable"><i class="fa fa-check"></i></a></button>
 <?php }else{ ?>
-  <button class="pd-setting-ed"><a href="<?=base_url('company/user-auto-font/').$key->users_id.'/'.$auto_font?>" data-toggle="tooltip" title="Auto Font Active"><i class="fa fa-times"></i></a></button>
-<?php } ?>
+  <button class="pd-setting-ed"><a href="<?=base_url('company/user-auto-font/').$key->users_id.'/'.$auto_font?>" data-toggle="tooltip" title="Auto-Stage Active"><i class="fa fa-times"></i></a></button>
+<?php } } ?>
 
 
 

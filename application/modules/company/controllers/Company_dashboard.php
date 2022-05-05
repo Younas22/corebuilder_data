@@ -542,6 +542,8 @@ $data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$
 		$data['title'] = 'All Users';
 		$data['contant_view'] = 'company/all_users';
 		$data['profile'] = $this->company_dash->profile($company_id);
+		$data['irritate_mode_status'] = check_auto_status($this->session->userdata('logged_in')->id)->irritate_mode;
+		$data['auto_font_status'] = check_auto_status($this->session->userdata('logged_in')->id)->auto_font;
 		$this->template->template($data);
 	}
 	/*end user list*/
@@ -658,7 +660,7 @@ $data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$
 		if ($user_auto_font == 1) {
 			// dd($submit_withdraw_request);
 			unset($_SESSION['user_errors']);
-			$this->session->set_flashdata('user_msg', 'User Auto Font '.$msg);
+			$this->session->set_flashdata('user_msg', 'User Auto Stage '.$msg);
 		}else{
 			// dd($submit_user_request);
 			unset($_SESSION['user_msg']);
@@ -678,7 +680,7 @@ $data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$
 		if ($irritate_mode == 1) {
 			// dd($submit_withdraw_request);
 			unset($_SESSION['user_errors']);
-			$this->session->set_flashdata('user_msg', 'User Irritate mode '.$msg);
+			$this->session->set_flashdata('user_msg', 'User Delay Mode '.$msg);
 		}else{
 			// dd($submit_user_request);
 			unset($_SESSION['user_msg']);

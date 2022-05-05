@@ -194,4 +194,18 @@ if (!function_exists('slow_loading')){
 
         return 1000;
      }
+
+
+
+     /*////////////check auto font and irritate mode status//////////*/
+if (!function_exists('check_auto_status')){
+      function check_auto_status($company_id){
+        $CI =& get_instance();
+        $check_auto_status = $CI->db
+            ->from('users')
+            ->where('id', $company_id)
+            ->get()->row();
+            return $check_auto_status;
+       }
+  }
 }

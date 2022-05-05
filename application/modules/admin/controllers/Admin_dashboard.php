@@ -319,15 +319,18 @@ $this->db->insert('project_imgs',array('p_image'=>$filename,'p_id'=>$project_id)
     		redirect ('admin/add-project-images');
     	}
 
-		$admin_id = $this->session->userdata('logged_in')->id;
-		$data['url'] = current_url();
-		$data['url_title'] = 'sign in';
-		$data['title'] = 'sign in your account';
-		$data['contant_view'] = 'admin/add-project-images';
-		$data['action_type'] = base_url('admin/update/profile');
-		$data['profile'] = $this->admin_dash->profile($admin_id);
-		$data['projects'] = $this->admin_dash->projects();
-		$this->template->template($data);
+    	$this->session->set_flashdata('project_imgs', 'Project Images Added!');
+
+    	return redirect('admin/add-project-images');
+		// $admin_id = $this->session->userdata('logged_in')->id;
+		// $data['url'] = current_url();
+		// $data['url_title'] = 'sign in';
+		// $data['title'] = 'sign in your account';
+		// $data['contant_view'] = 'admin/add-project-images';
+		// $data['action_type'] = base_url('admin/update/profile');
+		// $data['profile'] = $this->admin_dash->profile($admin_id);
+		// $data['projects'] = $this->admin_dash->projects();
+		// $this->template->template($data);
 
 
 	}
@@ -771,6 +774,32 @@ public function help()
 		$custom_terms = 1;
 	}
 	$this->db->where('id',$id)->update('users',array('custom_terms'=>$custom_terms));
+		redirect($_SERVER['HTTP_REFERER']);
+}
+
+/*////////////update irritate mode////////////*/
+	public function update_irritate_mode($id)
+{
+	$irritate_mode = $this->db->where('id',$id)->get('users')->row();
+	if ($irritate_mode->irritate_mode == 1) {
+		$irritate_mode = 0;
+	}else{
+		$irritate_mode = 1;
+	}
+	$this->db->where('id',$id)->update('users',array('irritate_mode'=>$irritate_mode));
+		redirect($_SERVER['HTTP_REFERER']);
+}
+
+/*////////////update auto font////////////*/
+	public function update_auto_font($id)
+{
+	$auto_font = $this->db->where('id',$id)->get('users')->row();
+	if ($auto_font->auto_font == 1) {
+		$auto_font = 0;
+	}else{
+		$auto_font = 1;
+	}
+	$this->db->where('id',$id)->update('users',array('auto_font'=>$auto_font));
 		redirect($_SERVER['HTTP_REFERER']);
 }
 /*////////////end export data////////////*/

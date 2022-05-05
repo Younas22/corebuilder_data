@@ -29,7 +29,7 @@
 </div>
 </div>
 </div>
-</div>
+</div> 
 <!-- Single pro tab review Start-->
 <div class="single-pro-review-area mt-t-30 mg-b-15">
 <div class="container-fluid">
@@ -39,6 +39,19 @@
         <ul id="myTabedu1" class="tab-review-design">
             <li class="active"><a href="#description">Add Project Images</a></li>
         </ul>
+
+<?php
+if(!empty($this->session->flashdata('project_imgs'))){?>
+<div class="alert alert-success alert-success-style2 alert-st-bg1">
+<button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
+<span class="icon-sc-cl" aria-hidden="true">×</span>
+</button>
+<i class="fa fa-check edu-checked-pro admin-check-pro admin-check-pro-clr" aria-hidden="true"></i>
+<p><strong>Alert!</strong> <?= $this->session->flashdata('project_imgs'); ?></p>
+</div>
+
+<?php } ?>
+
         <div id="myTabContent" class="tab-content custom-product-edit">
             <div class="product-tab-list tab-pane fade active in" id="description">
                 <div class="row">
@@ -240,3 +253,9 @@
 </div>
 </div>
 </div>
+
+<script>
+    setTimeout( function(){ 
+    '<?php $this->session->unset_userdata('project_imgs'); ?>'
+  }  , 5000 )
+</script>

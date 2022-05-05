@@ -59,6 +59,8 @@
                     <th>Phone</th>
                     <th>Password</th>
                     <th>Users Document</th>
+                    <th>Delay Mode</th>
+                    <th>Auto-Stage</th>
                     <!-- <th>Project</th> -->
                     <!-- <th>Type</th> -->
                     <!-- <th>Start</th> -->
@@ -82,19 +84,38 @@
                     <!-- <td><?=$key->end_date?></td> -->
 
 <?php if ($key->custom_terms == 1) { ?>
-
 <td><span class="badge badge-primary" style="background:blue; cursor: pointer;">
     <a data-toggle="modal" data-target="#myModal<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
     data-placement="top" title="Users Document" style="color: white;">ON</a></span>
 </td>
-
 <?php }else{ ?>
-
 <td><span class="badge badge-secondary" style="background:gray; cursor: pointer;"><a data-toggle="modal" data-target="#myModal<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
     data-placement="top" title="Users Document" style="color: white;">OFF</a></span>
 </td>
+<?php } ?>
 
+<!-- Delay Mode -->
+<?php if ($key->irritate_mode == 1) { ?>
+<td><span class="badge badge-primary" style="background:blue; cursor: pointer;">
+    <a data-toggle="modal" data-target="#irritate_mode<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
+    data-placement="top" title="Users Document" style="color: white;">ON</a></span>
+</td>
+<?php }else{ ?>
+<td><span class="badge badge-secondary" style="background:gray; cursor: pointer;"><a data-toggle="modal" data-target="#irritate_mode<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
+    data-placement="top" title="Users Document" style="color: white;">OFF</a></span>
+</td>
+<?php } ?>
 
+<!-- Auto-Stage -->
+<?php if ($key->auto_font == 1) { ?>
+<td><span class="badge badge-primary" style="background:blue; cursor: pointer;">
+    <a data-toggle="modal" data-target="#auto_font<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
+    data-placement="top" title="Users Document" style="color: white;">ON</a></span>
+</td>
+<?php }else{ ?>
+<td><span class="badge badge-secondary" style="background:gray; cursor: pointer;"><a data-toggle="modal" data-target="#auto_font<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
+    data-placement="top" title="Users Document" style="color: white;">OFF</a></span>
+</td>
 <?php } ?>
 
 <?php if ($key->user_status == 1) { ?>
@@ -129,18 +150,16 @@ data-placement="top" title="Click and enable Account" style="color: white;">OFF<
 </tr>
 
 
-
+<!-- Users Document -->
 <center><div id="myModal<?php echo $key->users_id; ?>" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Users Document</h4>
       </div>
       <div class="modal-body">
-        <p>Do you want to active Users Document? </p>
+        <p>Do you want to update Users Document? </p>
       </div>
       <div class="modal-footer">
       <a  href="<?=base_url('admin/agency/active-document/').$key->users_id?>" class="btn btn-default"  >Yes</a>
@@ -149,7 +168,50 @@ data-placement="top" title="Click and enable Account" style="color: white;">OFF<
     </div>
 
   </div>
-</div></center>
+</div>
+</center>
+
+<!-- irritate_mode -->
+<center><div id="irritate_mode<?php echo $key->users_id; ?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Users Delay Mode</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to Update User Delay Mode? </p>
+      </div>
+      <div class="modal-footer">
+      <a  href="<?=base_url('admin/agency/update_irritate_mode/').$key->users_id?>" class="btn btn-default"  >Yes</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</center>
+
+<!-- Auto Mode -->
+<center><div id="auto_font<?php echo $key->users_id; ?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Users Auto Mode</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to update Auto-Stage mode? </p>
+      </div>
+      <div class="modal-footer">
+      <a  href="<?=base_url('admin/agency/update_auto_font/').$key->users_id?>" class="btn btn-default"  >Yes</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</center>
 <?php $count++; endforeach; ?>
 </table>
     <?php }else{ echo "Data Not Found!"; } ?>
