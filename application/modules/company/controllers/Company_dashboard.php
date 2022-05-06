@@ -1227,7 +1227,6 @@ $data['alluser_projects'] = $this->company_dash->qc_report_projects($config["per
 		// unset($_SESSION['email_configuration_msg']);
         $this->session->set_flashdata('email_configuration_msg','You have added successfully mail for configuration!');
 		redirect(base_url('company/email-configuration'));
-
 	}
 
 
@@ -1293,12 +1292,12 @@ $data['alluser_projects'] = $this->company_dash->qc_report_projects($config["per
         $page = ($this->uri->segment(6)) ? $this->uri->segment(6) : 0;
         $data["links"] = $this->pagination->create_links();
 
-if (!empty($search)) {
-$data['p_all_user'] = $this->company_dash->p_search_user($search,$project_id);
-}else{
-$data['p_all_user'] = $this->company_dash->p_all_user($config["per_page"], 
-$page,$project_id);
-}
+		if (!empty($search)) {
+		$data['p_all_user'] = $this->company_dash->p_search_user($search,$project_id);
+		}else{
+		$data['p_all_user'] = $this->company_dash->p_all_user($config["per_page"], 
+		$page,$project_id);
+		}
 
         // dd($data['p_all_user']);
 		$data['url'] = current_url();
@@ -1383,7 +1382,7 @@ $page,$project_id);
 		// dd($project_number);
 
 
-		for ($i=0; $i < $image_data; $i++) { 
+		for ($i=0; $i < $image_data; $i++) {
 			// echo $this->input->post('get_custom_image');
 
 			$record = explode(",",$this->input->post('get_custom_image')[$i]);

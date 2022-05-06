@@ -207,7 +207,9 @@ Project List</h4>
 
 
                     //Accuracy report
-                    $current = (int)$key->_right+(int)$key->wrong;
+                    $wrong = 0;
+                    if ($key->wrong == 0) {$wrong = 1;}else{$wrong = (int)$key->wrong;}
+                    $current = (int)$key->_right+$wrong;
                     $current_right = (int)$key->_right;
                     $accuracy_rep = $current_right/$current*100;
                     $accuracy_report = number_format((float)$accuracy_rep, 2, '.', '').'%';
@@ -245,7 +247,41 @@ Project List</h4>
                         <div class="stats">
 
                             <div style="font-size:12px">
-                                <strong>Name</strong> <?=$key->first_name?>
+                                <strong>Difficulty</strong>
+<?php
+if ($key->projects_title == 'Captcha') {
+if ($key->font == '1.ttf') { echo "Advanced"; }
+if ($key->font == '2.ttf') { echo "Semi-Pro"; }
+if ($key->font == '3.ttf') { echo "Professional"; }
+if ($key->font == '4.otf') { echo "Master"; }
+if ($key->font == '5.otf') { echo "Expert"; }
+if ($key->font == '6.ttf') { echo "Legend"; }
+if ($key->font == 'radiospace.ttf') { echo "Intermediate"; }
+if ($key->font == 'Space_Galaxy.ttf') { echo "Rookie"; }
+if ($key->font == 'STARTER Bold.ttf') { echo "Basic"; }
+if ($key->font == 'TOMOPRG_.TTF') { echo "Beginner"; }
+}
+
+if ($key->projects_title == 'Invoice Calculation') {
+if ($key->difficulty == 1) { echo "Routine Products"; }
+if ($key->difficulty == 2) { echo "Pharmaceuticals"; }
+if ($key->difficulty == 3) { echo "Automobiles"; }
+}
+
+if ($key->projects_title == 'Alpha-Numeric Validation') {
+if ($key->difficulty == 1) { echo "Rookie"; }
+if ($key->difficulty == 2) { echo "Expert"; }
+if ($key->difficulty == 3) { echo "Professional"; }
+}
+
+if ($key->projects_title == 'Form Filling') {
+if ($key->difficulty == 1) { echo "Form Filling –  Alpha"; }
+if ($key->difficulty == 2) { echo "Alphanumeric-1"; }
+if ($key->difficulty == 3) { echo "Alphanumeric-1"; }
+}
+
+?>
+
                             </div>
 
                             <div>

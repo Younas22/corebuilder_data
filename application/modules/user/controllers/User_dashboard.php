@@ -374,9 +374,9 @@ $config["total_rows"] = $this->user_dash->user_projects($user_id);
 			'source_image' => $sourcePath,
 			'new_image' => $targetPath,
 			'maintain_ratio' => TRUE,
-			'width'         =>  300,
-			'height'        =>  300,
-			'quality'       =>  "50%"
+			'width'         =>  500,
+			'height'        =>  500,
+			'quality'       =>  "100%"
 		);
 
 		$this->load->library('image_lib');
