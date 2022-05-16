@@ -221,12 +221,42 @@
   </a>
 </li>
 
+
+  <?php if ($this->session->userdata('logged_in')->id == 9) { ?>
+    <li>
+      <a class="<?php 
+      if($this->uri->segment(2) == 'email-dashboard'||$this->uri->segment(2) == 'email-tool'||$this->uri->segment(2) == 'email-template'||$this->uri->segment(2) == 'email-setting')echo "active_"; ?> has-arrow" title="qc-report" href="#" aria-expanded="false">
+        <i class="fa fa-send" aria-hidden="true"></i>
+        <span class="mini-click-non">Email Server</span>
+      </a>
+
+      <ul class="submenu-angle" aria-expanded="false">
+        <li>
+          <a title="Basic QC Report" href="<?=base_url('company/email-dashboard')?>">
+            <span class="mini-sub-pro">Dashboard</span></a>
+        </li>
+        <li>
+          <a title="Basic QC Report" href="<?=base_url('company/email-tool')?>">
+            <span class="mini-sub-pro">Email</span></a>
+        </li>
+        <li>
+          <a title="Basic QC Report" href="<?=base_url('company/email-template')?>">
+            <span class="mini-sub-pro">Templates</span></a>
+        </li>
+        <li>
+          <a title="Basic QC Report" href="<?=base_url('company/email-setting')?>">
+            <span class="mini-sub-pro">Setting</span></a>
+        </li>
+      </ul>
+    </li>
+  <?php }else{ ?>
 <li class="active">
-  <a class="<?php if($this->uri->segment(2) == 'email-server') echo "active_"; ?>" title="Email Server" href="<?=base_url('company/email-server')?>" aria-expanded="false">
-    <i class="fa fa-mail-reply-all" aria-hidden="true"></i>
-    <span class="mini-click-non">Email Server</span>
-  </a>
+    <a class="<?php if($this->uri->segment(2) == 'email-server') echo "active_"; ?>" title="Email Server" href="<?=base_url('company/email-server')?>" aria-expanded="false">
+      <i class="fa fa-mail-reply-all" aria-hidden="true"></i>
+      <span class="mini-click-non">Email Server</span>
+    </a>
 </li>
+<?php } ?>
 
 <li class="active">
   <a class="<?php if($this->uri->segment(2) == 'email-configuration') echo "active_"; ?>" title="Email Configuration" href="<?=base_url('company/email-configuration')?>" aria-expanded="false">
@@ -392,3 +422,4 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+

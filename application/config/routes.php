@@ -133,7 +133,14 @@ $route['company/(:any)/users/(:num)'] ='company/Company_dashboard/company_fillin
 // $route['company/(:any)/(:any)/(:num)'] ='company/Company_dashboard/company_filling_project/$1/$2/$3';
 // //end company_filling_project
 
- 
+ //Email_tool
+$route['company/email-dashboard'] = 'company/Email_tool';
+$route['company/email-tool'] = 'company/Email_tool/email';
+$route['company/email-template'] = 'company/Email_tool/template';
+$route['company/email-setting'] = 'company/Email_tool/setting';
+
+
+
 /*User routes*/
 $route['user/dashboard'] = 'user/User_dashboard';
 $route['user/profile'] = 'user/User_dashboard/profile';
