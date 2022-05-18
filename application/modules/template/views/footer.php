@@ -84,6 +84,8 @@
 <script src="<?=base_url('assets/')?>js/main.js"></script>
 <!-- dropzone.js -->
 <script src="<?=base_url('assets/')?>js/dropzone.js"></script>
+<script src="<?=base_url('assets/')?>js/touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<script src="<?=base_url('assets/')?>js/touchspin/touchspin-active.js"></script>
 
 
 <!-- tawk chat JS

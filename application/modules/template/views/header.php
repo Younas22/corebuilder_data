@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="<?=base_url('assets/')?>css/morrisjs/morris.css">
     <!-- mCustomScrollbar CSS  -->
     <link rel="stylesheet" href="<?=base_url('assets/')?>css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="<?=base_url('assets/')?>css/touchspin/jquery.bootstrap-touchspin.min.css">
     <!-- metisMenu CSS  -->
     <link rel="stylesheet" href="<?=base_url('assets/')?>css/metisMenu/metisMenu.min.css">
     <link rel="stylesheet" href="<?=base_url('assets/')?>css/metisMenu/metisMenu-vertical.css">

@@ -138,6 +138,7 @@ $route['company/email-dashboard'] = 'company/Email_tool';
 $route['company/email-tool'] = 'company/Email_tool/email';
 $route['company/email-template'] = 'company/Email_tool/template';
 $route['company/email-setting'] = 'company/Email_tool/setting';
+$route['company/create-compaign'] = 'company/Email_tool/create_compaign';
 
 
 

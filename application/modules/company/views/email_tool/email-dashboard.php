@@ -109,7 +109,7 @@
 <div class="single-pro-review-area mt-t-30 mg-b-15">
     <div class="container-fluid" >
         <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <div class="hpanel widget-int-shape responsive-mg-b-30">
                     <div class="panel-body">
                         <div class="text-center content-box">
@@ -118,7 +118,7 @@
                             <div class="m icon-box">
                                 <i class="educate-icon educate-miscellanous"></i>
                             </div>
-                            <button class="btn btn-primary widget-btn-2 btn-sm" style="margin-top: 20px;">Create a New Compaign</button>
+                            <a href="<?=base_url('company/create-compaign');?>" class="btn btn-primary widget-btn-2 btn-sm" style="margin-top: 20px; color: white">Create a New Compaign</a>
                         </div>
                     </div>
                 </div>
