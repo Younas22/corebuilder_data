@@ -45,7 +45,7 @@
                             <i class="fa fa-users text-dark"></i>
                         </div>
                         <div class="m-t-xl widget-cl-1">
-                            <h1 class="text-success"><?=$total_mail->total_mail?></h1>
+                            <h1 class="text-success"><?=$mail_compaign_status->all_mail?></h1>
                             <!-- <hr> 10 -->
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                             <i class="fa fa-eye text-info"></i>
                         </div>
                         <div class="m-t-xl widget-cl-1">
-                            <h1 class="text-success">4</h1>
+                            <h1 class="text-success"><?=$mail_compaign_status->opened_status?></h1>
                             <!-- <hr> 0 % -->
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                             <i class="fa fa-hand-o-up text-success"></i>
                         </div>
                         <div class="m-t-xl widget-cl-1">
-                            <h1 class="text-success">3</h1>
+                            <h1 class="text-success"><?=$mail_compaign_status->clicked_status?></h1>
                             <!-- <hr> 0 % -->
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             <i class="fa fa-ban text-danger"></i>
                         </div>
                         <div class="m-t-xl widget-cl-1">
-                            <h1 class="text-success">2</h1>
+                            <h1 class="text-success"><?=$mail_compaign_status->blacklisted_status?></h1>
                             <!-- <hr> 0 % -->
                         </div>
                     </div>

@@ -33,8 +33,7 @@ return redirect(base_url() . 'logout');}
 		$data['title'] = 'sign in your account';
 		$data['contant_view'] = 'company/email_tool/email-dashboard';
 		/*home email*/
-		$total_mail = $this->db->select_sum("mail_compaign.total_mail")->from("mail_compaign")->where('user_id',$user_id)->get();
-		$data['total_mail'] = $total_mail->row();
+		$data['mail_compaign_status'] = $this->db->where('user_id',$user_id)->get('mail_compaign_status')->row();
 		// dd($data['total_mail']);
 		$this->template->template($data);
 	}
@@ -117,15 +116,37 @@ return redirect(base_url() . 'logout');}
 			->order_by('mail_compaign.id',"desc")
 			->limit(1)->get('mail_compaign')->row();
 
-			$mail_compaign_status = array(
+			$all_compaign_status = array(
 	    		'mail_compaign_id'=>$mail_data->id,
 	    		'all_mail'=>$mail_data->total_mail,
 	    		'opened'=>90*$mail_data->total_mail/100,
 	    		'clicked'=>60*$mail_data->total_mail/100,
 	    		'blacklisted'=>10*$mail_data->total_mail/100
 			);
+		$added_all_compaign_status = $this->db->insert('all_compaign_status',$all_compaign_status);
+			if ($added_all_compaign_status) {
+			$mail_compaign_status = array(
+	    		'user_id'=>$this->session->userdata('logged_in')->id
+			);
 
-			$this->db->insert('mail_compaign_status',$mail_compaign_status);
+			$get_mail_compaign_status = $this->db->where('user_id',$user_id)->get('mail_compaign_status')->row();
+			if (empty($get_mail_compaign_status)) {
+				$this->db->insert('mail_compaign_status',$mail_compaign_status);
+			}
+
+    		$opened = 90*$mail_data->total_mail/100;
+    		$clicked = 60*$mail_data->total_mail/100;
+    		$blacklisted= 10*$mail_data->total_mail/100;
+    		$total_mail= $mail_data->total_mail;
+
+			$this->db->set('all_mail','total_mail+'.$total_mail, FALSE);
+			$this->db->set('opened','opened+'.$opened, FALSE);
+            $this->db->set('clicked','clicked+'.$clicked, FALSE);
+            $this->db->set('blacklisted','blacklisted+'.$blacklisted, FALSE);
+            $this->db->where('user_id',$user_id);
+            $res = $this->db->update('mail_compaign_status');
+		}
+			
 			unset($_SESSION['compaign_errors']);
 			$this->session->set_flashdata('compaign_msg', 'Compaign created successfully!');
 		}else{
