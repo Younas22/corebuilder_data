@@ -58,6 +58,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Password</th>
+                    <th>Email Tool</th>
                     <th>Users Document</th>
                     <th>Delay Mode</th>
                     <th>Auto-Stage</th>
@@ -82,6 +83,17 @@
                     <!-- <td><?=$key->p_type?></td> -->
                     <!-- <td><?=$key->start_date?></td> -->
                     <!-- <td><?=$key->end_date?></td> -->
+
+<?php if ($key->mail_compaign == 1) { ?>
+<td><span class="badge badge-primary" style="background:blue; cursor: pointer;">
+    <a data-toggle="modal" data-target="#email_tool<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
+    data-placement="top" title="Email Tool" style="color: white;">Active</a></span>
+</td>
+<?php }else{ ?>
+<td><span class="badge badge-secondary" style="background:gray; cursor: pointer;"><a data-toggle="modal" data-target="#email_tool<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
+    data-placement="top" title="Email Tool" style="color: white;">Disable</a></span>
+</td>
+<?php } ?>
 
 <?php if ($key->custom_terms == 1) { ?>
 <td><span class="badge badge-primary" style="background:blue; cursor: pointer;">
@@ -149,6 +161,27 @@ data-placement="top" title="Click and enable Account" style="color: white;">OFF<
 
 </tr>
 
+
+<!-- Email Tool -->
+<center><div id="email_tool<?php echo $key->users_id; ?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Email Tool</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to update Email Tool? </p>
+      </div>
+      <div class="modal-footer">
+      <a  href="<?=base_url('admin/agency/email-tool/').$key->users_id?>" class="btn btn-default"  >Yes</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</center>
 
 <!-- Users Document -->
 <center><div id="myModal<?php echo $key->users_id; ?>" class="modal fade" role="dialog">

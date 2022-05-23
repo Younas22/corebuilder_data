@@ -149,7 +149,7 @@ class Admin_dashboard_M extends CI_Model {
     /************all-agencies data*********/
     public function all_agencies($limit, $offset)
     {
-        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,custom_terms,irritate_mode,auto_font')
+        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,custom_terms,irritate_mode,auto_font,mail_compaign')
         ->from('users')
         ->order_by('users.id',"desc")
         ->limit($limit, $offset)
@@ -170,7 +170,7 @@ class Admin_dashboard_M extends CI_Model {
 
         public function get_agencies_search($search)
     {
-        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,custom_terms,irritate_mode,auto_font')
+        return $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,custom_terms,irritate_mode,auto_font,mail_compaign')
         ->from('users')
         ->where('user_type','company')
         ->order_by('users.id',"desc")

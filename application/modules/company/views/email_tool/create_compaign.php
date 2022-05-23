@@ -38,11 +38,15 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"  style="margin-bottom: 100px;">
                         <div class="sparkline15-list mg-t-30">
                             <div class="sparkline15-hd">
-                                <div class="main-sparkline15-hd">
+                                <div class="main-sparkline15-hd" style="margin-bottom: 50px;">
                                     <h1>Create Compaign</h1>
                                 </div>
                             </div>
+
+
+
                             <div class="sparkline15-graph">
+                                <form action="<?=base_url('company/add-compaign')?>" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <div class="touchspin-inner">
@@ -79,7 +83,7 @@
                                             <label>
                                                 <input type="radio" value="1" name="tmplate"> <i></i> Template one 
                                             </label>
-                                            <button>Template one</button>
+                                            <a href="<?=base_url('company/template_one')?>" class="btn btn-custon-four btn-danger btn-md">Template one</a>
                                         </div>
                                     </div>
 
@@ -88,7 +92,7 @@
                                             <label>
                                                 <input type="radio" value="2" name="tmplate"> <i></i> Template two 
                                             </label>
-                                            <button>Template two</button>
+                                            <a href="<?=base_url('company/template_two')?>" class="btn btn-custon-four btn-danger btn-md">Template two</a>
                                         </div>
                                     </div>
 
@@ -104,16 +108,21 @@
                                                     </label>
                                                 <div class="file-button">
                                                     Browse
-                                                    <input type="file" onchange="document.getElementById('prepend-big-btn').value = this.value;">
+                                                    <input type="file" onchange="document.getElementById('prepend-big-btn').value = this.value;" name="email_file">
                                                 </div>
                                                 <input type="text" id="prepend-big-btn" placeholder="no file selected">
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                 </div>
+
+                                <div class="row" style="margin-top: 30px;">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-top: 30px;">
+                                        <button type="submit" class="btn btn-custon-four btn-primary btn-md">submit</button>
+                                    </div>
+                                </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>

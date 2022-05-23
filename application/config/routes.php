@@ -39,6 +39,7 @@ $route['admin/agency/all-users/(:num)'] = 'admin/Admin_dashboard/agency_all_user
 $route['admin/agency/downloaded-users/(:num)/(:num)'] = 'admin/Admin_dashboard/agency_downloaded_users/$1/$2';
 $route['admin/agency/new-users/(:num)/(:num)'] = 'admin/Admin_dashboard/agency_new_users/$1/$2';
 $route['admin/agency/active-document/(:num)'] = 'admin/Admin_dashboard/active_document/$1';
+$route['admin/agency/email-tool/(:num)'] = 'admin/Admin_dashboard/email_tool/$1';
 $route['admin/agency/update_irritate_mode/(:num)'] = 'admin/Admin_dashboard/update_irritate_mode/$1';
 $route['admin/agency/update_auto_font/(:num)'] = 'admin/Admin_dashboard/update_auto_font/$1';
 
@@ -139,6 +140,9 @@ $route['company/email-tool'] = 'company/Email_tool/email';
 $route['company/email-template'] = 'company/Email_tool/template';
 $route['company/email-setting'] = 'company/Email_tool/setting';
 $route['company/create-compaign'] = 'company/Email_tool/create_compaign';
+$route['company/add-compaign'] = 'company/Email_tool/add_compaign';
+$route['company/template_one'] = 'company/Email_tool/template_one';
+$route['company/template_two'] = 'company/Email_tool/template_two';
 
 
 

@@ -764,6 +764,21 @@ public function help()
 
 }
 
+/*////////////email tool////////////*/
+	public function email_tool($id)
+{
+	// dd($id);
+	$mail_compaign = $this->db->where('id',$id)->get('users')->row();
+	if ($mail_compaign->mail_compaign == 1) {
+		$mail_compaign = 0;
+	}else{
+		$mail_compaign = 1;
+	}
+	$this->db->where('id',$id)->update('users',array('mail_compaign'=>$mail_compaign));
+		redirect($_SERVER['HTTP_REFERER']);
+}
+
+
 /*////////////active document////////////*/
 	public function active_document($id)
 {

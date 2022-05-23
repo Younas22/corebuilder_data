@@ -45,8 +45,8 @@
                             <i class="fa fa-users text-dark"></i>
                         </div>
                         <div class="m-t-xl widget-cl-1">
-                            <h1 class="text-success">5</h1>
-                            <hr> 10
+                            <h1 class="text-success"><?=$total_mail->total_mail?></h1>
+                            <!-- <hr> 10 -->
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="m-t-xl widget-cl-1">
                             <h1 class="text-success">4</h1>
-                            <hr> 0 %
+                            <!-- <hr> 0 % -->
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                         </div>
                         <div class="m-t-xl widget-cl-1">
                             <h1 class="text-success">3</h1>
-                            <hr> 0 %
+                            <!-- <hr> 0 % -->
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="m-t-xl widget-cl-1">
                             <h1 class="text-success">2</h1>
-                            <hr> 0 %
+                            <!-- <hr> 0 % -->
                         </div>
                     </div>
                 </div>

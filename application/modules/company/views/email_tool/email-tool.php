@@ -35,12 +35,32 @@
 
         <div class="product-status mg-b-15">
             <div class="container-fluid">
+
+<?php if (!empty($this->session->flashdata('compaign_msg'))) { ?>
+<div class="alert alert-success alert-success-style2 alert-st-bg1">
+<button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
+<span class="icon-sc-cl" aria-hidden="true">×</span>
+</button>
+<i class="fa fa-check edu-checked-pro admin-check-pro admin-check-pro-clr" aria-hidden="true"></i>
+<p><strong>Alert!</strong> <?= $this->session->flashdata('compaign_msg'); ?></p>
+</div>
+<?php }
+
+if(!empty($this->session->flashdata('compaign_errors'))){?>
+<div class="alert alert-success alert-success-style2 alert-st-bg1">
+<button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
+<span class="icon-sc-cl" aria-hidden="true">×</span>
+</button>
+<i class="fa fa-times edu-danger-error admin-check-pro admin-check-pro-clr3" aria-hidden="true"></i>
+<p><strong>Alert!</strong> <?= $this->session->flashdata('compaign_errors'); ?></p>
+</div>
+<?php } ?>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap drp-lst">
                             <h4>Email Compaigns</h4>
                             <div class="add-product">
-                                <a href="add-department.html">Create an email compaign</a>
+                                <a href="<?=base_url('company/create-compaign')?>">Create an email compaign</a>
                             </div>
                             <div class="asset-inner">
                                 <table>

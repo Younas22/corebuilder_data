@@ -221,8 +221,8 @@
   </a>
 </li>
 
-
-  <?php if ($this->session->userdata('logged_in')->id == 9) { ?>
+<!-- mail_compaign -->
+  <?php  if (profile()->mail_compaign == 1) { ?>
     <li>
       <a class="<?php 
       if($this->uri->segment(2) == 'email-dashboard'||$this->uri->segment(2) == 'email-tool'||$this->uri->segment(2) == 'email-template'||$this->uri->segment(2) == 'email-setting')echo "active_"; ?> has-arrow" title="qc-report" href="#" aria-expanded="false">
