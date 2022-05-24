@@ -323,6 +323,7 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
 
         public function get_users_search($search,$company_id)
     {
+        
         $userprojects = $this->session->userdata('userprojects');
         $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font,irritate_mode,projects.projects_title');
         $this->db->from('users');
@@ -339,7 +340,25 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
         $this->db->join('u_projects', 'users.id = u_projects.u_id');
         $this->db->join('projects', 'u_projects.p_id = projects.id');
         $get_users_search = $this->db->get()->result();
-        return $get_users_search;
+        if($get_users_search){
+            return $get_users_search;
+        }else{
+            
+            
+            $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font,irritate_mode');
+            $this->db->from('users');
+            $this->db->where('company_id',$company_id);
+            $this->db->order_by('users.id',"desc");
+            $this->db->group_start();
+            $this->db->like('first_name',$search);
+            $this->db->or_like('user_phone', $search);
+            $this->db->or_like('company_email', $search);
+            $this->db->group_end();
+            $get_users_search = $this->db->get()->result();
+            return $get_users_search;
+        }
+        
+        // dd($get_users_search);
     }
 
         public function total_users($company_id)

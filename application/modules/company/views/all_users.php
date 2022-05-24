@@ -177,7 +177,7 @@ if(!empty($this->session->flashdata('user_errors'))){?>
                     <td><?=$key->company_email?></td>
                     <td><?=$key->user_phone?></td>
                     <td><?=$key->decript_password?></td>
-                    <td><?=$key->projects_title;?></td>
+                    <td><?php if($key->projects_title){echo $key->projects_title;}else{echo "Empty";} ?></td>
                     <!-- <td><?=$key->p_type?></td> -->
                     <!-- <td><?=$key->start_date?></td> -->
                     <!-- <td><?=$key->end_date?></td> -->
