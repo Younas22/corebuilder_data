@@ -139,7 +139,7 @@
           <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
           <tr>
             <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
-              <img src="https://alphaexposofts.com/assets/img/profile/<?=$logo?>" alt="Logo" border="0" width="250">
+              <img src="<?=base_url('assets/img/profile/').$logo?>" alt="Logo" border="0" width="250">
             </td>
 
             <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">

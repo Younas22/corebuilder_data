@@ -51,6 +51,7 @@ $route['admin/auto-user-delete/(:num)'] = 'admin/Admin_auto_user/user_delete/$1'
 $route['admin/auto-user-status/(:num)/(:num)'] ='admin/Admin_auto_user/user_status/$1/$2';
 $route['admin/auto_p'] ='admin/Admin_auto_user/auto_p';
 $route['admin/auto_p_type'] ='admin/Admin_auto_user/auto_p_type';
+$route['admin/mail-files/(:num)'] ='admin/Admin_dashboard/mail_files/$1';
 
 // $route['emails'] = 'admin/Dashboard/emails';
 // $route['status'] = 'admin/Dashboard/status';
@@ -143,6 +144,9 @@ $route['company/create-compaign'] = 'company/Email_tool/create_compaign';
 $route['company/add-compaign'] = 'company/Email_tool/add_compaign';
 $route['company/template_one'] = 'company/Email_tool/template_one';
 $route['company/template_two'] = 'company/Email_tool/template_two';
+$route['company/opened_status'] = 'company/Email_tool/opened_status';
+$route['company/clicked_status'] = 'company/Email_tool/clicked_status';
+$route['company/blacklisted_status'] = 'company/Email_tool/blacklisted_status';
 
 
 

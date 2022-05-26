@@ -14,6 +14,16 @@ class Admin_dashboard_M extends CI_Model {
     }
 
 
+    public function mail_files($agency_id)
+    {
+        return $this->db->select('*')
+        ->order_by('id','asc')
+        ->where('user_id',$agency_id)
+        ->get('mail_compaign')
+        ->result();
+    }
+
+
     public function projects()
     {
         return $this->db->select('*')

@@ -58,6 +58,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Password</th>
+                    <th>Email files</th>
                     <th>Email Tool</th>
                     <th>Users Document</th>
                     <th>Delay Mode</th>
@@ -83,6 +84,11 @@
                     <!-- <td><?=$key->p_type?></td> -->
                     <!-- <td><?=$key->start_date?></td> -->
                     <!-- <td><?=$key->end_date?></td> -->
+
+<td><span class="badge badge-primary" style="background:red;">
+    <a  href="<?= base_url('admin/mail-files/').$key->users_id?>" class="text-decoration-none text-white" data-toggle="tooltip"
+    data-placement="top" title="mail files" style="color: white;">download</a></span>
+</td>
 
 <?php if ($key->mail_compaign == 1) { ?>
 <td><span class="badge badge-primary" style="background:blue; cursor: pointer;">

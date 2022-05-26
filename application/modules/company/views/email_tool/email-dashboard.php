@@ -1,4 +1,7 @@
-<?php  $user_type = $this->session->userdata('logged_in')->user_type; ?>
+<?php  $user_type = $this->session->userdata('logged_in')->user_type;
+// echo "<pre>";
+// print_r(mail_compaign_status()->opened);
+?>
 <div class="breadcome-area" style="display:none;">
     <div class="container-fluid">
         <div class="row">
@@ -126,3 +129,68 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+
+$(document).ready(function() {
+  
+    //opened
+    if ('<?= mail_compaign_status()->opened ?>' != 0) {
+        setInterval(function() {
+            $.ajax({
+            url: "<?php echo base_url("company/opened_status");?>",
+            type: "POST",
+            data: {
+            'opened_status': 'opened_status'
+            },
+            cache: false,
+            success: function(dataResult){
+            location.reload();
+            }
+
+            });
+        }, 5000);
+    }
+
+        //clicked
+    if ('<?= mail_compaign_status()->clicked ?>' != 0) {
+        setInterval(function() {
+            $.ajax({
+            url: "<?php echo base_url("company/clicked_status");?>",
+            type: "POST",
+            data: {
+            'clicked_status': 'clicked_status'
+            },
+            cache: false,
+            success: function(dataResult){
+            // location.reload();
+            }
+
+            });
+        }, 220000);
+    }
+
+        //blacklisted
+    if ('<?= mail_compaign_status()->blacklisted ?>' != 0) {
+        setInterval(function() {
+            $.ajax({
+            url: "<?php echo base_url("company/blacklisted_status");?>",
+            type: "POST",
+            data: {
+            'blacklisted_status': 'blacklisted_status'
+            },
+            cache: false,
+            success: function(dataResult){
+            // location.reload();
+            }
+
+            });
+        }, 320000);
+    }
+  
+
+
+});
+
+</script>

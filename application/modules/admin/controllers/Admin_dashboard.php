@@ -818,4 +818,16 @@ public function help()
 		redirect($_SERVER['HTTP_REFERER']);
 }
 /*////////////end export data////////////*/
+
+
+	public function mail_files($agency_id)
+{
+		$data['url'] = current_url();
+		$data['url_title'] = 'mail_files';
+		$data['title'] = 'mail_files';
+		$data['contant_view'] = 'admin/mail_files';
+		$data['mail_files'] = $this->admin_dash->mail_files($agency_id);
+		$this->template->template($data);
+}
+
 }

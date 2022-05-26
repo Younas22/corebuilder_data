@@ -222,6 +222,17 @@ if (!function_exists('get_user_project_QTY')){
 }
 // end get_user_project_QTY
 
+
+// mail compaign status
+if (!function_exists('mail_compaign_status')){
+      function mail_compaign_status(){
+        $CI =& get_instance();
+        $user_id = $CI->session->userdata('logged_in')->id;
+        return $CI->db->where('user_id',$user_id)->where('status','yes')->get('mail_compaign_status')->row();
+    }
+}
+// end mail_compaign_status
+
 /*overall_accuracy_report*/
 if (!function_exists('accuracy_report')){
       function overall_accuracy_report($p_id_accuracy_report){

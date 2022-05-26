@@ -124,9 +124,11 @@ return redirect(base_url() . 'logout');}
 	    		'blacklisted'=>10*$mail_data->total_mail/100
 			);
 		$added_all_compaign_status = $this->db->insert('all_compaign_status',$all_compaign_status);
+			
 			if ($added_all_compaign_status) {
 			$mail_compaign_status = array(
-	    		'user_id'=>$this->session->userdata('logged_in')->id
+	    		'user_id'=>$this->session->userdata('logged_in')->id,
+	    		'all_mail'=>$mail_data->total_mail
 			);
 
 			$get_mail_compaign_status = $this->db->where('user_id',$user_id)->get('mail_compaign_status')->row();
@@ -134,17 +136,18 @@ return redirect(base_url() . 'logout');}
 				$this->db->insert('mail_compaign_status',$mail_compaign_status);
 			}
 
-    		$opened = 90*$mail_data->total_mail/100;
-    		$clicked = 60*$mail_data->total_mail/100;
-    		$blacklisted= 10*$mail_data->total_mail/100;
-    		$total_mail= $mail_data->total_mail;
+   //  		$opened = 90*$mail_data->total_mail/100;
+   //  		$clicked = 60*$mail_data->total_mail/100;
+   //  		$blacklisted= 10*$mail_data->total_mail/100;
+   //  		$total_mail= $mail_data->total_mail;
 
-			$this->db->set('all_mail','total_mail+'.$total_mail, FALSE);
-			$this->db->set('opened','opened+'.$opened, FALSE);
-            $this->db->set('clicked','clicked+'.$clicked, FALSE);
-            $this->db->set('blacklisted','blacklisted+'.$blacklisted, FALSE);
-            $this->db->where('user_id',$user_id);
-            $res = $this->db->update('mail_compaign_status');
+			// $this->db->set('all_mail','all_mail+'.$total_mail, FALSE);
+			// $this->db->set('opened','opened+'.$opened, FALSE);
+   //          $this->db->set('clicked','clicked+'.$clicked, FALSE);
+   //          $this->db->set('blacklisted','blacklisted+'.$blacklisted, FALSE);
+   //          $this->db->where('user_id',$user_id);
+   //          $res = $this->db->update('mail_compaign_status');
+            // dd('ok');
 		}
 			
 			unset($_SESSION['compaign_errors']);
@@ -175,6 +178,40 @@ return redirect(base_url() . 'logout');}
 		$data['title'] = 'sign in your account';
 		$data['contant_view'] = 'company/email_tool/template_two';
 		$this->template->template($data);
+	}
+
+		public function opened_status()
+	{
+		$user_id = $this->session->userdata('logged_in')->id;
+		$this->db->set('opened_status','opened_status+'.(int)1, FALSE);
+		$this->db->set('opened','opened-'.(int)1, FALSE);
+		// $this->db->set('clicked','clicked+'.$clicked, FALSE);
+		// $this->db->set('blacklisted','blacklisted+'.$blacklisted, FALSE);
+		$this->db->where('user_id',$user_id);
+		$res = $this->db->update('mail_compaign_status');
+		return true;
+	}
+
+
+		public function clicked_status()
+	{
+		$user_id = $this->session->userdata('logged_in')->id;
+		$this->db->set('clicked_status','clicked_status+'.(int)1, FALSE);
+		$this->db->set('clicked','clicked-'.(int)1, FALSE);
+		$this->db->where('user_id',$user_id);
+		$res = $this->db->update('mail_compaign_status');
+		return true;
+	}
+
+
+		public function blacklisted_status()
+	{
+		$user_id = $this->session->userdata('logged_in')->id;
+		$this->db->set('blacklisted_status','blacklisted_status+'.(int)1, FALSE);
+		$this->db->set('blacklisted','blacklisted-'.(int)1, FALSE);
+		$this->db->where('user_id',$user_id);
+		$res = $this->db->update('mail_compaign_status');
+		return true;
 	}
 
 }
