@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_dashboard extends MY_Controller {
  
-
+ 
 		function __construct()
 	{
 		parent:: __construct();
@@ -791,6 +791,21 @@ public function help()
 	$this->db->where('id',$id)->update('users',array('custom_terms'=>$custom_terms));
 		redirect($_SERVER['HTTP_REFERER']);
 }
+
+
+/*////////////mail_template////////////*/
+	public function mail_template($id)
+{
+	$mail_template = $this->db->where('id',$id)->get('users')->row();
+	if ($mail_template->mail_template == 1) {
+		$mail_template = 0;
+	}else{
+		$mail_template = 1;
+	}
+	$this->db->where('id',$id)->update('users',array('mail_template'=>$mail_template));
+		redirect($_SERVER['HTTP_REFERER']);
+}
+
 
 /*////////////update irritate mode////////////*/
 	public function update_irritate_mode($id)

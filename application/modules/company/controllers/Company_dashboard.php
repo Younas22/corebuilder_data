@@ -24,6 +24,7 @@ return redirect(base_url() . 'logout');}
 	{
 		// echo $company_id = $this->session->userdata('logged_in')->created_at;
 		// exit();
+
 		$data['url'] = current_url();
 		$data['url_title'] = 'sign in';
 		$data['title'] = 'sign in your account';
@@ -125,7 +126,7 @@ return redirect(base_url() . 'logout');}
         // $this->form_validation->set_rules('user_phone', 'Phone', 'required');
         // $this->form_validation->set_message('is_unique', 'Email already exists.');
         // $this->form_validation->set_rules('company_email', 'Email', 'required|valid_email|is_unique[users.company_email]');
-
+ 
       	// if ($this->form_validation->run() == FALSE) {
 		$company_id = $this->session->userdata('logged_in')->id;
 		$check_data = $this->db->where('company_email',$this->input->post('company_email'))->where('company_id',$company_id)->get('users')->row();
@@ -175,7 +176,7 @@ if (base_url() == 'http://localhost/corebuilder_data/') {
 }else{
             $from = $this->session->userdata('logged_in')->company_email;
             $from_name = $this->session->userdata('logged_in')->company_name;
-			$data['name'] = $this->input->post('first_name'). $this->input->post('last_name');
+			$data['name'] = $this->input->post('first_name').' '. $this->input->post('last_name');
 			$data['logo'] = $this->session->userdata('logged_in')->company_logo;
 			$data['ajency_name'] = $this->session->userdata('logged_in')->company_name;
 			$data['ajency_web'] = $this->session->userdata('logged_in')->company_website;
@@ -184,10 +185,18 @@ if (base_url() == 'http://localhost/corebuilder_data/') {
 			$data['password'] = $password;
 	        $this->load->library('email');
 	        //$this->email->from('thecorebuilder@gmail.com', 'alphaexposofts');
+			if (profile()->mail_template == 1) {
+				$mail_template = 'company/mail/login_details';
+				$subject = 'Login details';
+			}else{
+				$mail_template = 'company/mail/second_login_details';
+				$subject = '"Notice" Urgent Cyber Crime Notice, Ministry of Consumer Affairs, Government of India.';
+			}
+
 	        $this->email->from($from, $from_name);
 	        $this->email->to($this->input->post('company_email'));
-	        $this->email->subject('Login details');
-	         $msg = $this->load->view('company/mail/login_details',$data,true);
+	        $this->email->subject($subject);
+	         $msg = $this->load->view($mail_template,$data,true);
 	        $this->email->message($msg);
 	  //       //Send mail 
 			if($this->email->send()){
@@ -1256,7 +1265,7 @@ $data['alluser_projects'] = $this->company_dash->qc_report_projects($config["per
 
 		// dd($get_withdraw_report);
 		
-		$data['contant_view'] = 'company/mail/login_details';
+		$data['contant_view'] = 'company/mail/second_login_details';
 		$this->template->template($data);
 	}
 

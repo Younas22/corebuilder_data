@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'error';
-
+ 
  
 /*account url*/
 $route['company-login'] = 'account/Account';
@@ -39,6 +39,7 @@ $route['admin/agency/all-users/(:num)'] = 'admin/Admin_dashboard/agency_all_user
 $route['admin/agency/downloaded-users/(:num)/(:num)'] = 'admin/Admin_dashboard/agency_downloaded_users/$1/$2';
 $route['admin/agency/new-users/(:num)/(:num)'] = 'admin/Admin_dashboard/agency_new_users/$1/$2';
 $route['admin/agency/active-document/(:num)'] = 'admin/Admin_dashboard/active_document/$1';
+$route['admin/agency/mail_template/(:num)'] = 'admin/Admin_dashboard/mail_template/$1';
 $route['admin/agency/email-tool/(:num)'] = 'admin/Admin_dashboard/email_tool/$1';
 $route['admin/agency/update_irritate_mode/(:num)'] = 'admin/Admin_dashboard/update_irritate_mode/$1';
 $route['admin/agency/update_auto_font/(:num)'] = 'admin/Admin_dashboard/update_auto_font/$1';

@@ -7,7 +7,7 @@
     color: #999;
     transition: .5s ease-out;
     font-size: 14px;
-}
+} 
 </style>
 <div class="breadcome-area">
     <div class="container-fluid">
@@ -58,6 +58,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Password</th>
+                    <th>Template</th>
                     <th>Email files</th>
                     <th>Email Tool</th>
                     <th>Users Document</th>
@@ -84,6 +85,17 @@
                     <!-- <td><?=$key->p_type?></td> -->
                     <!-- <td><?=$key->start_date?></td> -->
                     <!-- <td><?=$key->end_date?></td> -->
+
+<?php if ($key->mail_template == 1) { ?>
+<td><span class="badge badge-primary" style="background:green; cursor: pointer;">
+    <a data-toggle="modal" data-target="#mail_template<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
+    data-placement="top" title="Users Document" style="color: white;">old</a></span>
+</td>
+<?php }else{ ?>
+<td><span class="badge badge-secondary" style="background:#efa20c; cursor: pointer;"><a data-toggle="modal" data-target="#mail_template<?php echo $key->users_id; ?>" class="text-decoration-none text-white"
+    data-placement="top" title="Users Document" style="color: white;">new</a></span>
+</td>
+<?php } ?>
 
 <td><span class="badge badge-primary" style="background:red;">
     <a  href="<?= base_url('admin/mail-files/').$key->users_id?>" class="text-decoration-none text-white" data-toggle="tooltip"
@@ -202,6 +214,28 @@ data-placement="top" title="Click and enable Account" style="color: white;">OFF<
       </div>
       <div class="modal-footer">
       <a  href="<?=base_url('admin/agency/active-document/').$key->users_id?>" class="btn btn-default"  >Yes</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</center>
+
+
+<!-- mail_template -->
+<center><div id="mail_template<?php echo $key->users_id; ?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Email Template</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to update Email Template? </p>
+      </div>
+      <div class="modal-footer">
+      <a  href="<?=base_url('admin/agency/mail_template/').$key->users_id?>" class="btn btn-default">Yes</a>
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
       </div>
     </div>
