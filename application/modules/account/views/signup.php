@@ -129,7 +129,7 @@
           </div>
         </div>
         <div class="mt-5 text-muted text-center">
-          Have an account? <a href="<?=base_url('signin')?>">Login</a>
+          Have an account? <a href="<?=base_url('company-login')?>">Login</a>
         </div>
         <div class="text-center login-footer">
           <p>Copyright © 2022 All rights reserved. Data Entry Software by CORE BUILDER. 43. <a href="https://thecorebuilder.com" target="_blank">www.thecorebuilder.com</a> <a href="https://www.thecorebuilder.com/t-c-privacy-policy" style="font-size: 8px;" target="_blank">Read T&C</a></p>

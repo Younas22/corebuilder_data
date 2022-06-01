@@ -205,7 +205,7 @@ $login_session = $this->session->userdata('logged_in');
             $insert_data = $this->login->add_user($data);
             if ($insert_data) {
                 $this->session->set_flashdata('msg', 'Successfully Register');
-                redirect(base_url().$login_session->user_type.'-login');
+                redirect(base_url('company-login'));
             }
 
 
