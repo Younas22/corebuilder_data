@@ -10,11 +10,11 @@ class User_dashboard extends MY_Controller {
 		$this->load->model('User_dashboard_M','user_dash');
 		if(empty($this->session->userdata('logged_in')))
 		{
-		return redirect(base_url() . 'signin');
+		return redirect(base_url() . 'user-login');
 		}else{
 
 if (check_login_status($this->session->userdata('logged_in')->id) != $this->session->userdata('login_status')['login_status']) {
-return redirect(base_url() . 'logout');}
+return redirect(base_url() . 'logout/user');}
 
 		}
 	} 

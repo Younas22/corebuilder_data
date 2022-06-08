@@ -10,11 +10,11 @@ class Company_dashboard extends MY_Controller {
 		$this->load->model('Company_dashboard_M','company_dash');
 		if(empty($this->session->userdata('logged_in')))
 		{
-		return redirect(base_url() . 'signin');
+		return redirect(base_url() . 'company-login');
 		}else{
 
 if (check_login_status($this->session->userdata('logged_in')->id) == 0) {
-return redirect(base_url() . 'logout');}
+return redirect(base_url() . 'logout/company');}
 
 		}
 	} 

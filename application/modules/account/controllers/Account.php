@@ -151,12 +151,15 @@ $login_session = $this->session->userdata('logged_in');
 
 
     public function logout($type) {
+        // dd($type);
         // dd($this->session->userdata('login_status'));
         // dd($this->session->userdata('logged_in')->id);
         /*update login status*/
         $login_status = $this->db->where('users.id',$this->session->userdata('login_status')['id'])->update('users',array('login_status'=>0));
         /*update login status*/
-
+        if ($type == 'admin') {
+            $type = 'company';
+        }
         if ($login_status) {
         $this->session->unset_userdata('login_status');
         $this->session->unset_userdata('logged_in');
