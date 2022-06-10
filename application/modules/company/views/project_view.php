@@ -111,6 +111,60 @@ if(!empty($this->session->flashdata('accep_terms_error'))){?>
 		
 <div class="profile-img card-header" style="text-align:center; margin-top: 10px; margin-bottom: 30px;">
 <h3><?=$project_view->projects_title?></h3>
+<?php 
+		// custom veryable
+		if ($project_view->projects_title == 'Content Writing' || 
+		$project_view->projects_title == 'Novel Typing' || 
+		$project_view->projects_title == 'Dialogue Typing') {
+		$key_one = 'Completed';
+		$key_two = 'Pending';
+		$key_three = 'Accuracy';
+		$key_four = '';
+
+		$val_one = $project_view->complete_work;
+		$val_two = $project_view->quantity-$project_view->complete_work;
+		$val_three = 'QC Report Pending';
+		$val_four = '';
+		}else{
+		$key_one = 'Right';
+		$key_two = 'Wrong';
+		$key_three = 'Accuracy';
+		$key_four = 'Overall Accuracy';
+
+		$val_one = $project_view->_right;
+		$val_two = $project_view->wrong;
+
+
+
+		$overall_accuracy_report = '--';
+		//overall Accuracy report
+		if ($project_view->p_type != 'Non Target') {
+		$quantity = (int)$project_view->quantity;
+		$current_right = (int)$project_view->_right;
+		$overall_accuracy_rep = $current_right/$quantity*100;
+		$overall_accuracy_report = number_format((float)$overall_accuracy_rep, 2, '.', '').'%';
+		if ($overall_accuracy_report == 'nan') {
+		$overall_accuracy_report = '--';
+			}
+		}
+		$val_four = $overall_accuracy_report;
+
+		//Accuracy report
+		if (!empty((int)$project_view->wrong)) {
+		$wrong = (int)$project_view->wrong;
+		}else{
+		$wrong = 1;
+		}
+		$current = (int)$project_view->_right+$wrong;
+		$current_right = (int)$project_view->_right;
+		$accuracy_rep = $current_right/$current*100;
+
+		$val_three = number_format((float)$accuracy_rep, 2, '.', '').'%';
+
+}
+
+
+?>
 </div>
 		<div class="profile-details-hr">
 			<div class="row">
@@ -128,40 +182,16 @@ if(!empty($this->session->flashdata('accep_terms_error'))){?>
 			<div class="row">
 				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
 					<div class="address-hr">
-						<p style="color: #fff !important;"><b>Right</b><br /><?=$project_view->_right?></p>
+						<p style="color: #fff !important;"><b><?=$key_one?></b><br /><?=$val_one?></p>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
 					<div class="address-hr tb-sm-res-d-n dps-tb-ntn">
-						<p style="color: #fff !important;"><b>Wrong</b><br /><?=$project_view->wrong?></p>
+						<p style="color: #fff !important;"><b><?=$key_two?></b><br /><?=$val_two?></p>
 					</div>
 				</div>
 			</div>
-			<?php 
 
-
-                $overall_accuracy_report = '--';
-                    //overall Accuracy report
-                if ($project_view->p_type != 'Non Target') {
-                    $quantity = (int)$project_view->quantity;
-                    $current_right = (int)$project_view->_right;
-                    $overall_accuracy_rep = $current_right/$quantity*100;
-                    $overall_accuracy_report = number_format((float)$overall_accuracy_rep, 2, '.', '').'%';
-                    if ($overall_accuracy_report == 'nan') {
-                        $overall_accuracy_report = '--';
-                    }
-                }
-
-			//Accuracy report
-			if (!empty((int)$project_view->wrong)) {
-				$wrong = (int)$project_view->wrong;
-			}else{
-				$wrong = 1;
-			}
-			 		$current = (int)$project_view->_right+$wrong;
-			 		$current_right = (int)$project_view->_right;
-			 		$accuracy_rep = $current_right/$current*100;
-			?>
 			<hr>
 			<div class="row">
 				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
@@ -171,7 +201,7 @@ if(!empty($this->session->flashdata('accep_terms_error'))){?>
 				</div>
 				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
 					<div class="address-hr tb-sm-res-d-n dps-tb-ntn">
-						<p style="color: #fff !important;"><b>Accuracy</b><br /><?= number_format((float)$accuracy_rep, 2, '.', '').'%' ?></p>
+						<p style="color: #fff !important;"><b><?=$key_three?></b><br /><?= $val_three ?></p>
 					</div>
 				</div>
 			</div>
@@ -237,8 +267,8 @@ if(!empty($this->session->flashdata('accep_terms_error'))){?>
 										</div>
 
 										<div class="form-group">
-											<label>Overall Accuracy</label>
-											<p><?=$overall_accuracy_report?></p>
+											<label><?=$key_four?></label>
+											<p><?=$val_four?></p>
 											<input type="hidden" name="e" id="end_date_for_counting" value="<?=$project_view->end_date?>">
 											<input type="hidden" name="we" id="start_date_for_counting" value="<?=$project_view->start_date?>">
 										</div>

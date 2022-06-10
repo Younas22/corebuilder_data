@@ -508,6 +508,8 @@ public function get_project_terms()
 			$results = 10;
 		}
 		$company_id = $this->session->userdata('logged_in')->id;
+
+		// dd($company_id);
 		$search = $this->input->get('user_searching');
         $config = array();
         $config["base_url"] = base_url() . "company/Company_dashboard/all_users";
@@ -543,7 +545,7 @@ $data['all_users'] = $this->company_dash->get_users_search($search,$company_id);
 $data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$company_id);
 }
 	
-	// dd($config["total_rows"]);	
+	// dd($data['all_users']);
 		$data['get_projects'] = $this->company_dash->get_projects();
 		$data['total_user'] = $this->company_dash->total_users($company_id);
 		$data['url'] = current_url();

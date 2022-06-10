@@ -303,20 +303,29 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
     /************all_users data*********/
     public function all_users($limit, $offset,$company_id)
     {
-        $userprojects = $this->session->userdata('userprojects');
-        // dd($userprojects);
-        $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font,irritate_mode,projects.projects_title');
-        $this->db->from('users');
-        $this->db->order_by('users.id',"desc");
-        $this->db->limit($limit, $offset);
-        $this->db->where('company_id',$company_id);
-        if (isset($userprojects)) {
-            $this->db->where('projects.projects_title',$userprojects);
+            $userprojects = $this->session->userdata('userprojects');
+            // $check_first_user
+            // dd($userprojects);
+            $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font,irritate_mode,projects.projects_title');
+            $this->db->from('users');
+            $this->db->order_by('users.id',"desc");
+            $this->db->limit($limit, $offset);
+            $this->db->where('company_id',$company_id);
+            if (isset($userprojects)) { $this->db->where('projects.projects_title',$userprojects); }
+            $this->db->join('u_projects', 'users.id = u_projects.u_id');
+            $this->db->join('projects', 'u_projects.p_id = projects.id');
+            $all_users = $this->db->get()->result();
+        if (!empty($all_users)) {
+            return $all_users;
+        }else{
+            $this->db->select('users.id as users_id,first_name,company_email,user_phone,decript_password,user_status,auto_font,irritate_mode');
+            $this->db->from('users');
+            $this->db->order_by('users.id',"desc");
+            $this->db->limit($limit, $offset);
+            $this->db->where('company_id',$company_id);
+            $all_users = $this->db->get()->result();
+            return $all_users;
         }
-        $this->db->join('u_projects', 'users.id = u_projects.u_id');
-        $this->db->join('projects', 'u_projects.p_id = projects.id');
-        $all_users = $this->db->get()->result();
-        return $all_users;
         
     }
  
@@ -537,7 +546,7 @@ $project_numbers = $this->db->where('agency_id',$company_id)->where('project_num
 
         return $this->db->select(
             'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,custom_terms_conditions,img_one,img_two,img_three,img_four,fname,date_of_birth,aadhar_number,pan_card,bank_name,account_no,IFSC_code,
-            projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id')
+            projects.projects_title,u_working._right,wrong,complete_work,earning,refrash_limit,users.id as users_id')
         ->from('u_projects')
         ->where('u_projects.id',$project_id)
         ->join('users', 'u_projects.u_id = users.id')

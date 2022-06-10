@@ -89,7 +89,7 @@ class User_dashboard_M extends CI_Model {
     {
         return $this->db->select(
             'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,custom_terms_conditions,
-            projects.projects_title,u_working._right,wrong,earning,refrash_limit,users.id as users_id,rejection_reason')
+            projects.projects_title,u_working._right,complete_work,wrong,earning,refrash_limit,users.id as users_id,rejection_reason')
         ->from('u_projects')
         ->where('u_projects.id',$project_id)
         ->join('users', 'u_projects.u_id = users.id')
