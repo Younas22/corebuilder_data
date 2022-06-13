@@ -66,6 +66,7 @@
 
                 <?php if ($get_custom_image) { ?>
                 <form action="<?=base_url('company/add_custom_project')?>" method="POST">
+                    <button type="submit" class="btn btn-primary" style="margin-bottom:100px;">Submit</button>
                     <div class="row flex">
                     <?php foreach ($get_custom_image as $img): ?>
 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="text-align:center;">
@@ -78,7 +79,7 @@
                     <?php endforeach; ?>
 
                 </div>
-                <button type="submit" class="btn btn-primary" style="margin-bottom:100px;">Submit</button>
+                
                 </form> 
             <?php } else { ?>
                 <div class="row"></div><span>data not found!</span>
