@@ -63,31 +63,42 @@
                             <!-- images -->
          <div class="courses-area">
             <div class="container-fluid">
+<style type="text/css">
+    .content {
+  display: none;
+}
+</style>
 
-                <?php if ($get_custom_image) { ?>
-                <form action="<?=base_url('company/add_custom_project')?>" method="POST">
-                    <button type="submit" class="btn btn-primary" style="margin-bottom:100px;">Submit</button>
-                    <div class="row flex">
-                    <?php foreach ($get_custom_image as $img): ?>
-<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="text-align:center;">
-    <div class="thumbnail">
-        <input type="checkbox" class="form-control" name="get_custom_image[]" value="<?=$img->p_id.','.$img->p_image?>">
-        <hr>
-        <img src="<?=base_url('assets/img/project_img/').$img->p_image?>" alt="">
-    </div>
-</div>
-                    <?php endforeach; ?>
-
-                </div>
-                
-                </form> 
-            <?php } else { ?>
-                <div class="row"></div><span>data not found!</span>
-            <?php } ?>
-                
-                
+<?php if ($get_custom_image) { ?>
+<form action="<?=base_url('company/add_custom_project')?>" method="POST">
+<button type="submit" class="btn btn-primary" style="margin-bottom:100px;">Submit</button>
+<div class="row flex " id="load_data_table">
+    <?php foreach ($get_custom_image as $img): ?>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="text-align:center;">
+            <div class="thumbnail">
+                <input type="checkbox" class="form-control" name="get_custom_image[]" value="<?=$img->p_id.','.$img->p_image?>"><hr>
+                <img src="<?=base_url('assets/img/project_img/').$img->p_image?>" alt="">
             </div>
         </div>
+        <?php $img_id = $img->id; ?>
+    <?php endforeach; ?>
+    
+<div id="remove_row">
+    <div class="text-center mt-3 mb-3" style="margin-bottom: 200px;">
+      <button type="button" name="btn_more" data-vid="<?php echo $img_id; ?>" id="btn_more" class="btn btn-success form-control">Load More</button> 
+    </div>
+</div>
+</div>
+</form>
+
+
+<?php }else{ ?>
+<div class="row"></div><span>data not found!</span>
+<?php } ?>
+                
+                
+</div>
+</div>
                             <!-- end images -->
 <!-- <?= $links; ?> -->
                         </div>
@@ -100,3 +111,42 @@
 </div>
 </div>
 </div>
+
+
+
+<script src="<?=base_url('assets/')?>js/slideDown/jquery-3.5.1.slim.min.js"></script>
+<script src="<?=base_url('assets/')?>js/bootstrap.min.js"></script>
+<script src="<?=base_url('assets/')?>js/slideDown/popper.min.js"></script>
+<script src="<?=base_url('assets/')?>js/slideDown/slideDown.js"></script>
+
+<script>
+
+ $(document).ready(function(){  
+      $(document).on('click', '#btn_more', function(){  
+           var last_img_id = $('#btn_more').data("vid");  
+           var project_id = 1;
+
+           // alert(last_img_id);
+           $('#btn_more').html("Loading...");  
+           $.ajax({
+                url: "<?php echo base_url("company/load_data");?>",
+                method:"POST",  
+                data:{last_img_id:last_img_id,project_id:project_id},  
+                dataType:"text",  
+                success:function(data)  
+                {
+                     if(data != '')  
+                     {  
+                          $('#remove_row').remove();  
+                          $('#load_data_table').append(data);  
+                     }  
+                     else  
+                     {  
+                          $('#btn_more').html("No Data");  
+                     }  
+                }  
+           });  
+      });  
+ }); 
+
+</script>

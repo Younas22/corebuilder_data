@@ -96,6 +96,7 @@ $route['company/mail_view'] ='company/Company_dashboard/mail_view';
 $route['company/withdrawal'] ='company/Company_dashboard/withdrawal';
 $route['company/withdrawal-status/(:num)'] ='company/Company_dashboard/withdrawal_status/$1';
 $route['company/create-custom-project/(:num)'] ='company/Company_dashboard/create_custom_project/$1';
+$route['company/load_data'] ='company/Company_dashboard/load_data';
 $route['company/project/accuracy'] ='company/Company_dashboard/project_accuracy';
 $route['company/qc-report'] ='company/Company_dashboard/qc_report';
 $route['company/sms-panel'] ='company/Company_dashboard/sms_panel';

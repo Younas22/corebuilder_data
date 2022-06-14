@@ -58,6 +58,7 @@ class Company_dashboard_M extends CI_Model {
         ->select('project_imgs.id,p_id,p_image')
         ->where('p_id',$project_id)
         ->where('folder_no',null)
+        ->limit(20)
         ->where('project_number',null)
         ->get('project_imgs')
         ->result();

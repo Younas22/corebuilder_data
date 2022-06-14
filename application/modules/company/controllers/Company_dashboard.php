@@ -1378,6 +1378,44 @@ $data['alluser_projects'] = $this->company_dash->qc_report_projects($config["per
 		$this->template->template($data);
 	}
 
+	public function load_data()
+	{
+
+
+		$output = '';  
+		$img_id = '';  
+		sleep(1);
+
+		$project_imgs =  $this->db
+        ->select('project_imgs.id,p_id,p_image')
+        ->where('id >', $_POST['last_img_id'])
+        ->where('p_id', $_POST['project_id'])
+        ->where('folder_no',null)
+        ->limit(20)
+        ->where('project_number',null)
+        ->get('project_imgs')
+        ->result();
+
+
+		
+		foreach ($project_imgs as $img): 
+		$output .= '<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="text-align:center;">
+		    <div class="thumbnail">
+		        <input type="checkbox" class="form-control" name="get_custom_image[]" value='.$img->p_id.','.$img->p_image.'><hr>
+		        <img src='.base_url('assets/img/project_img/').$img->p_image.' alt="">
+		    </div>
+		</div>';
+		$img_id = $img->id;
+		endforeach; 
+
+		$output .= '<div id="remove_row"><div class="text-center mt-3 mb-3" style="margin-bottom: 200px;">
+      		<button type="button" name="btn_more" data-vid='.$img_id.' id="btn_more" class="btn btn-success form-control">Load More</button> 
+    		</div></div>';
+
+		echo $output;
+ 
+	}
+
 	public function add_custom_project()
 	{
 		// dd($this->input->post('get_custom_image')[0]);
