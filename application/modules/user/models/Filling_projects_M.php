@@ -299,7 +299,7 @@ if ($project_end == 0) {
                 $get_projects_title = $project_name->projects_title;
                 auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
             }
-            if($res){ return TRUE;  }else{  return FALSE; }
+            if($res){ return $actual_total;  }else{  return $actual_total; }
 
             }else{
             $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
@@ -317,7 +317,8 @@ if ($project_end == 0) {
                 $get_projects_title = $project_name->projects_title;
                 auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
             }
-            if($res){ return TRUE; }else{ return FALSE; }
+            if($res){ return $actual_total;  }else{  return $actual_total; }
+            
             }
         }
 

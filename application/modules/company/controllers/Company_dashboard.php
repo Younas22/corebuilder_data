@@ -705,6 +705,7 @@ $data['all_users'] = $this->company_dash->all_users($config["per_page"], $page,$
 		public function user_projects($user_id)
 	{
 
+
 			// echo accuracy_report(7); exit;
 		$company_id = $this->session->userdata('logged_in')->id;
         $config = array();
@@ -735,7 +736,7 @@ $config["total_rows"] = $this->company_dash->user_projects($user_id);
         $data["links"] = $this->pagination->create_links();
         $data['alluser_projects'] = $this->company_dash->alluser_projects($config["per_page"], 
         	$page,$user_id);
-        // dd($data['alluser_projects']);
+
 		$data['url'] = current_url();
 		$data['url_title'] = 'User-Project';
 		$data['title'] = 'User Project';

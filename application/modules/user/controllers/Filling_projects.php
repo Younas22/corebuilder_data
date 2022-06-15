@@ -207,8 +207,14 @@ $this->load->library('../modules/user/controllers/User_dashboard');
 
         // dd($data);
 		$res = $this->filling_projects->submit_filling($project_id,$p_id,$data,$user_id);
-		// dd($res);
+
 		if ($res) {
+
+			if (str_replace(".","",$data) != str_replace(".","",$res)) {
+				$this->session->set_flashdata('invoice_alert', 'Your value is wrong <b>'.$data.'.</b> Right value is <b>'.$res.'</b>');
+			}else{
+				$this->session->unset_userdata('invoice_alert');
+			}
 		redirect($current_url);
 		}
 	}
