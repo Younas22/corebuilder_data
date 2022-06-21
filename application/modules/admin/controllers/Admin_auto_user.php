@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+ 
 class Admin_auto_user extends MY_Controller {
  
 
@@ -143,6 +143,49 @@ $this->email->send();
 		$type = $this->input->post('type');
 		$update_invoice_type = $this->db->where('id',$user_id)->update('autotyper_users',['project_type'=>$type]);
 		echo true;
+	}
+
+
+	//auto_users_profile
+	public function auto_users_profile()
+	{
+		$auto_users_id = $_GET['auto_users_id'];
+		$data['url'] = current_url();
+		$data['url_title'] = 'sign in';
+		$data['title'] = 'sign in your account';
+		$data['contant_view'] = 'admin/auto_typer_profile';
+		$data['action_type'] = base_url('admin/update/update_auto_typer_profile');
+		$data['projects'] = $this->db->where('id',$auto_users_id)->get('autotyper_users')->row();
+		$data['autotyper_users'] = $this->db->where('id',$auto_users_id)->get('autotyper_users')->row();
+		// dd($data['autotyper_users']);
+		$this->template->template($data);
+	}
+
+
+	//admin/get_autotyper_user_project
+	public function get_autotyper_user_project()
+	{
+		$autotyper_user_project = $_POST['autotyper_user_project'];
+		$get_earning_details = $this->db->where('p_id',$autotyper_user_project)->get('u_working')->row();
+		echo json_encode(['res'=>$get_earning_details, 'status'=>201]);
+	}
+
+
+	//admin/update_auto_typer_profile
+	public function update_auto_typer_profile()
+	{
+		$autotyper_user_project = $this->input->post('autotyper_user_project');
+		$core_user_id = $this->input->post('core_user_id');
+		$time = $this->input->post('time');
+		$earning_data = [
+			'_right'=>$this->input->post('right'),
+			'wrong'=>$this->input->post('wrong'),
+			'complete_work'=>$this->input->post('complete'),
+			'earning'=>$this->input->post('earning')
+		];
+		$this->db->where('p_id',$autotyper_user_project)->update('u_working',$earning_data);
+		$this->db->where('core_user_id',$core_user_id)->update('autotyper_users',['time'=>$time]);
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 }

@@ -48,6 +48,9 @@ $route['admin/downloaded_user_xlsx'] = 'admin/Downloaded_user/index';
 $route['admin/export-data'] = 'admin/Downloaded_user/export_data';
 
 $route['admin/auto-users'] = 'admin/Admin_auto_user/index';
+$route['admin/auto-users/profile'] = 'admin/Admin_auto_user/auto_users_profile';
+$route['admin/get_autotyper_user_project'] = 'admin/Admin_auto_user/get_autotyper_user_project';
+$route['admin/update/update_auto_typer_profile'] = 'admin/Admin_auto_user/update_auto_typer_profile';
 $route['admin/auto-user-delete/(:num)'] = 'admin/Admin_auto_user/user_delete/$1';
 $route['admin/auto-user-status/(:num)/(:num)'] ='admin/Admin_auto_user/user_status/$1/$2';
 $route['admin/auto_p'] ='admin/Admin_auto_user/auto_p';
@@ -195,6 +198,7 @@ $route['user/submit_withdraw_request']= 'user/User_dashboard/submit_withdraw_req
 
 
 //api for autotyper
+$route['api/profile_data']= 'api/Auto_account_api/profile_data';
 $route['api/doLogin']= 'api/Auto_account_api/doLogin';
 $route['api/doRegister']= 'api/Auto_account_api/do_register';
 $route['api/get-all-project']= 'api/Auto_project_api/get_all_project';

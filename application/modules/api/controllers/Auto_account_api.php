@@ -145,5 +145,30 @@ public function doLogin() {
     }
 
 
+//profile
+public function profile_data()
+{
+	$core_user_id = $this->input->post('core_user_id');
+	$core_user_data = $this->db->where('id',$core_user_id)->get('autotyper_users')->row();
+
+	if ($core_user_data) {
+	header('Access-Control-Allow-Origin: *');
+	header('Content-Type: application/json');
+	echo json_encode(array(
+	'msg'=>200,
+	'res'=>$core_user_data,
+	'status'=>true,
+	));
+	}else{
+	header('Access-Control-Allow-Origin: *');
+	header('Content-Type: application/json');
+	echo json_encode(array(
+	'msg'=>201,
+	'res'=>'Something went wrong, try again later',
+	'status'=>false,
+	));
+	}
+}
+
 
 }

@@ -480,4 +480,35 @@ if (!function_exists('check_theme')){
        }
 }
 
+
+/*////////////auto_project_name//////////*/
+if (!function_exists('auto_project_name')){
+      function auto_project_name($auto_project_id){
+            $CI =& get_instance();
+                $projects  = $CI->db->select()
+                ->where('id',$auto_project_id)
+                ->get('projects')->row();
+                return $projects->projects_title;
+
+       }
+}
+
+
+/*////////////get_user_project//////////*/
+if (!function_exists('get_user_project')){
+      function get_user_project($main_project_id,$user_id){
+            $CI =& get_instance();
+            return $CI->db->select(
+                'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,custom_terms_conditions,img_one,img_two,configure_projects,
+                projects.projects_title,u_working._right,wrong,earning,users.id as users_id')
+            ->from('u_projects')
+            ->where('u_projects.p_id',$main_project_id)
+            ->where('u_projects.u_id',$user_id)
+            ->join('users', 'u_projects.u_id = users.id')
+            ->join('u_working', 'u_projects.id = u_working.p_id')
+            ->join('projects', 'u_projects.p_id = projects.id')
+            ->get()->result();
+       }
+}
+
 }

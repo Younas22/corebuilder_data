@@ -165,7 +165,7 @@ if(!empty($this->session->flashdata('user_errors'))){?>
                 <?php $count=1; foreach ($all_users as $key):?>
                 <tr>
                     <td><?=$count?></td>
-                    <td><?=$key->name ?></td>
+                    <td><a href="<?=base_url('admin/auto-users/profile?auto_users_id=').$key->id ?>"><?=$key->name ?></a></td>
                     <td><?=$key->email?></td>
                     <td><?=$key->phone?></td>
                     <td><?=date('Y-m-d',strtotime($key->start_project))?></td>
