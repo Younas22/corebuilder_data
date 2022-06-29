@@ -188,4 +188,82 @@ $this->email->send();
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
+ 
+	//add-multi-project
+	public function add_multi_project()
+	{
+		$auto_users_id = $_GET['auto_users_id'];
+		$data['url'] = current_url();
+		$data['url_title'] = 'sign in';
+		$data['title'] = 'sign in your account';
+		$data['contant_view'] = 'admin/add_multi_project';
+		$data['action_type'] = base_url('admin/update/update_multi_project');
+		$data['get_projects'] = $this->admin_auto_user->get_projects();
+		$autotyper_users = $this->db->where('id',$auto_users_id)->get('autotyper_users')->row();
+		$data['auto_users_id'] = $auto_users_id;
+		$data['core_user_id'] = $autotyper_users->core_user_id;
+		$data['captcha'] = $this->db->where('project_id', 4)->where('auto_users_id', $auto_users_id)->get('configure_project')->row();
+		$data['Form_Filling'] = $this->db->where('project_id', 5)->where('auto_users_id', $auto_users_id)->get('configure_project')->row();
+		$data['Invoice_Calculation'] = $this->db->where('project_id', 6)->where('auto_users_id', $auto_users_id)->get('configure_project')->row();
+		$data['Alpha_Numeric_Validation'] = $this->db->where('project_id', 7)->where('auto_users_id', $auto_users_id)->get('configure_project')->row();
+		$this->template->template($data);
+	}
+
+
+	//add-multi-project
+	public function update_multi_project()
+	{
+
+
+		$autotyper_val = 0;
+		if ($this->input->post('accuracy_type') == 72) {
+			$autotyper_val = 49;
+		}
+
+		if ($this->input->post('accuracy_type') == 82) {
+			$autotyper_val = 85;
+		}
+
+		if ($this->input->post('accuracy_type') == 86) {
+			$autotyper_val = 115;
+		}
+
+		if ($this->input->post('accuracy_type') == 89) {
+			$autotyper_val = 140;
+		}
+
+		if ($this->input->post('accuracy_type') == 91) {
+			$autotyper_val = 170;
+		}
+
+		$auto_users_id = $this->input->post('auto_users_id');
+		$core_user_id = $this->input->post('core_user_id');
+		$project_id = $this->input->post('project_id');
+		$accuracy_type = $this->input->post('accuracy_type');
+		$autotyper_val = $autotyper_val;
+
+		$configure_project = $this->db->where('project_id', $project_id)->get('configure_project')->row();
+
+		if (!empty($configure_project)) {
+			$update_data = array(
+				'accuracy_type'=> $accuracy_type,
+				'autotyper_val'=> $autotyper_val
+			);
+			$this->db->where('project_id',$project_id)->update('configure_project',$update_data);
+
+		}else{
+
+			$add_data = array(
+				'auto_users_id'=> $auto_users_id,
+				'user_id'=> $core_user_id,
+				'project_id'=> $project_id,
+				'accuracy_type'=> $accuracy_type,
+				'autotyper_val'=> $autotyper_val
+			);
+
+			$this->db->insert('configure_project',$add_data);
+		}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
 }

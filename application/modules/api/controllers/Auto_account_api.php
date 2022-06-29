@@ -14,13 +14,19 @@ class Auto_account_api extends MY_Controller {
 public function doLogin() {
 	$email = $this->input->post('email');
 	$password = sha1($this->input->post('password'));
+	$project_id = $this->input->post('project_id');
+	$this_project = $project_id;
 	$check_login = $this->login_->checkLogin($email, $password);
-	// dd($this->input->post());
+	$get_this_project = $this->login_->this_project($check_login->id,$this_project);
+
+//main if start
+if (!empty($get_this_project)) {
+
 	if ($check_login) {
 		if ($check_login->p_status == 1) {
 			if (check_login_status($check_login->core_user_id) > 0) 
             {
-			$get_user_project = $this->login_->get_user_project($check_login->main_pid);
+			$get_user_project = $this->login_->get_user_project($get_this_project->project_id);
 			header('Access-Control-Allow-Origin: *');
 			header('Content-Type: application/json');
 			echo json_encode(array(
@@ -57,10 +63,30 @@ public function doLogin() {
 		header('Content-Type: application/json');
 		echo json_encode(array(
 		'msg'=>201,
-		'res'=>'email or password is wrong!',
+		'res'=>'Something Went Wrong!',
 		'status'=>false,
 		));            
 	}
+
+
+
+
+
+
+
+
+}else{
+		header('Access-Control-Allow-Origin: *');
+		header('Content-Type: application/json');
+		echo json_encode(array(
+		'msg'=>201,
+		'res'=>'Something Went Wrong!',
+		'status'=>false,
+		));            
+	}
+//main if end
+
+
 }
 
 

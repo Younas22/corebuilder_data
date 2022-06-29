@@ -186,7 +186,9 @@ if(!empty($this->session->flashdata('user_errors'))){?>
 </td>
 <?php } ?>
 
-<td>
+<td><a href="<?=base_url('admin/auto-users/add-multi-project?auto_users_id=').$key->id ?>">Add-Multi-Project</a></td>
+
+<!-- <td>
     <select class="form-control" style="width:130px;" name="auto_p">
         <?php foreach ($get_projects as $project) { ?>
             <?php if ($project->id == $key->main_pid) { ?>
@@ -196,7 +198,7 @@ if(!empty($this->session->flashdata('user_errors'))){?>
             <?php } ?>
         <?php } ?>
     </select>
-</td>
+</td> -->
 <td>
     <select class="form-control" style="width:100px;" name="auto_p_type">
         <option class="form-group" selected="" disabled=""><?=$key->project_type?></option>

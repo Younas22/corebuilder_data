@@ -26,6 +26,15 @@ class LoginModel_ extends CI_Model {
         }
     }
 
+    public function this_project($auto_users_id,$this_project){
+        $data = $this->db->select()
+        ->from('configure_project')
+        ->where('auto_users_id', $auto_users_id)
+        ->where('project_id', $this_project)
+        ->get()->row();
+        return $data;
+    }
+
     public function get_user_project($project_id){
         return $this->db->select()
         ->from('projects')

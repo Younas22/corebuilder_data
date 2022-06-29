@@ -83,7 +83,7 @@ class Auto_project_m extends CI_Model {
     }
 
 
-
+ 
     public function submit_enty($project_id,$enty_number)
     {
         $this->db->set('entry_status',2);
@@ -102,70 +102,28 @@ class Auto_project_m extends CI_Model {
         ->get()->row();
         $earning = $get_price->price;
 
-        $get_autotyper_val = $this->db->select()
-        ->from('u_working')
-        ->where('u_working.p_id',$project_id)
+        $get_accuracy_val = $this->db->select()
+        ->from('configure_project')
+        ->where('project_id',$get_price->p_id)
         ->get()->row();
-        $autotyper_val = $get_autotyper_val->autotyper_val;
+        // dd($get_accuracy_val);
+        $autotyper_val = $get_accuracy_val->autotyper_val;
+        $accuracy_type = $get_accuracy_val->accuracy_type;
+        $res = autotyper_accuracy_update($accuracy_type, $autotyper_val, $project_id, $get_price->p_id);
 
-        if ($autotyper_val == 49) {
-            $this->db->set('autotyper_val',0);
+        if (empty($res)) {
+            $earning = $get_price->price;
+            $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
+            $this->db->set('_right','_right+'.(int)1, FALSE);
+            $this->db->set('earning','earning+'.$earning, FALSE);
             $this->db->where('p_id', $project_id);
-            $this->db->update('u_working');
+            $res = $this->db->update('u_working');
+            return $res;
         }else{
-            $this->db->set('autotyper_val','autotyper_val+'.(int)1, FALSE);
-            $this->db->where('p_id', $project_id);
-            $this->db->update('u_working');
-        }
-
-        if ($autotyper_val ==7) {
-        $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
-        $this->db->set('wrong','wrong+'.(int)1, FALSE);
-        $this->db->where('p_id', $project_id);
-        $res = $this->db->update('u_working');
-        return $res;
-        }
-
-        if ($autotyper_val >= 15 && $autotyper_val <=16) {
-        $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
-        $this->db->set('wrong','wrong+'.(int)1, FALSE);
-        $this->db->where('p_id', $project_id);
-        $res = $this->db->update('u_working');
-        return $res;
-        }
-
-        if ($autotyper_val >= 24 && $autotyper_val <=26) {
-        $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
-        $this->db->set('wrong','wrong+'.(int)1, FALSE);
-        $this->db->where('p_id', $project_id);
-        $res = $this->db->update('u_working');
-        return $res;
-        }
-
-        if ($autotyper_val >= 34 && $autotyper_val <=37) {
-        $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
-        $this->db->set('wrong','wrong+'.(int)1, FALSE);
-        $this->db->where('p_id', $project_id);
-        $res = $this->db->update('u_working');
-        return $res;
-        }
-
-        if ($autotyper_val >= 45 && $autotyper_val <=49) {
-        $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
-        $this->db->set('wrong','wrong+'.(int)1, FALSE);
-        $this->db->where('p_id', $project_id);
-        $res = $this->db->update('u_working');
-        return $res;
+            return $res;
         }
 
 
-        $earning = $get_price->price;
-        $this->db->set('complete_work','complete_work+'.(int)1, FALSE);
-        $this->db->set('_right','_right+'.(int)1, FALSE);
-        $this->db->set('earning','earning+'.$earning, FALSE);
-        $this->db->where('p_id', $project_id);
-        $res = $this->db->update('u_working');
-        return $res;
     }
 
     

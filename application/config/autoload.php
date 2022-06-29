@@ -100,7 +100,7 @@ $autoload['libraries'] = array('database', 'session','form_validation','paginati
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'file','text','global_helper','check_progress_helper','auto_font_helper');
+$autoload['helper'] = array('url', 'file','text','global_helper','check_progress_helper','auto_font_helper','autotyper_accuracy_helper');
 /*
 | -------------------------------------------------------------------
 |  Auto-load Config files

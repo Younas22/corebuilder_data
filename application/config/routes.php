@@ -57,6 +57,9 @@ $route['admin/auto_p'] ='admin/Admin_auto_user/auto_p';
 $route['admin/auto_p_type'] ='admin/Admin_auto_user/auto_p_type';
 $route['admin/mail-files/(:num)'] ='admin/Admin_dashboard/mail_files/$1';
 
+
+$route['admin/auto-users/add-multi-project'] = 'admin/Admin_auto_user/add_multi_project';
+$route['admin/update/update_multi_project'] = 'admin/Admin_auto_user/update_multi_project';
 // $route['emails'] = 'admin/Dashboard/emails';
 // $route['status'] = 'admin/Dashboard/status';
 // $route['delete/(:num)'] = 'admin/Dashboard/delete/$1';
@@ -134,6 +137,8 @@ $route['company-page/(:any)/(:any)/(:num)/(:num)'] ='company/Company_dashboard/c
 
 //company_filling_user
 $route['company/(:any)/users/(:num)'] ='company/Company_dashboard/company_filling_user/$1/$2';
+
+$route['company/configure_project'] ='company/Company_dashboard/configure_project';
 //end company_filling_user
 
 // //company_filling_project
