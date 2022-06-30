@@ -176,7 +176,6 @@ $this->email->send();
 	{
 		$autotyper_user_project = $this->input->post('autotyper_user_project');
 		$core_user_id = $this->input->post('core_user_id');
-		$time = $this->input->post('time');
 		$earning_data = [
 			'_right'=>$this->input->post('right'),
 			'wrong'=>$this->input->post('wrong'),
@@ -184,7 +183,6 @@ $this->email->send();
 			'earning'=>$this->input->post('earning')
 		];
 		$this->db->where('p_id',$autotyper_user_project)->update('u_working',$earning_data);
-		$this->db->where('core_user_id',$core_user_id)->update('autotyper_users',['time'=>$time]);
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
@@ -242,14 +240,18 @@ $this->email->send();
 		$accuracy_type = $this->input->post('accuracy_type');
 		$autotyper_val = $autotyper_val;
 
-		$configure_project = $this->db->where('project_id', $project_id)->get('configure_project')->row();
-
+		$configure_project = $this->db->where('auto_users_id', $auto_users_id)->where('project_id', $project_id)->get('configure_project')->row();
+        
 		if (!empty($configure_project)) {
 			$update_data = array(
 				'accuracy_type'=> $accuracy_type,
-				'autotyper_val'=> $autotyper_val
+				'autotyper_val'=> $autotyper_val,
+				'project_id'=> $this->input->post('project_id'),
+				'time'=> $this->input->post('time')
 			);
-			$this->db->where('project_id',$project_id)->update('configure_project',$update_data);
+
+			// dd($update_data);
+			$this->db->where('auto_users_id', $auto_users_id)->where('project_id', $project_id)->update('configure_project',$update_data);
 
 		}else{
 
@@ -258,7 +260,8 @@ $this->email->send();
 				'user_id'=> $core_user_id,
 				'project_id'=> $project_id,
 				'accuracy_type'=> $accuracy_type,
-				'autotyper_val'=> $autotyper_val
+				'autotyper_val'=> $autotyper_val,
+				'time'=> $this->input->post('time')
 			);
 
 			$this->db->insert('configure_project',$add_data);

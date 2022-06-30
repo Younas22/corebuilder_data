@@ -496,17 +496,31 @@ if (!function_exists('auto_project_name')){
 
 /*////////////get_user_project//////////*/
 if (!function_exists('get_user_project')){
-      function get_user_project($main_project_id,$user_id){
+      function get_user_project($user_id){
             $CI =& get_instance();
             return $CI->db->select(
                 'u_projects.p_type,u_projects.id as project_id,start_date,end_date,font,quantity,terms_conditions_status,custom_terms_conditions,img_one,img_two,configure_projects,
                 projects.projects_title,u_working._right,wrong,earning,users.id as users_id')
             ->from('u_projects')
-            ->where('u_projects.p_id',$main_project_id)
             ->where('u_projects.u_id',$user_id)
             ->join('users', 'u_projects.u_id = users.id')
             ->join('u_working', 'u_projects.id = u_working.p_id')
             ->join('projects', 'u_projects.p_id = projects.id')
+            ->get()->result();
+       }
+}
+
+
+/*////////////get_user_project_for_setTime//////////*/
+if (!function_exists('get_user_project_for_setTime')){
+      function get_user_project_for_setTime($user_id){
+            $CI =& get_instance();
+            return $CI->db->select(
+                'u_projects.p_type,u_projects.id as project_id')
+            ->from('configure_project')
+            // ->where('u_projects.p_id',$main_project_id)
+            ->where('configure_project.user_id',$user_id)
+            ->join('u_projects', 'configure_project.user_id = u_projects.u_id')
             ->get()->result();
        }
 }

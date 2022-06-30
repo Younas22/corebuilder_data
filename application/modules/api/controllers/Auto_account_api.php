@@ -175,7 +175,8 @@ if (!empty($get_this_project)) {
 public function profile_data()
 {
 	$core_user_id = $this->input->post('core_user_id');
-	$core_user_data = $this->db->where('id',$core_user_id)->get('autotyper_users')->row();
+	$project_id = $this->input->post('project_id');
+	$core_user_data = $this->db->where('auto_users_id',$core_user_id)->where('project_id',$project_id)->get('configure_project')->row();
 
 	if ($core_user_data) {
 	header('Access-Control-Allow-Origin: *');

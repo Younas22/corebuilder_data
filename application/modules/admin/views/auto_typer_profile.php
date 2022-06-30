@@ -1,4 +1,9 @@
-<?php  $user_type = $this->session->userdata('logged_in')->user_type; ?>
+<?php 
+	
+// dd(get_user_project_for_setTime($autotyper_users->core_user_id));
+$user_type = $this->session->userdata('logged_in')->user_type; 
+
+  ?>
 <!-- policy model -->
 <style>
 .modal.modal-wide .modal-dialog {
@@ -126,24 +131,12 @@
 						<div class="review-content-section">
 <form action="<?= $action_type?>" method="POST" enctype="multipart/form-data">
 
-<div class="row">
-
-<div class="col-lg-2">
-	<div class="form-group">
-		<label>Time</label>
-		<input name="time" type="text" class="form-control" placeholder="set Time" value="<?=$autotyper_users->time?>">
-		<input name="core_user_id" type="hidden" class="form-control" value="<?=$autotyper_users->core_user_id?>">
-	</div>
-</div>
-
-</div>
-
 <div style="margin-bottom: 20px;"></div>
 <div class="form-group">
 	<label>Project List</label>
 	<select name="autotyper_user_project" class="form-control" id="autotyper_user_project" required="">
 		<option value="" selected="" disabled="">Select Project</option>
-		<?php $count=1; foreach (get_user_project($autotyper_users->main_pid,$autotyper_users->core_user_id) as $k) { ?>
+		<?php  $count=1; foreach (get_user_project($autotyper_users->core_user_id) as $k) { ?>
 			<option value="<?=$k->project_id?>"><?=$k->projects_title.' '.$count?></option>
 		<?php $count++;} ?>
 	</select>

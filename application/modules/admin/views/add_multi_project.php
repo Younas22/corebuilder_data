@@ -85,12 +85,12 @@
 				<label>Captcha</label>
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="4" name="project_id" <?php if (!empty($captcha)) echo "checked";?>> Check
+						<input type="checkbox" value="4" name="project_id" <?php if (!empty($captcha->project_id)) echo "checked";?>> Check
 					</label>
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-lg-2">
 			<div class="form-group">
 				<label>Accuracy</label>
 				<select name="accuracy_type" class="form-control" required="">
@@ -107,6 +107,16 @@
 				</select>
 			</div>
 		</div>
+
+		<div class="col-lg-2">
+			<div class="form-group">
+				<label>Time</label>
+					<label>
+						<input class="form-control" type="number" value="<?php if (!empty($captcha->time)) echo $captcha->time;?>" name="time">
+					</label>
+			</div>
+		</div>
+
 		<div class="col-lg-4">
 			<button type="submit" class="btn btn-primary waves-effect waves-light" style="margin-top: 27px; float: right;">Add</button>
 		</div>
@@ -122,12 +132,12 @@
 				<label>Form Filling</label>
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="5" name="project_id" <?php if (!empty($Form_Filling)) echo "checked";?>> Check
+						<input type="checkbox" value="5" name="project_id" <?php if (!empty($Form_Filling->project_id)) echo "checked";?>> Check
 					</label>
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-lg-2">
 			<div class="form-group">
 				<label>Accuracy</label>
 				<select name="accuracy_type" class="form-control" required="">
@@ -144,6 +154,16 @@
 				</select>
 			</div>
 		</div>
+
+		<div class="col-lg-2">
+			<div class="form-group">
+				<label>Time</label>
+					<label>
+						<input class="form-control" type="number" value="<?php if (!empty($Form_Filling->time)) echo $Form_Filling->time;?>" name="time">
+					</label>
+			</div>
+		</div>
+
 		<div class="col-lg-4">
 			<button type="submit" class="btn btn-primary waves-effect waves-light" style="margin-top: 27px; float: right;">Add</button>
 		</div>
@@ -159,12 +179,12 @@
 				<label>Invoice Calculation</label>
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="6" name="project_id" <?php if (!empty($Invoice_Calculation)) echo "checked";?>> Check
+						<input type="checkbox" value="6" name="project_id" <?php if (!empty($Invoice_Calculation->project_id)) echo "checked";?>> Check
 					</label>
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-lg-2">
 			<div class="form-group">
 				<label>Accuracy</label>
 				<select name="accuracy_type" class="form-control" required="">
@@ -181,6 +201,17 @@
 				</select>
 			</div>
 		</div>
+
+		<div class="col-lg-2">
+			<div class="form-group">
+				<label>Time</label>
+					<label>
+						<input class="form-control" type="number" value="<?php if (!empty($Invoice_Calculation->time)) echo $Invoice_Calculation->time;?>" name="time">
+					</label>
+			</div>
+		</div>
+
+
 		<div class="col-lg-4">
 			<button type="submit" class="btn btn-primary waves-effect waves-light" style="margin-top: 27px; float: right;">Add</button>
 		</div>
@@ -196,12 +227,12 @@
 				<label>Alpha-Numeric Validation</label>
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" value="7" name="project_id" <?php if (!empty($Alpha_Numeric_Validation)) echo "checked";?>> Check
+						<input type="checkbox" value="7" name="project_id" <?php if (!empty($Alpha_Numeric_Validation->project_id)) echo "checked";?>> Check
 					</label>
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-lg-2">
 			<div class="form-group">
 				<label>Accuracy</label>
 				<select name="accuracy_type" class="form-control" required="">
@@ -218,6 +249,17 @@
 				</select>
 			</div>
 		</div>
+
+		<div class="col-lg-2">
+			<div class="form-group">
+				<label>Time</label>
+					<label>
+						<input class="form-control" type="number" value="<?php if (!empty($Alpha_Numeric_Validation->time)) echo $Alpha_Numeric_Validation->time;?>" name="time">
+					</label>
+			</div>
+		</div>
+
+
 		<div class="col-lg-4">
 			<button type="submit" class="btn btn-primary waves-effect waves-light" style="margin-top: 27px; float: right;">Add</button>
 		</div>
