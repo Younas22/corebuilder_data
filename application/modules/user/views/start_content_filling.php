@@ -432,74 +432,6 @@ You have to work for fixed time period set by the company you are working with.
   </thead>
   <tbody>
 
-    <?php if ($get_content_writing->invoice_type == 'easy') { ?>
-    <tr>
-      <th scope="row">1</th>
-      <td colspan="2"><?=$filling_projects->item_one?></td>
-      <td><?=$filling_projects->q_one?></td>
-      <td><?= intval($filling_projects->invoice_one)?></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2"><?=$filling_projects->item_two?></td>
-      <td><?=$filling_projects->q_two?></td>
-      <td><?=intval($filling_projects->invoice_two)?></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2"><?=$filling_projects->item_three?></td>
-      <td><?=$filling_projects->q_three?></td>
-      <td><?=intval($filling_projects->invoice_three)?></td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td colspan="2"><?=$filling_projects->item_char?></td>
-      <td><?=$filling_projects->q_char?></td>
-      <td><?=intval($filling_projects->invoice_char)?></td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td colspan="2"><?=$filling_projects->item_panch?></td>
-      <td><?=$filling_projects->q_panch?></td>
-      <td><?=intval($filling_projects->invoice_panch)?></td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td colspan="2"><?=$filling_projects->item_chay?></td>
-      <td><?=$filling_projects->q_chay?></td>
-      <td><?=intval($filling_projects->invoice_chay)?></td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td colspan="2"><?=$filling_projects->item_sat?></td>
-      <td><?=$filling_projects->q_sat?></td>
-      <td><?=intval($filling_projects->invoice_sat)?></td>
-    </tr>
-    <tr>
-      <th scope="row">8</th>
-      <td colspan="2"><?=$filling_projects->item_ath?></td>
-      <td><?=$filling_projects->q_ath?></td>
-      <td><?=intval($filling_projects->invoice_ath)?></td>
-    </tr>
-    <tr>
-      <th scope="row">9</th>
-      <td colspan="2"><?=$filling_projects->item_no?></td>
-      <td><?=$filling_projects->q_no?></td>
-      <td><?=intval($filling_projects->invoice_no)?></td>
-    </tr>
-    <tr>
-      <th scope="row">10</th>
-      <td colspan="2"><?=$filling_projects->item_ten?></td>
-      <td><?=$filling_projects->q_ten?></td>
-      <td><?=intval($filling_projects->invoice_ten)?></td>
-    </tr>
-
-    <tr>
-      <td colspan="4"></td>
-      <td><b>Total ?</b></td>
-    </tr>
-
-<?php }else{?>
     <tr>
       <th scope="row">1</th>
       <td colspan="2"><?=$filling_projects->item_one?></td>
@@ -564,41 +496,28 @@ You have to work for fixed time period set by the company you are working with.
       <td colspan="4"></td>
       <td><b>Total ?</b></td>
     </tr>
-<?php } ?>
   </tbody>
 </table>
                 </div>
             </div>
 
-<?php
+<!-- <?php
 
-// if ($get_content_writing->invoice_type == 'easy') {
-//     echo  intval($filling_projects->invoice_one)
-// +intval($filling_projects->invoice_two)
-// +intval($filling_projects->invoice_three)
-// +intval($filling_projects->invoice_char)
-// +intval($filling_projects->invoice_panch)
-// +intval($filling_projects->invoice_chay)
-// +intval($filling_projects->invoice_sat)
-// +intval($filling_projects->invoice_ath)
-// +intval($filling_projects->invoice_no)
-// +intval($filling_projects->invoice_ten);
-// }else{
-//     echo  $filling_projects->invoice_one
-// +$filling_projects->invoice_two
-// +$filling_projects->invoice_three
-// +$filling_projects->invoice_char
-// +$filling_projects->invoice_panch
-// +$filling_projects->invoice_chay
-// +$filling_projects->invoice_sat
-// +$filling_projects->invoice_ath
-// +$filling_projects->invoice_no
-// +$filling_projects->invoice_ten;
-// }
+echo  $filling_projects->invoice_one
++$filling_projects->invoice_two
++$filling_projects->invoice_three
++$filling_projects->invoice_char
++$filling_projects->invoice_panch
++$filling_projects->invoice_chay
++$filling_projects->invoice_sat
++$filling_projects->invoice_ath
++$filling_projects->invoice_no
++$filling_projects->invoice_ten;
 
-?>
 
-<!-- <?=$get_content_writing->invoice_type?> -->
+?> -->
+
+<!-- <?php echo "<br>"; echo $filling_projects->difficulty; ?> -->
         </div>
     </div><br><br><hr>
     <div class="row larg_devices_mb">
