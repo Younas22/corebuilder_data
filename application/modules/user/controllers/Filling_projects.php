@@ -234,6 +234,12 @@ $this->load->library('../modules/user/controllers/User_dashboard');
         $data = array('captcha_val'=>$this->input->post('captcha_val'));
 		$res = $this->filling_projects->submit_filling($project_id,$p_id,$data,$user_id);
 		if ($res) {
+
+			if (str_replace(".","",$data) != str_replace(".","",$res['captcha_val'])) {
+				$this->session->set_flashdata('captcha_alert', 'Your value is wrong <b>'.$data['captcha_val'].'.</b> Right value is <b>'.$res['captcha_val'].'</b>');
+			}else{
+				$this->session->unset_userdata('captcha_alert');
+			}
 		redirect($current_url);
 		}
 	}

@@ -128,6 +128,16 @@ input[type=text] { text-align:left } .form-control{ padding: 6px,4px !important;
 </div>
 <?php }?>
 
+<?php if (!empty($this->session->flashdata('captcha_alert'))) { ?>
+<div class="alert alert-success alert-success-style2 alert-st-bg1">
+<button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">
+<span class="icon-sc-cl" aria-hidden="true">×</span>
+</button>
+<i class="fa fa-check edu-checked-pro admin-check-pro admin-check-pro-clr" aria-hidden="true"></i>
+<p><strong>Alert!</strong> <?= $this->session->flashdata('captcha_alert'); ?></p>
+</div>
+<?php }?>
+
 <?php if (!empty($this->session->flashdata('get_skip'))) { ?>
 <div class="alert alert-success alert-success-style2 alert-st-bg1">
 <button type="button" class="close sucess-op" data-dismiss="alert" aria-label="Close">

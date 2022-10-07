@@ -353,7 +353,8 @@ if ($project_end == 0) {
                 $get_projects_title = $project_name->projects_title;
                 auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
             }
-            if($res){ return TRUE;  }else{  return FALSE; }
+            if($res){ return $get_form_filling_arr;  }else{  return $get_form_filling_arr; }
+            // if($res){ return TRUE;  }else{  return FALSE; }
         }
 
         if (array_diff($data,$get_form_filling_arr) != array_diff($get_form_filling_arr,$data)) {
@@ -373,7 +374,7 @@ if ($project_end == 0) {
                 $get_projects_title = $project_name->projects_title;
                 auto_font($get_total_entry,$project_name->project_id,$get_projects_title);
             }
-            if($res){ return TRUE; }else{ return FALSE; }
+            if($res){ return $get_form_filling_arr;  }else{  return $get_form_filling_arr; }
         }
     }
 }
