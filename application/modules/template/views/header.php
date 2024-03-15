@@ -197,7 +197,7 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top_marg">
             <div class="logo-pro mobile_logo_hide">
-              <a href="index.html"><img class="main-logo" src="<?=base_url('assets/')?>img/logo/logo.png" alt="" /></a>
+              <a href="index.html"><img class="main-logo" src="<?=base_url('assets/')?>img/logo/logo.png_" alt="" /></a>
             </div>
           </div>
         </div>
@@ -248,7 +248,7 @@
   <?php if (profile()->company_logo) {?>
   <img style="width: 30px !important; height:30px !important; border:1px solid;" src="<?=base_url('assets/')?>img/profile/<?=profile()->company_logo?>"  alt="" />
   <?php }else{ ?>
-  <img src="<?=base_url('assets/')?>img/profile/1634211873icon-5359553_1920.png?>" alt="" />
+  <img src="<?=base_url('assets/')?>img/profile/1634211873icon-5359553_1920.png" alt="" />
   <?php } ?>
   <span class="admin-name"><?=ucfirst(profile()->company_name)?></span>
   <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>

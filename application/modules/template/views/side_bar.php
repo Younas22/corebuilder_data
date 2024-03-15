@@ -8,7 +8,7 @@
     <div class="left-sidebar-pro">
       <nav id="sidebar" class="">
         <div class="sidebar-header">
-          <a href="<?=base_url($this->session->userdata('logged_in')->user_type.'/'.'dashboard')?>"><img class="main-logo" src="<?=base_url('assets/')?>img/logo/logo.png" alt="" /></a>
+          <a href="<?=base_url($this->session->userdata('logged_in')->user_type.'/'.'dashboard')?>"><img class="main-logo" src="<?=base_url('assets/')?>img/logo/logo.png_" alt="" /></a>
           <strong><a href="<?=base_url($this->session->userdata('logged_in')->user_type.'/'.'dashboard')?>"><img src="<?=base_url('assets/')?>img/logo/logosn.png" alt="" /></a></strong>
         </div>
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
